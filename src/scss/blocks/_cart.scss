@@ -1,0 +1,30 @@
+.cart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart__image{
+    border-left: 1px solid #61677A;
+    padding-left: 15px;
+}
+
+.cart__total-price {
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+.cart__count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    background-color: #272829;
+    border-radius: 50%;
+    color: #fff;
+    position: absolute;
+    top: -5px;
+    right: -8px;
+}
