@@ -6,7 +6,7 @@
 }
 
 .cart__image{
-    border-left: 1px solid #61677A;
+    border-left: 1px solid var(--ui-grey);
     padding-left: 15px;
 }
 
@@ -21,7 +21,7 @@
     align-items: center;
     height: 20px;
     width: 20px;
-    background-color: #272829;
+    background-color: var(--ui-dark);
     border-radius: 50%;
     color: #fff;
     position: absolute;

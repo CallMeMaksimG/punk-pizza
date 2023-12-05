@@ -10,7 +10,7 @@
     border-radius: 20px;
     font-weight: 400;
     transition: all .2s ease-in;
-    border: 1px solid #272829;
+    border: 1px solid var(--ui-dark);
     max-height: 42px;
     white-space: nowrap;
 
@@ -22,7 +22,7 @@
     }
 
     &--active {
-        background-color: #272829;
+        background-color: var(--ui-dark);
         color: #FFF;
     }
 }

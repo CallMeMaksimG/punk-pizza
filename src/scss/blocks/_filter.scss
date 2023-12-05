@@ -7,7 +7,7 @@
     background-color: #FFF;
     border-radius: 20px;
     font-weight: 400;
-    border: 1px solid #272829;
+    border: 1px solid var(--ui-dark);
     gap: 10px;
 
     display: inline-flex;
@@ -32,7 +32,7 @@
     position: absolute;
     background-color: #fff;
     border-radius: 20px;
-    border: 1px solid #272829;
+    border: 1px solid var(--ui-dark);
     padding-top: 42px;
     top: 0;
     right: 0;
@@ -53,7 +53,7 @@
     transition: background .2s ease-in;
 
     &:hover {
-        background-color: #F0F0F0;
+        background-color: var(--background-color);
     }
 
     &:nth-last-child(1) {
