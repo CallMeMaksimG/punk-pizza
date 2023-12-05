@@ -1,14 +1,21 @@
 .tab-controls {
-    display: flex;
-    gap: 30px;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .tab-controls__btn {
-    padding: 10px 25px;
+    padding: 10px 20px;
     background-color: #FFF;
     border-radius: 20px;
-    font-weight: 500;
+    font-weight: 400;
     transition: all .2s ease-in;
+    border: 1px solid #272829;
+    max-height: 42px;
+    white-space: nowrap;
+
+    display: flex;
+    align-items: center;
 
     &:hover {
         opacity: 0.7;

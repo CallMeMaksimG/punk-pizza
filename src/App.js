@@ -1,5 +1,6 @@
 import Header from './components/Header/Header';
-import Tabs from './components/Tabs';
+import Tabs from './components/Tabs/Tabs';
+import Filter from './components/Filter/Filter';
 
 function App() {
     return (
@@ -7,9 +8,10 @@ function App() {
             <Header />
             <main className="products">
                 <div className="container">
-                    <div className="products__navigate">
+                    <section className="products__navigate">
                         <Tabs />
-                    </div>
+                        <Filter />
+                    </section>
                 </div>
             </main>
         </div>
