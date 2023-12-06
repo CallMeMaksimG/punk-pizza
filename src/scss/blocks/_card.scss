@@ -1,0 +1,102 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    // max-width: 250px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.card__photo {
+    // max-width: 350px;
+}
+
+.card__title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.card__weight {
+    color: grey;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.card__pizza-size {
+    text-align: center;
+}
+
+.pizza-size__list {
+    margin-top: 10px;
+    display: inline-flex;
+    // gap: 20px;
+
+    padding: 3px;
+    background-color: #FFF;
+    border-radius: 20px;
+    font-weight: 400;
+    border: 1px solid var(--ui-dark);
+}
+
+.pizza-size__list-item {
+    padding: 5px 20px;
+    border-radius: 20px;
+    transition: background-color .2s ease-in;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--background-color);
+    }
+}
+
+.pizza-size__list-item--active {
+    background-color: var(--ui-dark);
+    color: #fff;
+    border-radius: 20px;
+    border: 1px solid var(--ui-dark);
+
+    &:hover {
+        background-color: lighten(#272829, 10%);
+    }
+}
+
+.card__footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__price {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.card__btn {
+    background-color: var(--ui-dark);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    transition: opacity .2s ease-in;
+
+    &:hover {
+        background-color: lighten(#272829, 10%);
+    }
+}
+
+// .card__btn--active {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     width: 100px;
+//     height: 40px;
+//     background-color: black;
+//     border-radius: 20px;
+
+//     &:before {
+//         content: url('./../../../public/img/icons/minus.svg') "1";
+//         color: #fff;
+//         font-size: 20px;
+        
+//     }
+// }

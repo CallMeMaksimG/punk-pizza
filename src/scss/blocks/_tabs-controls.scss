@@ -18,11 +18,15 @@
     align-items: center;
 
     &:hover {
-        opacity: 0.7;
+        background-color: darken(#fff, 5%);
     }
 
     &--active {
         background-color: var(--ui-dark);
         color: #FFF;
+
+        &:hover {
+            background-color: lighten(#272829, 10%);
+        }
     }
 }
