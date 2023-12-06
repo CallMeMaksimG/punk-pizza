@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1,
+        "img":"./../img/cards/pizza/margarita.jpg",
+        "categories":"Пицца 'Старый свет'",
+        "title": "Маргарита",
+        "weight20": 325,
+        "price20": 380,
+        "weigth30": 395,
+        "price30": 460
+    },
+    {
+        "id": 2,
+        "img":"./../img/cards/pizza/pepperoni.jpg",
+        "categories":"Пицца 'Старый свет'",
+        "title": "Пепперони",
+        "weight20": 320,
+        "price20": 430,
+        "weigth30": 410,
+        "price30": 510
+    },
+    {
+        "id": 3,
+        "img":"./../img/cards/pizza/margaritabianka.jpg",
+        "categories":"Пицца 'Старый свет'",
+        "title": "Маргарита Бьянка",
+        "weight20": 300,
+        "price20": 430,
+        "weigth30": 400,
+        "price30": 510
+    }
+
+]

@@ -1,14 +1,12 @@
 .card {
     display: flex;
     flex-direction: column;
-    // max-width: 250px;
     padding: 15px;
     background-color: #fff;
     border-radius: 10px;
 }
 
 .card__photo {
-    // max-width: 350px;
 }
 
 .card__title {
@@ -29,8 +27,6 @@
 .pizza-size__list {
     margin-top: 10px;
     display: inline-flex;
-    // gap: 20px;
-
     padding: 3px;
     background-color: #FFF;
     border-radius: 20px;
