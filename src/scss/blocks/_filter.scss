@@ -26,6 +26,11 @@
 .filter__btn-img {
     position: relative;
     z-index: 1;
+    transition: all .2s ease-in;
+
+    &--active {
+        transform: rotate(-180deg);
+    }
 }
 
 .filter__dropdown-list {

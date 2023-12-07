@@ -20,7 +20,7 @@ function Filter() {
                 <img
                     src="./../img/icons/arrow-down.svg"
                     alt="arrow-down"
-                    className="filter__btn-img"
+                    className={openFilterList ? "filter__btn-img filter__btn-img--active" : "filter__btn-img"}
                 />
                 <ul
                     className={
