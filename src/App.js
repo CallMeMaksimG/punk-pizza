@@ -17,7 +17,7 @@ function App() {
                         <Filter />
                     </section>
                     <section className="cards-wrapper">
-                        <h1 className="cards__title">Все пиццы</h1>
+                        <h1 className="cards__title">Все</h1>
                         <div className="cards">
                             {products.map((product) => {
                                 {
@@ -27,8 +27,9 @@ function App() {
                                     <Card
                                         img={product.img}
                                         title={product.title}
-                                        weight={product.weight20}
-                                        price={product.price20}
+                                        weight={product.weight}
+                                        price={product.price}
+                                        sizes={product.sizes}
                                     />
                                 );
                             })}

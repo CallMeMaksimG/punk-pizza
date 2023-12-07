@@ -4,13 +4,14 @@
     padding: 15px;
     background-color: #fff;
     border-radius: 10px;
+    height: 450px;
 }
 
 .card__photo {
 }
 
 .card__title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
 }
 
@@ -37,7 +38,7 @@
 .pizza-size__list-item {
     padding: 5px 20px;
     border-radius: 20px;
-    transition: background-color .2s ease-in;
+    transition: all .2s ease-in;
     cursor: pointer;
 
     &:hover {
@@ -57,7 +58,7 @@
 }
 
 .card__footer {
-    margin-top: 20px;
+    margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
