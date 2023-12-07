@@ -2,14 +2,24 @@ import Header from './components/Header/Header';
 import Tabs from './components/Tabs/Tabs';
 import Filter from './components/Filter/Filter';
 import Card from './components/Card/Card';
+import ModalInfo from './components/ModalInfo/ModalInfo';
 import products from './data/products.json';
+import { useState } from 'react';
 
 console.log(products);
 
 function App() {
+    const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
+
+    const handleClickInfoIcon = () => {
+       setIsModalInfoOpen(true);
+    }
+
     return (
         <div className="App">
-            <Header />
+            <ModalInfo isModalInfoOpen={isModalInfoOpen} setIsModalInfoOpen={setIsModalInfoOpen}/>
+            
+            <Header handleClickInfoIcon={handleClickInfoIcon}/>
             <main className="products">
                 <div className="container">
                     <section className="products__navigate">

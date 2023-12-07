@@ -25,7 +25,7 @@ function Card({ img, title, weight, price, sizes }) {
                 
             </div>
             <div className="card__footer">
-                <div className="card__price">от {price} р</div>
+                <div className="card__price">от {price} &#8381;</div>
                 <button className="card__btn">
                     <img src="./../../img/icons/plus.svg" alt="add to cart" />
                 </button>

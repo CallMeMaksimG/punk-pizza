@@ -1,0 +1,105 @@
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0, .3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 5;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.overlay--open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-info {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, 200%);
+    z-index: 10;
+    background-color: #fff;
+    border-radius: 25px;
+
+    width: 450px;
+    height: 400px;
+    padding: 40px;
+
+    transition: all .5s ease-in-out;
+}
+
+.modal-info--open {
+    transform: translate(50%, -50%);
+    // opacity: 1;
+    animation: modalOpen;
+}
+
+@keyframes modalOpen {
+    from {
+        transform: translateY(-50%);
+    }
+    to {
+        transform: translateY(50%);
+    }
+}
+
+.modal-info__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.modal-info__list {
+    margin-top: 20px;
+}
+
+.modal-info__list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-size: 18px;
+
+    &:nth-child(-n+2) {
+        border-bottom: 1px solid var(--background-color);
+    }
+}
+
+.modal-info__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    background-color: var(--ui-dark);
+    color: #fff;
+    font-size: 18px;
+    height: 42px;
+    margin-top: 30px;
+    border-radius: 10px;
+    transition: background .2s ease-in;
+
+    &:before {
+        content: url('./../../../public/img/icons/delivery.svg');
+        transform: translateY(2px);
+    }
+
+    &:hover {
+        background-color: lighten(#272829, 10%);
+    }
+}
+
+.modal-info__close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: opacity .2s ease-in;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
