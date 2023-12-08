@@ -6,20 +6,20 @@ import ModalInfo from './components/ModalInfo/ModalInfo';
 import products from './data/products.json';
 import { useState } from 'react';
 
-console.log(products);
-
 function App() {
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
 
     const handleClickInfoIcon = () => {
-       setIsModalInfoOpen(true);
-    }
+        setIsModalInfoOpen(true);
+    };
 
     return (
         <div className="App">
-            <ModalInfo isModalInfoOpen={isModalInfoOpen} setIsModalInfoOpen={setIsModalInfoOpen}/>
-            
-            <Header handleClickInfoIcon={handleClickInfoIcon}/>
+            <ModalInfo
+                isModalInfoOpen={isModalInfoOpen}
+                setIsModalInfoOpen={setIsModalInfoOpen}
+            />
+            <Header handleClickInfoIcon={handleClickInfoIcon} />
             <main className="products">
                 <div className="container">
                     <section className="products__navigate">
@@ -30,11 +30,9 @@ function App() {
                         <h1 className="cards__title">Все</h1>
                         <div className="cards">
                             {products.map((product) => {
-                                {
-                                    console.log(product);
-                                }
                                 return (
-                                    <Card
+                                    <Card 
+                                        key={product.id}
                                         img={product.img}
                                         title={product.title}
                                         weight={product.weight}

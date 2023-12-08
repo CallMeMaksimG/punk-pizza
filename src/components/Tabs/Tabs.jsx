@@ -20,6 +20,7 @@ function Tabs() {
                 {categories.map((category, index) => {
                     return (
                         <button
+                            key={index}
                             onClick={() => onClickCategory(index)}
                             className={
                                 activeIndex === index

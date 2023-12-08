@@ -1,7 +1,7 @@
 .overlay {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0, .3);
+    background-color: rgba(0, 0, 0, 0.3);
     position: fixed;
     top: 0;
     bottom: 0;
@@ -30,12 +30,11 @@
     height: 400px;
     padding: 40px;
 
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .modal-info--open {
     transform: translate(50%, -50%);
-    // opacity: 1;
     animation: modalOpen;
 }
 
@@ -64,7 +63,7 @@
     padding: 20px 0;
     font-size: 18px;
 
-    &:nth-child(-n+2) {
+    &:nth-child(-n + 2) {
         border-bottom: 1px solid var(--background-color);
     }
 }
@@ -81,7 +80,7 @@
     height: 42px;
     margin-top: 30px;
     border-radius: 10px;
-    transition: background .2s ease-in;
+    transition: background 0.2s ease-in;
 
     &:before {
         content: url('./../../../public/img/icons/delivery.svg');
@@ -97,7 +96,7 @@
     position: absolute;
     top: 15px;
     right: 15px;
-    transition: opacity .2s ease-in;
+    transition: opacity 0.2s ease-in;
 
     &:hover {
         opacity: 0.6;
