@@ -40,7 +40,7 @@ function Filter() {
                     }
                 >
                     {sortMethodList.map((method) => (
-                        <li
+                        <li key={method}
                             onClick={(e) => setSelected(method)}
                             className="filter__dropdown-list-item"
                         >
