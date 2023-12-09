@@ -1,20 +1,24 @@
+import { Link } from 'react-router-dom';
+
 function Header({ handleClickInfoIcon }) {
     return (
         <header className="header">
             <div className="container">
                 <nav className="header__nav nav">
-                    <div className="nav__logo">
-                        <img
-                            src="./../img/header/logo-pizza.png"
-                            alt="LOGO"
-                            className="nav__logo-img"
-                        />
-                        <h1 className="nav__title">
-                            PUNK
-                            <br />
-                            PIZZA
-                        </h1>
-                    </div>
+                    <Link to="/">
+                        <div className="nav__logo">
+                            <img
+                                src="./../img/header/logo-pizza.png"
+                                alt="LOGO"
+                                className="nav__logo-img"
+                            />
+                            <h1 className="nav__title">
+                                PUNK
+                                <br />
+                                PIZZA
+                            </h1>
+                        </div>
+                    </Link>
                     <form action="" className="nav__search search-form">
                         <input
                             type="text"
