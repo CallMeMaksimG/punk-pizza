@@ -3,10 +3,20 @@ import Tabs from './components/Tabs/Tabs';
 import Filter from './components/Filter/Filter';
 import Card from './components/Card/Card';
 import ModalInfo from './components/ModalInfo/ModalInfo';
-import products from './data/products.json';
-import { useState } from 'react';
+// import products from './data/products.json';
+import { useEffect, useState } from 'react';
 
 function App() {
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        fetch('https://657421eff941bda3f2af644e.mockapi.io/items').then((res) => {
+            return res.json();
+        }).then(items => setItems(items));
+    }, []);
+
+   
+
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
 
     const handleClickInfoIcon = () => {
@@ -29,9 +39,9 @@ function App() {
                     <section className="cards-wrapper">
                         <h1 className="cards__title">Все</h1>
                         <div className="cards">
-                            {products.map((product) => {
+                            {items.map((product) => {
                                 return (
-                                    <Card 
+                                    <Card
                                         key={product.id}
                                         img={product.img}
                                         title={product.title}
