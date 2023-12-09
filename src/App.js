@@ -1,21 +1,25 @@
 import Header from './components/Header/Header';
 import Tabs from './components/Tabs/Tabs';
 import Filter from './components/Filter/Filter';
+import Skeleton from './components/Card/Skeleton';
 import Card from './components/Card/Card';
 import ModalInfo from './components/ModalInfo/ModalInfo';
-// import products from './data/products.json';
 import { useEffect, useState } from 'react';
 
 function App() {
     const [items, setItems] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://657421eff941bda3f2af644e.mockapi.io/items').then((res) => {
-            return res.json();
-        }).then(items => setItems(items));
+        fetch('https://657421eff941bda3f2af644e.mockapi.io/items')
+            .then((res) => {
+                return res.json();
+            })
+            .then((items) => {
+                setItems(items);
+                setIsLoading(false)
+            });
     }, []);
-
-   
 
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
 
@@ -39,18 +43,13 @@ function App() {
                     <section className="cards-wrapper">
                         <h1 className="cards__title">Все</h1>
                         <div className="cards">
-                            {items.map((product) => {
-                                return (
-                                    <Card
-                                        key={product.id}
-                                        img={product.img}
-                                        title={product.title}
-                                        weight={product.weight}
-                                        price={product.price}
-                                        sizes={product.sizes}
-                                    />
-                                );
-                            })}
+                            {isLoading
+                                ? [...new Array(8)].map((_, index) => (
+                                      <Skeleton key={index} />
+                                  ))
+                                : items.map((item) => (
+                                      <Card key={item.id} {...item} />
+                                  ))}
                         </div>
                     </section>
                 </div>
