@@ -1,7 +1,10 @@
-
-
 .products__navigate {
     display: flex;
     justify-content: space-between;
     gap: 20px;
+
+    @media(max-width: $tablet) {
+        flex-direction: column;
+        gap: 0;
+    }
 }

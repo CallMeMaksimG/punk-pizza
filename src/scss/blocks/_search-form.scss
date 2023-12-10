@@ -6,6 +6,10 @@
     align-items: center;
     padding: 5px 10px 0px 10px;
     border-bottom: 0.5px solid var(--ui-dark);
+
+    @media(max-width: $tablet) {
+        display: none;
+    }
 }
 
 .search-form__input {

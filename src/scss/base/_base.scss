@@ -20,4 +20,8 @@ a {
 
 .main {
     margin-top: 150px;
+
+    @media(max-width: $tablet) {
+        margin-top: 140px;
+    }
 }

@@ -3,6 +3,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media(max-width: $tablet) {
+        display: none;
+    }
 }
 
 .cart__image{

@@ -5,7 +5,7 @@ function Header({ handleClickInfoIcon }) {
         <header className="header">
             <div className="container">
                 <nav className="header__nav nav">
-                    <Link to="/">
+                    <Link className='nav__link' to="/">
                         <div className="nav__logo">
                             <img
                                 src="./../img/header/logo-pizza.png"

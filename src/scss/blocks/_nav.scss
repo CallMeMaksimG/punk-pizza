@@ -4,6 +4,16 @@
     justify-content: space-between;
     padding-bottom: 10px;
     gap: 40px;
+    @media(max-width: $tablet) {
+        gap: 0;
+    }
+}
+
+.nav__link {
+    @media(max-width: $tablet) {
+        margin: 0 auto;
+    }
+    
 }
 
 .nav__logo {
@@ -14,6 +24,7 @@
 .nav__logo-img {
     width: 100px;
     height: 100px;
+
 
     &:hover {
         transform: scale(1.2);
@@ -26,6 +37,7 @@
     line-height: 80%;
     text-align: center;
     padding-top: 10px;
+
 }
 
 .nav__right {

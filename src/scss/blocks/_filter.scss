@@ -1,5 +1,9 @@
 .filter {
     position: relative;
+
+    @media(max-width: $tablet) {
+        margin-left: auto;
+    }
 }
 
 .filter__btn {
