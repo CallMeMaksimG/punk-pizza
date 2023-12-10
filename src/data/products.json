@@ -22,7 +22,7 @@
     {
         "id": 3,
         "img":"./../img/cards/pizza/margaritabianka.jpg",
-        "categories":"Пицца 'Старый свет'",
+        "category":"Пицца 'Старый свет'",
         "title": "Маргарита Бьянка",
         "sizes": [20, 30],
         "weight": [300, 400],
@@ -32,7 +32,7 @@
     {
         "id": 4,
         "img":"./../img/cards/pizza/ortolanaveg.jpg",
-        "categories":"Пицца 'Старый свет'",
+        "category":"Пицца 'Старый свет'",
         "title": "Ортолана Веджи",
         "sizes": [20, 30],
         "weight": [300, 400],
@@ -42,7 +42,7 @@
     {
         "id": 5,
         "img":"./../img/cards/pizza/marinara.jpg",
-        "categories":"Пицца 'Старый свет'",
+        "category":"Пицца 'Старый свет'",
         "title": "Маринара",
         "sizes": [20, 30],
         "weight": [315, 415],
@@ -52,7 +52,7 @@
     {
         "id": 6,
         "img":"./../img/cards/pizza/peargorgonzola.jpg",
-        "categories":"Пицца 'Новый свет'",
+        "category":"Пицца 'Новый свет'",
         "title": "Груша/Горгонзола/Суджук",
         "sizes": [20, 30],
         "weight": [350, 450],
@@ -62,7 +62,7 @@
     {
         "id": 7,
         "img":"./../img/cards/pizza/porkettarukkola.jpg",
-        "categories":"Пицца 'Новый свет'",
+        "category":"Пицца 'Новый свет'",
         "title": "Поркетта/руккола",
         "sizes": [20, 30],
         "weight": [450, 550],
@@ -72,7 +72,7 @@
     {
         "id": 8,
         "img":"./../img/cards/pizza/parmskayavetchina.jpg",
-        "categories":"Пицца 'Новый свет'",
+        "category":"Пицца 'Новый свет'",
         "title": "Пармская ветчина",
         "sizes": [20, 30],
         "weight": [310, 410],
@@ -82,7 +82,7 @@
     {
         "id": 9,
         "img":"./../img/cards/pizza/4cheeses.jpg",
-        "categories":"Пицца 'Старый свет'",
+        "category":"Пицца 'Старый свет'",
         "title": "Четыре сыра",
         "sizes": [20, 30],
         "weight": [310, 410],
@@ -92,7 +92,7 @@
     {
         "id": 10,
         "img":"./../img/cards/pizza/buratta.jpg",
-        "categories":"Пицца 'Новый свет'",
+        "category":"Пицца 'Новый свет'",
         "title": "Буратта",
         "sizes": [20, 30],
         "weight": [340, 440],
@@ -102,7 +102,7 @@
     {
         "id": 11,
         "img":"./../img/cards/drinks/cola.jpg",
-        "categories":"Напитки",
+        "category":"Напитки",
         "title": "СocaCola",
         "weight": [0.25],
         "price": [180],
@@ -111,7 +111,7 @@
     {
         "id": 12,
         "img":"./../img/cards/drinks/rich-orange.jpg",
-        "categories":"Напитки",
+        "category":"Напитки",
         "title": "Rich апельсин",
         "weight": [0.2],
         "price": [200],
@@ -120,7 +120,7 @@
     {
         "id": 13,
         "img":"./../img/cards/drinks/kombucha.jpg",
-        "categories":"Напитки",
+        "category":"Напитки",
         "title": "Комбуча Symbiotica",
         "description": "Комбуча Symbiotica Огурец/ Мята/ Лимон",
         "weight": [0.33],
@@ -130,7 +130,7 @@
     {
         "id": 14,
         "img":"./../img/cards/drinks/petroglyph.jpg",
-        "categories":"Напитки",
+        "category":"Напитки",
         "title": "Вода Petroglyph",
         "weight": [0.5],
         "price": [190],
@@ -139,7 +139,7 @@
     {
         "id": 15,
         "img":"./../img/cards/drinks/cider.jpg",
-        "categories":"Напитки",
+        "category":"Напитки",
         "title": "Bullevie Petit",
         "description": "Cидр б/а Bullevie Petit",
         "weight": [0.33],
@@ -149,13 +149,11 @@
     {
         "id": 16,
         "img":"./../img/cards/drinks/beer.jpg",
-        "categories":"Напитки",
+        "category":"Напитки",
         "title": "DreamTeam Brew",
         "description": "Пиво б/а DreamTeam Brew",
         "weight": [0.33],
         "price": [320],
         "rating": 5
     }
-
-
 ]

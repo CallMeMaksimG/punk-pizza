@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Tabs() {
+function Tabs({setCategoryId}) {
     const [activeIndex, setActiveIndex] = useState(0);
     const categories = [
         'Все',
@@ -12,7 +12,14 @@ function Tabs() {
 
     const onClickCategory = (index) => {
         setActiveIndex(index);
+        setCategoryId(index);
+        // filterItemsByCategory(items, category)
     };
+
+    // const filterItemsByCategory = (items, category) => {
+    //     console.log(category)
+    //     console.log(items.filter((item) => category === 'Все' ? items : item.category === category)); 
+    // }
 
     return (
         <div className="tabs">

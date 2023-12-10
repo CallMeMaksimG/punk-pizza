@@ -7,9 +7,12 @@ import Card from './../components/Card/Card';
 function Home() {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [categoryId, setCategoryId] = useState(0);
+    const [sortMethod, setSortMethod] = useState(0);
 
     useEffect(() => {
-        fetch('https://657421eff941bda3f2af644e.mockapi.io/items')
+        setIsLoading(true);
+        fetch('https://657421eff941bda3f2af644e.mockapi.io/items?category=' + categoryId)
             .then((res) => {
                 return res.json();
             })
@@ -17,14 +20,14 @@ function Home() {
                 setItems(items);
                 setIsLoading(false);
             });
-    }, []);
+    }, [categoryId]);
 
     return (
         <div className="products">
             <div className="container">
                 <section className="products__navigate">
-                    <Tabs />
-                    <Filter />
+                    <Tabs items={items} setCategoryId={setCategoryId}/>
+                    <Filter items={items} sortMethod={sortMethod}/>
                 </section>
                 <section className="cards-wrapper">
                     <h1 className="cards__title">Все</h1>

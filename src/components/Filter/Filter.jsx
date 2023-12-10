@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Filter() {
+function Filter({items}) {
     const sortMethodList = [
         'По популярности',
         'По возрастанию цены',
@@ -12,6 +12,26 @@ function Filter() {
     const handleOpenFilterList = () => {
         setOpenFilterList(!openFilterList);
     };
+
+    const onClickFilterMethod = (method) => {
+        setSelected(method);
+        sortedItems(items, method);
+    }
+
+    const sortedItems =  (items, method) => {
+        switch(method) {
+            case 'По популярности':
+                console.log(items.sort((a, b) => b.rating - a.rating));
+                break;
+            case 'По возрастанию цены':
+                console.log(items.sort((a,b) => a.price[0] - b.price[0]));
+                break;
+            case 'По убыванию цены': 
+            console.log(items.sort((a,b) => b.price[0] - a.price[0]));
+            break;
+        }
+        
+    }
 
     // document.addEventListener('click', function (e) {
     //     if (e.target.className !== 'filter__dropdown-list') {
@@ -41,7 +61,7 @@ function Filter() {
                 >
                     {sortMethodList.map((method) => (
                         <li key={method}
-                            onClick={(e) => setSelected(method)}
+                            onClick={() => onClickFilterMethod(method)}
                             className="filter__dropdown-list-item"
                         >
                             {method}
