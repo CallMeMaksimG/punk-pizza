@@ -1,48 +1,21 @@
 import { useState } from 'react';
 
-function Filter({items}) {
+function Filter({ sortMethod, setSortMethod }) {
     const sortMethodList = [
-        'По популярности',
-        'По возрастанию цены',
-        'По убыванию цены',
+        { name: 'По популярности', sortProperty: 'rating' },
+        { name: 'По возрастанию цены', sortProperty: '-price' },
+        { name: 'По убыванию цены', sortProperty: 'price' },
     ];
     const [openFilterList, setOpenFilterList] = useState(false);
-    const [selected, setSelected] = useState('Сортировка');
 
     const handleOpenFilterList = () => {
         setOpenFilterList(!openFilterList);
     };
 
-    const onClickFilterMethod = (method) => {
-        setSelected(method);
-        sortedItems(items, method);
-    }
-
-    const sortedItems =  (items, method) => {
-        switch(method) {
-            case 'По популярности':
-                console.log(items.sort((a, b) => b.rating - a.rating));
-                break;
-            case 'По возрастанию цены':
-                console.log(items.sort((a,b) => a.price[0] - b.price[0]));
-                break;
-            case 'По убыванию цены': 
-            console.log(items.sort((a,b) => b.price[0] - a.price[0]));
-            break;
-        }
-        
-    }
-
-    // document.addEventListener('click', function (e) {
-    //     if (e.target.className !== 'filter__dropdown-list') {
-    //         // setOpenFilterList(false);
-    //     }
-    // });
-
     return (
         <div className="filter">
             <button onClick={handleOpenFilterList} className="filter__btn">
-                <span className="filter__btn-text">{selected}</span>
+                <span className="filter__btn-text">{sortMethod.name}</span>
                 <img
                     src="./../img/icons/arrow-down.svg"
                     alt="arrow-down"
@@ -59,12 +32,13 @@ function Filter({items}) {
                             : 'filter__dropdown-list'
                     }
                 >
-                    {sortMethodList.map((method) => (
-                        <li key={method}
-                            onClick={() => onClickFilterMethod(method)}
+                    {sortMethodList.map((obj) => (
+                        <li
+                            key={obj.name}
+                            onClick={() => setSortMethod(obj)}
                             className="filter__dropdown-list-item"
                         >
-                            {method}
+                            {obj.name}
                         </li>
                     ))}
                 </ul>

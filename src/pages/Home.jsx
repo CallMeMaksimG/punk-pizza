@@ -8,11 +8,21 @@ function Home() {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [categoryId, setCategoryId] = useState(0);
-    const [sortMethod, setSortMethod] = useState(0);
+    const [sortMethod, setSortMethod] = useState({
+        name: 'Сортировка',
+        sortProperty: '',
+    });
 
     useEffect(() => {
         setIsLoading(true);
-        fetch('https://657421eff941bda3f2af644e.mockapi.io/items?category=' + categoryId)
+
+        const order = sortMethod.sortProperty.includes('-') ? 'asc' : 'desc';
+        const sortBy = sortMethod.sortProperty.replace('-', '');
+        const category = categoryId > 0 ? `category=${categoryId}` : '';
+
+        fetch(
+            `https://657421eff941bda3f2af644e.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`
+        )
             .then((res) => {
                 return res.json();
             })
@@ -20,14 +30,20 @@ function Home() {
                 setItems(items);
                 setIsLoading(false);
             });
-    }, [categoryId]);
+    }, [categoryId, sortMethod]);
 
     return (
         <div className="products">
             <div className="container">
                 <section className="products__navigate">
-                    <Tabs items={items} setCategoryId={setCategoryId}/>
-                    <Filter items={items} sortMethod={sortMethod}/>
+                    <Tabs
+                        categoryId={categoryId}
+                        setCategoryId={setCategoryId}
+                    />
+                    <Filter
+                        sortMethod={sortMethod}
+                        setSortMethod={setSortMethod}
+                    />
                 </section>
                 <section className="cards-wrapper">
                     <h1 className="cards__title">Все</h1>
@@ -44,7 +60,7 @@ function Home() {
                 <div className="cart-mobile-btn">
                     <div className="cart-mobile-btn__counter">1</div>
                     <p className="cart-mobile-btn__title">Ваш заказ</p>
-                    <p className="cart-mobile-btn__price">1000 Р</p>
+                    <p className="cart-mobile-btn__price">1000 &#8381;</p>
                 </div>
             </div>
         </div>

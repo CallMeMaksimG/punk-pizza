@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-function Tabs({setCategoryId}) {
-    const [activeIndex, setActiveIndex] = useState(0);
+function Tabs({ categoryId, setCategoryId }) {
     const categories = [
         'Все',
         'Пицца "Старый свет"',
@@ -11,15 +10,8 @@ function Tabs({setCategoryId}) {
     ];
 
     const onClickCategory = (index) => {
-        setActiveIndex(index);
         setCategoryId(index);
-        // filterItemsByCategory(items, category)
     };
-
-    // const filterItemsByCategory = (items, category) => {
-    //     console.log(category)
-    //     console.log(items.filter((item) => category === 'Все' ? items : item.category === category)); 
-    // }
 
     return (
         <div className="tabs">
@@ -30,7 +22,7 @@ function Tabs({setCategoryId}) {
                             key={index}
                             onClick={() => onClickCategory(index)}
                             className={
-                                activeIndex === index
+                                categoryId === index
                                     ? 'tab-controls__btn tab-controls__btn--active'
                                     : 'tab-controls__btn'
                             }
