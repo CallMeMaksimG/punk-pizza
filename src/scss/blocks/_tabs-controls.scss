@@ -11,7 +11,9 @@
     align-items: flex-start;
     gap: 20px;
 
-    
+    @media(max-width: $tablet) {
+        gap: 10px;
+    }
     
 }
 

@@ -38,6 +38,11 @@ function Home() {
                               ))}
                     </div>
                 </section>
+                <div className="cart-mobile-btn">
+                    <div className="cart-mobile-btn__counter">1</div>
+                    <p className="cart-mobile-btn__title">Ваш заказ</p>
+                    <p className="cart-mobile-btn__price">1000 Р</p>
+                </div>
             </div>
         </div>
     );
