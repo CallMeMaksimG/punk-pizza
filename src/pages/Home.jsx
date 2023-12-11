@@ -4,7 +4,7 @@ import Sort from '../components/Sort/Sort';
 import Skeleton from './../components/Card/Skeleton';
 import Card from './../components/Card/Card';
 
-function Home() {
+function Home({ searchValue }) {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [categoryId, setCategoryId] = useState(0);
@@ -19,9 +19,10 @@ function Home() {
         const order = sortMethod.sortProperty.includes('-') ? 'asc' : 'desc';
         const sortBy = sortMethod.sortProperty.replace('-', '');
         const category = categoryId > 0 ? `category=${categoryId}` : '';
+        const search = searchValue ? `&search=${searchValue}` : '';
 
         fetch(
-            `https://657421eff941bda3f2af644e.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`
+            `https://657421eff941bda3f2af644e.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}${search}`
         )
             .then((res) => {
                 return res.json();
@@ -30,7 +31,7 @@ function Home() {
                 setItems(items);
                 setIsLoading(false);
             });
-    }, [categoryId, sortMethod]);
+    }, [categoryId, sortMethod, searchValue]);
 
     return (
         <div className="products">

@@ -23,7 +23,7 @@ function App() {
             <Header handleClickInfoIcon={handleClickInfoIcon} searchValue={searchValue} setSearchValue={setSearchValue}/>
             <main className="main">
                 <Routes>
-                    <Route path="/" element={<Home />}/>
+                    <Route path="/" element={<Home searchValue={searchValue}/>}/>
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
