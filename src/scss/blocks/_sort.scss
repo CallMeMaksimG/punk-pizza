@@ -1,4 +1,4 @@
-.filter {
+.sort {
     position: relative;
 
     @media(max-width: $tablet) {
@@ -6,12 +6,12 @@
     }
 }
 
-.filter__btn {
+.sort__btn {
     padding: 8px 20px;
     background-color: #FFF;
     border-radius: 20px;
     font-weight: 400;
-    border: 1px solid var(--ui-dark);
+    border: 1px solid #959595;
     gap: 10px;
 
     display: inline-flex;
@@ -22,12 +22,12 @@
     cursor: pointer;
 }
 
-.filter__btn-text {
+.sort__btn-text {
     position: relative;
     z-index: 1;
 }
 
-.filter__btn-img {
+.sort__btn-img {
     position: relative;
     z-index: 1;
     transition: all .2s ease-in;
@@ -37,12 +37,12 @@
     }
 }
 
-.filter__dropdown-list {
+.sort__dropdown-list {
     width: 250px;
     position: absolute;
     background-color: #fff;
     border-radius: 20px;
-    border: 1px solid var(--ui-dark);
+    border: 1px solid #959595;
     padding-top: 42px;
     top: 0;
     right: 0;
@@ -54,11 +54,9 @@
         opacity: 1;
         pointer-events: visible;
     }
-
-    
 }
 
-.filter__dropdown-list-item {
+.sort__dropdown-list-item {
     padding: 8px 20px;
     white-space: nowrap;
     text-align: end;

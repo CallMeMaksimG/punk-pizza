@@ -23,7 +23,7 @@
     border-radius: 20px;
     font-weight: 400;
     transition: all .2s ease-in;
-    border: 1px solid var(--ui-dark);
+    border: 1px solid #959595;
     max-height: 42px;
     white-space: nowrap;
 
@@ -36,6 +36,7 @@
 
     &--active {
         background-color: var(--ui-dark);
+        border-color: var(--ui-dark);
         color: #FFF;
 
         &:hover {

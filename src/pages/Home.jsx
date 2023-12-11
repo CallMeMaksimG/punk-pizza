@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Tabs from './../components/Tabs/Tabs';
-import Filter from './../components/Filter/Filter';
+import Sort from '../components/Sort/Sort';
 import Skeleton from './../components/Card/Skeleton';
 import Card from './../components/Card/Card';
 
@@ -40,13 +40,13 @@ function Home() {
                         categoryId={categoryId}
                         setCategoryId={setCategoryId}
                     />
-                    <Filter
+                    <Sort
                         sortMethod={sortMethod}
                         setSortMethod={setSortMethod}
                     />
                 </section>
                 <section className="cards-wrapper">
-                    <h1 className="cards__title">Все</h1>
+                    <h1 className="cards__title">все</h1>
                     <div className="cards">
                         {isLoading
                             ? [...new Array(8)].map((_, index) => (
