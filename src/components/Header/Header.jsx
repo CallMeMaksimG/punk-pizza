@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import Search from '../Search/Search';
 
-function Header({ handleClickInfoIcon }) {
+function Header({ handleClickInfoIcon, searchValue, setSearchValue }) {
     return (
         <header className="header">
             <div className="container">
@@ -19,16 +20,7 @@ function Header({ handleClickInfoIcon }) {
                             </h1>
                         </div>
                     </Link>
-                    <form action="" className="nav__search search-form">
-                        <input
-                            type="text"
-                            placeholder="Поиск..."
-                            className="search-form__input"
-                        />
-                        <div className="search-form__btn">
-                            <img src="./../img/icons/search.svg" alt="search" />
-                        </div>
-                    </form>
+                    <Search searchValue={searchValue} setSearchValue={setSearchValue}/>
                     <div className="nav__right">
                         <button
                             onClick={handleClickInfoIcon}

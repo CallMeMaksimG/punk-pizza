@@ -12,13 +12,15 @@ function App() {
         setIsModalInfoOpen(true);
     };
 
+    const [searchValue, setSearchValue] = useState('');
+
     return (
         <div className="App">
             <ModalInfo
                 isModalInfoOpen={isModalInfoOpen}
                 setIsModalInfoOpen={setIsModalInfoOpen}
             />
-            <Header handleClickInfoIcon={handleClickInfoIcon} />
+            <Header handleClickInfoIcon={handleClickInfoIcon} searchValue={searchValue} setSearchValue={setSearchValue}/>
             <main className="main">
                 <Routes>
                     <Route path="/" element={<Home />}/>
