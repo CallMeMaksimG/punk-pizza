@@ -3,6 +3,7 @@ import Tabs from './../components/Tabs/Tabs';
 import Sort from '../components/Sort/Sort';
 import Skeleton from './../components/Card/Skeleton';
 import Card from './../components/Card/Card';
+import Pagination from '../components/Pagination/Pagination';
 
 function Home({ searchValue }) {
     const [items, setItems] = useState([]);
@@ -58,6 +59,7 @@ function Home({ searchValue }) {
                               ))}
                     </div>
                 </section>
+                <Pagination />
                 <div className="cart-mobile-btn">
                     <div className="cart-mobile-btn__counter">1</div>
                     <p className="cart-mobile-btn__title">Ваш заказ</p>

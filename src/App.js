@@ -1,9 +1,10 @@
 import Header from './components/Header/Header';
 import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import ModalInfo from './components/ModalInfo/ModalInfo';
-import { Route, Routes } from 'react-router-dom';
 
 function App() {
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
