@@ -1,5 +1,8 @@
-function Search({ searchValue, setSearchValue }) {
+import { useContext } from 'react';
+import { SearchContext } from '../../App';
 
+function Search() {
+    const { searchValue, setSearchValue } = useContext(SearchContext);
     return (
         <form action="" className="nav__search search-form">
             <div className="search-form__icon">
@@ -12,10 +15,14 @@ function Search({ searchValue, setSearchValue }) {
                 placeholder="Поиск..."
                 className="search-form__input"
             />
-            {searchValue && (<div onClick={() => setSearchValue('')} className="search-form__clear-btn">
-                <img src="./../img/icons/clear.svg" alt="clear" />
-            </div>)}
-            
+            {searchValue && (
+                <div
+                    onClick={() => setSearchValue('')}
+                    className="search-form__clear-btn"
+                >
+                    <img src="./../img/icons/clear.svg" alt="clear" />
+                </div>
+            )}
         </form>
     );
 }

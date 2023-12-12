@@ -1,18 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectCategoryFilter } from '../redux/slices/filterSlice';
 import Tabs from './../components/Tabs/Tabs';
 import Sort from '../components/Sort/Sort';
 import Skeleton from './../components/Card/Skeleton';
 import Card from './../components/Card/Card';
 import Pagination from '../components/Pagination/Pagination';
+import { SearchContext } from '../App';
 
-function Home({ searchValue }) {
+function Home() {
+    const { searchValue } = useContext(SearchContext);
     const [items, setItems] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
-    const [categoryId, setCategoryId] = useState(0);
     const [sortMethod, setSortMethod] = useState({
         name: 'Сортировка',
         sortProperty: '',
     });
+    const categoryId = useSelector(selectCategoryFilter);
 
     useEffect(() => {
         setIsLoading(true);
@@ -23,7 +28,7 @@ function Home({ searchValue }) {
         const search = searchValue ? `&search=${searchValue}` : '';
 
         fetch(
-            `https://657421eff941bda3f2af644e.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}${search}`
+            `https://657421eff941bda3f2af644e.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
         )
             .then((res) => {
                 return res.json();
@@ -32,16 +37,13 @@ function Home({ searchValue }) {
                 setItems(items);
                 setIsLoading(false);
             });
-    }, [categoryId, sortMethod, searchValue]);
+    }, [categoryId, sortMethod, searchValue, currentPage]);
 
     return (
         <div className="products">
             <div className="container">
                 <section className="products__navigate">
-                    <Tabs
-                        categoryId={categoryId}
-                        setCategoryId={setCategoryId}
-                    />
+                    <Tabs />
                     <Sort
                         sortMethod={sortMethod}
                         setSortMethod={setSortMethod}
@@ -51,7 +53,7 @@ function Home({ searchValue }) {
                     <h1 className="cards__title">все</h1>
                     <div className="cards">
                         {isLoading
-                            ? [...new Array(8)].map((_, index) => (
+                            ? [...new Array(4)].map((_, index) => (
                                   <Skeleton key={index} />
                               ))
                             : items.map((item) => (
@@ -59,7 +61,7 @@ function Home({ searchValue }) {
                               ))}
                     </div>
                 </section>
-                <Pagination />
+                <Pagination onChangePage={(number) => setCurrentPage(number)} />
                 <div className="cart-mobile-btn">
                     <div className="cart-mobile-btn__counter">1</div>
                     <p className="cart-mobile-btn__title">Ваш заказ</p>

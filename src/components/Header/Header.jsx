@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import Search from '../Search/Search';
 
-function Header({ handleClickInfoIcon, searchValue, setSearchValue }) {
+function Header({ handleClickInfoIcon }) {
     return (
         <header className="header">
             <div className="container">
                 <nav className="header__nav nav">
-                    <Link className='nav__link' to="/">
+                    <Link className="nav__link" to="/">
                         <div className="nav__logo">
                             <img
                                 src="./../img/header/logo-pizza.png"
@@ -20,7 +20,7 @@ function Header({ handleClickInfoIcon, searchValue, setSearchValue }) {
                             </h1>
                         </div>
                     </Link>
-                    <Search searchValue={searchValue} setSearchValue={setSearchValue}/>
+                    <Search />
                     <div className="nav__right">
                         <button
                             onClick={handleClickInfoIcon}

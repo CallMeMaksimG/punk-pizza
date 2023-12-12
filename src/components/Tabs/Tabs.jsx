@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategoryFilter, selectCategoryFilter } from '../../redux/slices/filterSlice';
 
-function Tabs({ categoryId, setCategoryId }) {
+function Tabs() {
     const categories = [
         'Все',
         'Пицца "Старый свет"',
@@ -10,8 +11,10 @@ function Tabs({ categoryId, setCategoryId }) {
     ];
 
     const onClickCategory = (index) => {
-        setCategoryId(index);
+        dispatch(setCategoryFilter(index));
     };
+    const dispatch = useDispatch();
+    const categoryId = useSelector(selectCategoryFilter);
 
     return (
         <div className="tabs">
