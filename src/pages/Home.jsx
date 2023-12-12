@@ -7,17 +7,15 @@ import Skeleton from './../components/Card/Skeleton';
 import Card from './../components/Card/Card';
 import Pagination from '../components/Pagination/Pagination';
 import { SearchContext } from '../App';
+import { selectSortFilter } from '../redux/slices/filterSlice';
 
 function Home() {
     const { searchValue } = useContext(SearchContext);
     const [items, setItems] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
-    const [sortMethod, setSortMethod] = useState({
-        name: 'Сортировка',
-        sortProperty: '',
-    });
     const categoryId = useSelector(selectCategoryFilter);
+    const sortMethod = useSelector(selectSortFilter);
 
     useEffect(() => {
         setIsLoading(true);
@@ -44,10 +42,7 @@ function Home() {
             <div className="container">
                 <section className="products__navigate">
                     <Tabs />
-                    <Sort
-                        sortMethod={sortMethod}
-                        setSortMethod={setSortMethod}
-                    />
+                    <Sort />
                 </section>
                 <section className="cards-wrapper">
                     <h1 className="cards__title">все</h1>

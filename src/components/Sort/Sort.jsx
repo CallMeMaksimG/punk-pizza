@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSortMethod, selectSortFilter } from '../../redux/slices/filterSlice';
 
-function Sort({ sortMethod, setSortMethod }) {
+function Sort() {
     const sortMethodList = [
         { name: 'По популярности', sortProperty: 'rating' },
         { name: 'По возрастанию цены', sortProperty: '-price' },
@@ -11,6 +13,9 @@ function Sort({ sortMethod, setSortMethod }) {
     const handleOpenFilterList = () => {
         setOpenFilterList(!openFilterList);
     };
+
+    const dispatch = useDispatch();
+    const sortMethod = useSelector(selectSortFilter);
 
     return (
         <div className="sort">
@@ -35,7 +40,7 @@ function Sort({ sortMethod, setSortMethod }) {
                     {sortMethodList.map((obj) => (
                         <li
                             key={obj.name}
-                            onClick={() => setSortMethod(obj)}
+                            onClick={() => dispatch(setSortMethod(obj))}
                             className="sort__dropdown-list-item"
                         >
                             {obj.name}
