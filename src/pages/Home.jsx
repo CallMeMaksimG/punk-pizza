@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCategoryFilter } from '../redux/slices/filterSlice';
 import Tabs from './../components/Tabs/Tabs';
 import Sort from '../components/Sort/Sort';
@@ -8,15 +8,24 @@ import Skeleton from './../components/Card/Skeleton';
 import Card from './../components/Card/Card';
 import Pagination from '../components/Pagination/Pagination';
 import { SearchContext } from '../App';
-import { selectSortFilter } from '../redux/slices/filterSlice';
+import {
+    setPageCount,
+    selectSortFilter,
+    selectPageCountFilter,
+} from '../redux/slices/filterSlice';
 
 function Home() {
     const { searchValue } = useContext(SearchContext);
     const [items, setItems] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
     const categoryId = useSelector(selectCategoryFilter);
     const sortMethod = useSelector(selectSortFilter);
+    const currentPage = useSelector(selectPageCountFilter);
+    const dispatch = useDispatch();
+
+    const onChangePage = (number) => {
+        dispatch(setPageCount(number));
+    };
 
     useEffect(() => {
         setIsLoading(true);
@@ -55,7 +64,7 @@ function Home() {
                               ))}
                     </div>
                 </section>
-                <Pagination onChangePage={(number) => setCurrentPage(number)} />
+                <Pagination onChangePage={onChangePage} />
                 <div className="cart-mobile-btn">
                     <div className="cart-mobile-btn__counter">1</div>
                     <p className="cart-mobile-btn__title">Ваш заказ</p>
