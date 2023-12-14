@@ -1,33 +1,40 @@
 import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
+import qs from 'qs';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { selectCategoryFilter } from '../redux/slices/filterSlice';
 import Tabs from './../components/Tabs/Tabs';
-import Sort from '../components/Sort/Sort';
+import Sort, { sortMethodList } from '../components/Sort/Sort';
 import Skeleton from './../components/Card/Skeleton';
 import Card from './../components/Card/Card';
 import Pagination from '../components/Pagination/Pagination';
 import { SearchContext } from '../App';
 import {
-    setPageCount,
+    setCurrentPage,
     selectSortFilter,
-    selectPageCountFilter,
+    selectCurrentPageFilter,
+    setFilters,
 } from '../redux/slices/filterSlice';
 
 function Home() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const isSearch = useRef(false);
+    const isMounted = useRef(false);
+
     const { searchValue } = useContext(SearchContext);
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const categoryId = useSelector(selectCategoryFilter);
     const sortMethod = useSelector(selectSortFilter);
-    const currentPage = useSelector(selectPageCountFilter);
-    const dispatch = useDispatch();
+    const currentPage = useSelector(selectCurrentPageFilter);
 
-    const onChangePage = (number) => {
-        dispatch(setPageCount(number));
+    const onChangePage = (page) => {
+        dispatch(setCurrentPage(page));
     };
 
-    useEffect(() => {
+    const fetchItems = () => {
         setIsLoading(true);
 
         const order = sortMethod.sortProperty.includes('-') ? 'asc' : 'desc';
@@ -43,8 +50,47 @@ function Home() {
                 setItems(response.data);
                 setIsLoading(false);
             });
+    };
+
+    useEffect(() => {
+        if (isMounted.current) {
+            const queryString = qs.stringify({
+                sortMethod: sortMethod.sortProperty,
+                categoryId: categoryId,
+                currentPage: currentPage,
+            });
+            navigate(`?${queryString}`);
+        }
+        isMounted.current = true;
+    }, [categoryId, sortMethod, currentPage]);
+
+    useEffect(() => {
+        if (window.location.search) {
+            const params = qs.parse(window.location.search.substring(1));
+            const sort = sortMethodList.find(
+                (obj) => obj.sortProperty === params.sortMethod
+            );
+            dispatch(
+                setFilters({
+                    ...params,
+                    sort,
+                })
+            );
+            isSearch.current = true;
+        }
+    }, []);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+        if (!isSearch.current) {
+            fetchItems();
+        }
+
+        isSearch.current = false;
     }, [categoryId, sortMethod, searchValue, currentPage]);
 
+    
     return (
         <div className="products">
             <div className="container">
@@ -64,7 +110,7 @@ function Home() {
                               ))}
                     </div>
                 </section>
-                <Pagination onChangePage={onChangePage} />
+                <Pagination currentPage={currentPage} onChangePage={onChangePage} />
                 <div className="cart-mobile-btn">
                     <div className="cart-mobile-btn__counter">1</div>
                     <p className="cart-mobile-btn__title">Ваш заказ</p>

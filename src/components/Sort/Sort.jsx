@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSortMethod, selectSortFilter } from '../../redux/slices/filterSlice';
+import {
+    setSortMethod,
+    selectSortFilter,
+} from '../../redux/slices/filterSlice';
 
+export const sortMethodList = [
+    { name: 'По умолчанию', sortProperty: '' },
+    { name: 'По популярности', sortProperty: 'rating' },
+    { name: 'По возрастанию цены', sortProperty: '-price' },
+    { name: 'По убыванию цены', sortProperty: 'price' },
+];
 function Sort() {
-    const sortMethodList = [
-        { name: 'По популярности', sortProperty: 'rating' },
-        { name: 'По возрастанию цены', sortProperty: '-price' },
-        { name: 'По убыванию цены', sortProperty: 'price' },
-    ];
     const [openFilterList, setOpenFilterList] = useState(false);
 
     const handleOpenFilterList = () => {
