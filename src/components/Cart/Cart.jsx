@@ -6,7 +6,7 @@ function Cart(setIsCartOpen) {
                 <button className="cart-pop-up__header-clear-btn">
                     Очистить
                 </button>
-                <button  className="cart-pop-up__close-btn">
+                <button className="cart-pop-up__close-btn">
                     <img src="./../../img/icons/close.svg" alt="close" />
                 </button>
             </div>
@@ -21,7 +21,9 @@ function Cart(setIsCartOpen) {
                                 />
                             </div>
                             <div className="cart-pop-up__items-info">
-                                <p className="cart-pop-up__info-title">Буратта</p>
+                                <p className="cart-pop-up__info-title">
+                                    Буратта
+                                </p>
                                 <div className="cart-pop-up__items-info__footer">
                                     <p className="cart-pop-up__items-price">
                                         600 Р
@@ -51,7 +53,9 @@ function Cart(setIsCartOpen) {
                                 />
                             </div>
                             <div className="cart-pop-up__items-info">
-                                <p className="cart-pop-up__info-title">Буратта</p>
+                                <p className="cart-pop-up__info-title">
+                                    Буратта
+                                </p>
                                 <div className="cart-pop-up__items-info__footer">
                                     <p className="cart-pop-up__items-price">
                                         600 Р
@@ -81,7 +85,9 @@ function Cart(setIsCartOpen) {
                                 />
                             </div>
                             <div className="cart-pop-up__items-info">
-                                <p className="cart-pop-up__info-title">Буратта</p>
+                                <p className="cart-pop-up__info-title">
+                                    Буратта
+                                </p>
                                 <div className="cart-pop-up__items-info__footer">
                                     <p className="cart-pop-up__items-price">
                                         600 Р
@@ -111,7 +117,9 @@ function Cart(setIsCartOpen) {
                                 />
                             </div>
                             <div className="cart-pop-up__items-info">
-                                <p className="cart-pop-up__info-title">Буратта</p>
+                                <p className="cart-pop-up__info-title">
+                                    Буратта
+                                </p>
                                 <div className="cart-pop-up__items-info__footer">
                                     <p className="cart-pop-up__items-price">
                                         600 Р
@@ -141,7 +149,9 @@ function Cart(setIsCartOpen) {
                                 />
                             </div>
                             <div className="cart-pop-up__items-info">
-                                <p className="cart-pop-up__info-title">Буратта</p>
+                                <p className="cart-pop-up__info-title">
+                                    Буратта
+                                </p>
                                 <div className="cart-pop-up__items-info__footer">
                                     <p className="cart-pop-up__items-price">
                                         600 Р
@@ -167,24 +177,33 @@ function Cart(setIsCartOpen) {
                 </div>
                 <div className="cart-pop-up__devices">
                     <div className="cart-pop-up__devices-info">
-                        <img src="./../../img/icons/devices.svg" alt="devices" />
+                        <img
+                            src="./../../img/icons/devices.svg"
+                            alt="devices"
+                        />
                         <p>Приборы</p>
                     </div>
                     <div className="cart-pop-up__devices-counter">
                         <button className="cart-pop-up__devices-counter-plus">
                             -
                         </button>{' '}
-                        <span className="cart-pop-up__devices-counter-count">1</span>{' '}
+                        <span className="cart-pop-up__devices-counter-count">
+                            1
+                        </span>{' '}
                         <button className="cart-pop-up__devices-counter-minus">
                             +
                         </button>
                     </div>
                 </div>
-                <div>DELIVERY</div>
-                <div>COMMENT</div>
-                <div>SUMMA</div>
-                <div>TIME</div>
-                <div>BUTTON ORDER</div>
+                <button className="cart-pop-up__delivery">
+                    <img src="./../../img/icons/delivery-black.svg" alt="delivery" />
+                    Адрес доставки
+                </button>
+                <button className="cart-pop-up__comment"> <img src="./../../img/icons/comment.svg" alt="comment" />
+                    Комментарий</button>
+                <div className="cart-pop-up__total-price"><span>Сумма заказа</span><span>1500 P</span></div>
+                <div className="cart-pop-up__waiting-time"><span>Время ожидания </span><span>~35 мин</span></div>
+                <button className="cart-pop-up__checkout-btn">Оформить заказ</button>
             </div>
         </div>
     );
