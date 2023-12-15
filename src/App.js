@@ -4,11 +4,17 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import ModalInfo from './components/ModalInfo/ModalInfo';
+import Cart from './components/Cart/Cart';
 
 export const SearchContext = createContext();
 
 function App() {
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
+
+    const handleClickCartIcon = () => {
+        setIsCartOpen(!isCartOpen);
+    }
 
     const handleClickInfoIcon = () => {
         setIsModalInfoOpen(true);
@@ -18,22 +24,28 @@ function App() {
 
     return (
         <div className="App">
-            <SearchContext.Provider value={{ searchValue, setSearchValue }}>
-                <ModalInfo
-                    isModalInfoOpen={isModalInfoOpen}
-                    setIsModalInfoOpen={setIsModalInfoOpen}
-                />
-                <Header handleClickInfoIcon={handleClickInfoIcon} />
-                <main className="main">
-                    <Routes>
-                        <Route
-                            path="/"
-                            element={<Home />}
-                        />
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-                </main>
-            </SearchContext.Provider>
+            
+            <div className={isCartOpen ? 'App__left App__left--open' : 'App__left'}>
+                <SearchContext.Provider value={{ searchValue, setSearchValue }}>
+                    <ModalInfo
+                        isModalInfoOpen={isModalInfoOpen}
+                        setIsModalInfoOpen={setIsModalInfoOpen}
+                    />
+                    <Header handleClickInfoIcon={handleClickInfoIcon} handleClickCartIcon={handleClickCartIcon}/>
+                    <main className="main">
+                        <Routes>
+                            <Route
+                                path="/"
+                                element={<Home />}
+                            />
+                            <Route path="*" element={<NotFound />} />
+                        </Routes>
+                    </main>
+                </SearchContext.Provider>
+            </div>
+            <div className={isCartOpen ? 'App__right App__right--open' : 'App__right'}>
+                <Cart setIsCartOpen={setIsCartOpen} />
+            </div>
         </div>
     );
 }

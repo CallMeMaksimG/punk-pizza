@@ -17,11 +17,41 @@ a {
     margin: 0 auto;
 }
 
-
 .main {
-    margin-top: 150px;
+    margin-top: 50px;
 
-    @media(max-width: $tablet) {
-        margin-top: 140px;
+    @media (max-width: $tablet) {
+        margin-top: 30px;
+    }
+}
+
+.App {
+    display: flex;
+}
+
+.App__left {
+    // // position: absolute;
+    // // left: 0;
+    // // top: 0;
+    width: 100vw;
+    // // margin-right: 500px;
+    // margin-right: 340px;
+    transition: margin-right 0.2s ease-in;
+
+    &--open {
+        margin-right: 340px;
+    }
+}
+
+
+.App__right {
+    transform: translateX(340px);
+    transition: transform .2s ease-in;
+    visibility: hidden;
+
+    &--open {
+    transform: translateX(0px);
+    visibility: visible;
+
     }
 }

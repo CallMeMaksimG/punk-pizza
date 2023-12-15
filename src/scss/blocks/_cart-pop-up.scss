@@ -1,0 +1,144 @@
+.cart-pop-up {
+    height: 100%;
+    width: 340px;
+    background-color: #fff;
+    // padding: 10px;
+    border-left: 1px solid #959595;
+    position: fixed;
+    z-index: 222;
+    top: 0;
+    right: 0;
+
+
+   
+}
+
+.cart-pop-up__header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    background-color: #fff;
+    border-bottom: 1px solid #959595;
+    width: 340px;
+    padding: 10px;
+}
+
+.cart-pop-up__header-title {
+    font-size: 20px;
+}
+
+.cart-pop-up__header-clear-btn {
+    font-size: 14px;
+    color: #959595;
+}
+
+.cart-pop-up__close-btn {
+    margin-left: auto;
+}
+
+.cart-pop-up__main {
+    padding: 10px;
+}
+
+.cart-pop-up__items {
+    // padding: 10px;
+    margin-top: 50px;
+}
+
+.cart-pop-up__list-items {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-pop-up__items-img {
+    height: 100px;
+    width: 100px;
+}
+
+.cart-pop-up__items-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.cart-pop-up__info-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.cart-pop-up__items-info__footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-pop-up__items-price {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.cart-pop-up__items-weight {
+    font-size: 14px;
+    color: #959595;
+}
+
+.cart-pop-up__items-counter {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-pop-up__items-counter-plus,
+.cart-pop-up__items-counter-minus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: var(--background-color);
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.cart-pop-up__items-counter-count {
+}
+
+
+
+.cart-pop-up__devices {
+    display: flex;
+    background-color: var(--background-color);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.cart-pop-up__devices-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cart-pop-up__devices-counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.cart-pop-up__devices-counter-plus, .cart-pop-up__devices-counter-minus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    font-size: 20px;
+}

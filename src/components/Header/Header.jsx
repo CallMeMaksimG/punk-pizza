@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Search from '../Search/Search';
 
-function Header({ handleClickInfoIcon }) {
+function Header({ handleClickInfoIcon, handleClickCartIcon }) {
     return (
         <header className="header">
             <div className="container">
@@ -28,7 +28,7 @@ function Header({ handleClickInfoIcon }) {
                         >
                             i
                         </button>
-                        <div className="cart">
+                        <button onClick={handleClickCartIcon} className="cart">
                             <div className="cart__total-price">
                                 1000 &#8381;
                             </div>
@@ -38,7 +38,7 @@ function Header({ handleClickInfoIcon }) {
                                 className="cart__image"
                             />
                             <div className="cart__count">0</div>
-                        </div>
+                        </button>
                     </div>
                 </nav>
             </div>
