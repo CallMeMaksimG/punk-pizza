@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     setSortMethod,
@@ -12,17 +12,30 @@ export const sortMethodList = [
     { name: 'По убыванию цены', sortProperty: 'price' },
 ];
 function Sort() {
+    const dispatch = useDispatch();
+    const sortMethod = useSelector(selectSortFilter);
     const [openFilterList, setOpenFilterList] = useState(false);
+    const sortRef = useRef();
 
     const handleOpenFilterList = () => {
         setOpenFilterList(!openFilterList);
     };
 
-    const dispatch = useDispatch();
-    const sortMethod = useSelector(selectSortFilter);
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.className.includes('sort')) {
+                setOpenFilterList(false);
+            }
+        };
+        document.body.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.body.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
 
     return (
-        <div className="sort">
+        <div ref={sortRef} className="sort">
             <button onClick={handleOpenFilterList} className="sort__btn">
                 <span className="sort__btn-text">{sortMethod.name}</span>
                 <img
