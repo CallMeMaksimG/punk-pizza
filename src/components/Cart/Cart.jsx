@@ -35,13 +35,19 @@ function Cart(setIsCartOpen) {
                             </div>
                             <div className="cart-pop-up__items-counter">
                                 <button className="cart-pop-up__items-counter-plus">
-                                    -
+                                    <img
+                                        src="./../img/icons/minus-dark.svg"
+                                        alt="minus"
+                                    />
                                 </button>{' '}
                                 <span className="cart-pop-up__items-counter-count">
                                     1
                                 </span>{' '}
                                 <button className="cart-pop-up__items-counter-minus">
-                                    +
+                                    <img
+                                        src="./../img/icons/plus-dark.svg"
+                                        alt="plus"
+                                    />
                                 </button>
                             </div>
                         </li>
@@ -67,13 +73,19 @@ function Cart(setIsCartOpen) {
                             </div>
                             <div className="cart-pop-up__items-counter">
                                 <button className="cart-pop-up__items-counter-plus">
-                                    -
+                                    <img
+                                        src="./../img/icons/minus-dark.svg"
+                                        alt="minus"
+                                    />
                                 </button>{' '}
                                 <span className="cart-pop-up__items-counter-count">
                                     1
                                 </span>{' '}
                                 <button className="cart-pop-up__items-counter-minus">
-                                    +
+                                    <img
+                                        src="./../img/icons/plus-dark.svg"
+                                        alt="plus"
+                                    />
                                 </button>
                             </div>
                         </li>
@@ -99,13 +111,19 @@ function Cart(setIsCartOpen) {
                             </div>
                             <div className="cart-pop-up__items-counter">
                                 <button className="cart-pop-up__items-counter-plus">
-                                    -
+                                    <img
+                                        src="./../img/icons/minus-dark.svg"
+                                        alt="minus"
+                                    />
                                 </button>{' '}
                                 <span className="cart-pop-up__items-counter-count">
                                     1
                                 </span>{' '}
                                 <button className="cart-pop-up__items-counter-minus">
-                                    +
+                                    <img
+                                        src="./../img/icons/plus-dark.svg"
+                                        alt="plus"
+                                    />
                                 </button>
                             </div>
                         </li>
@@ -131,13 +149,19 @@ function Cart(setIsCartOpen) {
                             </div>
                             <div className="cart-pop-up__items-counter">
                                 <button className="cart-pop-up__items-counter-plus">
-                                    -
+                                    <img
+                                        src="./../img/icons/minus-dark.svg"
+                                        alt="minus"
+                                    />
                                 </button>{' '}
                                 <span className="cart-pop-up__items-counter-count">
                                     1
                                 </span>{' '}
                                 <button className="cart-pop-up__items-counter-minus">
-                                    +
+                                    <img
+                                        src="./../img/icons/plus-dark.svg"
+                                        alt="plus"
+                                    />
                                 </button>
                             </div>
                         </li>
@@ -163,13 +187,19 @@ function Cart(setIsCartOpen) {
                             </div>
                             <div className="cart-pop-up__items-counter">
                                 <button className="cart-pop-up__items-counter-plus">
-                                    -
+                                    <img
+                                        src="./../img/icons/minus-dark.svg"
+                                        alt="minus"
+                                    />
                                 </button>{' '}
                                 <span className="cart-pop-up__items-counter-count">
                                     1
                                 </span>{' '}
                                 <button className="cart-pop-up__items-counter-minus">
-                                    +
+                                    <img
+                                        src="./../img/icons/plus-dark.svg"
+                                        alt="plus"
+                                    />
                                 </button>
                             </div>
                         </li>
@@ -185,25 +215,45 @@ function Cart(setIsCartOpen) {
                     </div>
                     <div className="cart-pop-up__devices-counter">
                         <button className="cart-pop-up__devices-counter-plus">
-                            -
+                            <img
+                                src="./../img/icons/minus-dark.svg"
+                                alt="minus"
+                            />
                         </button>{' '}
                         <span className="cart-pop-up__devices-counter-count">
                             1
                         </span>{' '}
                         <button className="cart-pop-up__devices-counter-minus">
-                            +
+                            <img
+                                src="./../img/icons/plus-dark.svg"
+                                alt="plus"
+                            />
                         </button>
                     </div>
                 </div>
                 <button className="cart-pop-up__delivery">
-                    <img src="./../../img/icons/delivery-black.svg" alt="delivery" />
+                    <img
+                        src="./../../img/icons/delivery-black.svg"
+                        alt="delivery"
+                    />
                     Адрес доставки
                 </button>
-                <button className="cart-pop-up__comment"> <img src="./../../img/icons/comment.svg" alt="comment" />
-                    Комментарий</button>
-                <div className="cart-pop-up__total-price"><span>Сумма заказа</span><span>1500 P</span></div>
-                <div className="cart-pop-up__waiting-time"><span>Время ожидания </span><span>~35 мин</span></div>
-                <button className="cart-pop-up__checkout-btn">Оформить заказ</button>
+                <button className="cart-pop-up__comment">
+                    {' '}
+                    <img src="./../../img/icons/comment.svg" alt="comment" />
+                    Комментарий
+                </button>
+                <div className="cart-pop-up__total-price">
+                    <span>Сумма заказа</span>
+                    <span>1500 P</span>
+                </div>
+                <div className="cart-pop-up__waiting-time">
+                    <span>Время ожидания </span>
+                    <span>~35 мин</span>
+                </div>
+                <button className="cart-pop-up__checkout-btn">
+                    Оформить заказ
+                </button>
             </div>
         </div>
     );

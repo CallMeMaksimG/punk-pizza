@@ -37,6 +37,8 @@ a {
     // // margin-right: 500px;
     // margin-right: 340px;
     transition: margin-right 0.2s ease-in;
+    height: 100vh;
+    overflow-y: scroll;
 
     &--open {
         margin-right: 340px;
