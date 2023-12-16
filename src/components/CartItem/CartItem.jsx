@@ -15,6 +15,7 @@ function CartItem({ id, img, title, price, count, size, weight }) {
         dispatch(minusItem({
             id,
             size,
+            price
         }))
     }
 

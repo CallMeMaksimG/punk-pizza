@@ -37,6 +37,7 @@ export const cartSlice = createSlice({
             );
             if(findItem) {
                 findItem.count--;
+                state.totalPrice -=  action.payload.price;
             }
         },
         removeItem: (state, action) => {
