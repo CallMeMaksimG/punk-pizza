@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 function Card({ img, title, weight, price, sizes }) {
     const [activeSize, setActiveSize] = useState(0);
+    console.log(activeSize)
 
     const onClickSize = (index) => {
         setActiveSize(index);
@@ -12,7 +13,7 @@ function Card({ img, title, weight, price, sizes }) {
                 <img src={img} alt={title} className="card__img" />
             </div>
             <h2 className="card__title">{title}</h2>
-            <p className="card__weight">{weight[0]}г</p>
+            <p className="card__weight">{weight[activeSize]}г</p>
             <div className="card__pizza-size">
                 {sizes && (
                     <ul className="pizza-size__list">
@@ -34,7 +35,7 @@ function Card({ img, title, weight, price, sizes }) {
                 )}
             </div>
             <div className="card__footer">
-                <div className="card__price">{price[0]} &#8381;</div>
+                <div className="card__price">{price[activeSize]} &#8381;</div>
                 <button className="card__btn">
                     <img src="./../../img/icons/plus.svg" alt="add to cart" />
                 </button>
