@@ -5,8 +5,8 @@ import { addItem } from '../../redux/slices/cartSlice';
 const sizeValues = [20, 30];
 
 function Card({ id, img, title, weight, price, sizes }) {
-    const dispatch = useDispatch();
     const [activeSize, setActiveSize] = useState(0);
+    const dispatch = useDispatch();
     const cartItem = useSelector((state) =>
         state.cart.items.find((obj) => obj.id === id && obj.size === sizeValues[activeSize])
     );

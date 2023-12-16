@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
+import CartItem from '../CartItem/CartItem';
 
-function Cart({setIsCartOpen}) {
+function Cart({ setIsCartOpen }) {
+    const dispatch = useDispatch();
+    const items = useSelector((state) => state.cart.items);
     return (
         <div className="cart-pop-up">
             <div className="cart-pop-up__header">
@@ -8,14 +11,59 @@ function Cart({setIsCartOpen}) {
                 <button className="cart-pop-up__header-clear-btn">
                     Очистить
                 </button>
-                <button onClick={() => setIsCartOpen(false)} className="cart-pop-up__close-btn">
+                <button
+                    onClick={() => setIsCartOpen(false)}
+                    className="cart-pop-up__close-btn"
+                >
                     <img src="./../../img/icons/close.svg" alt="close" />
                 </button>
             </div>
             <div className="cart-pop-up__main">
                 <div className="cart-pop-up__items">
                     <ul className="cart-pop-up__list">
-                        <li className="cart-pop-up__list-items">
+                        {items.map(item => {
+                            return <CartItem key={item.id} {...item}/>
+                        })}
+                        
+                        {/* <li className="cart-pop-up__list-items">
+                            <div className="cart-pop-up__items-img">
+                                <img
+                                    src="./../../img/cards/pizza/buratta.jpg"
+                                    alt="items"
+                                />
+                            </div>
+                            <div className="cart-pop-up__items-info">
+                                <p className="cart-pop-up__info-title">
+                                    Буратта
+                                </p>
+                                <div className="cart-pop-up__items-info__footer">
+                                    <p className="cart-pop-up__items-price">
+                                        600 Р
+                                    </p>{' '}
+                                    <p className="cart-pop-up__items-weight">
+                                        450г
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="cart-pop-up__items-counter">
+                                <button className="cart-pop-up__items-counter-plus">
+                                    <img
+                                        src="./../img/icons/minus-dark.svg"
+                                        alt="minus"
+                                    />
+                                </button>{' '}
+                                <span className="cart-pop-up__items-counter-count">
+                                    1
+                                </span>{' '}
+                                <button className="cart-pop-up__items-counter-minus">
+                                    <img
+                                        src="./../img/icons/plus-dark.svg"
+                                        alt="plus"
+                                    />
+                                </button>
+                            </div>
+                        </li> */}
+                        {/* <li className="cart-pop-up__list-items">
                             <div className="cart-pop-up__items-img">
                                 <img
                                     src="./../../img/cards/pizza/buratta.jpg"
@@ -166,45 +214,7 @@ function Cart({setIsCartOpen}) {
                                     />
                                 </button>
                             </div>
-                        </li>
-                        <li className="cart-pop-up__list-items">
-                            <div className="cart-pop-up__items-img">
-                                <img
-                                    src="./../../img/cards/pizza/buratta.jpg"
-                                    alt="items"
-                                />
-                            </div>
-                            <div className="cart-pop-up__items-info">
-                                <p className="cart-pop-up__info-title">
-                                    Буратта
-                                </p>
-                                <div className="cart-pop-up__items-info__footer">
-                                    <p className="cart-pop-up__items-price">
-                                        600 Р
-                                    </p>{' '}
-                                    <p className="cart-pop-up__items-weight">
-                                        450г
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="cart-pop-up__items-counter">
-                                <button className="cart-pop-up__items-counter-plus">
-                                    <img
-                                        src="./../img/icons/minus-dark.svg"
-                                        alt="minus"
-                                    />
-                                </button>{' '}
-                                <span className="cart-pop-up__items-counter-count">
-                                    1
-                                </span>{' '}
-                                <button className="cart-pop-up__items-counter-minus">
-                                    <img
-                                        src="./../img/icons/plus-dark.svg"
-                                        alt="plus"
-                                    />
-                                </button>
-                            </div>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 <div className="cart-pop-up__devices">

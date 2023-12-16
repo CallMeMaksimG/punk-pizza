@@ -4,6 +4,7 @@ import Search from '../Search/Search';
 
 function Header({ handleClickInfoIcon, handleClickCartIcon }) {
     const {items, totalPrice} = useSelector(state => state.cart);
+    const totalCount = items.reduce((sum, item) => sum + item.count, 0);
     return (
         <header className="header">
             <div className="container">
@@ -39,7 +40,7 @@ function Header({ handleClickInfoIcon, handleClickCartIcon }) {
                                 alt="cart"
                                 className="cart__image"
                             />
-                            <div className="cart__count">{items.length}</div>
+                            <div className="cart__count">{totalCount}</div>
                         </button>
                     </div>
                 </nav>
