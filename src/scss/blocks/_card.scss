@@ -83,19 +83,15 @@
     }
 }
 
-// .card__btn--active {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     width: 100px;
-//     height: 40px;
-//     background-color: black;
-//     border-radius: 20px;
-
-//     &:before {
-//         content: url('./../../../public/img/icons/minus.svg') "1";
-//         color: #fff;
-//         font-size: 20px;
-        
-//     }
-// }
+.card__btn--active {
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100px;
+    height: 40px;
+    background-color: black;
+    border-radius: 20px;
+    font-size: 20px;
+}

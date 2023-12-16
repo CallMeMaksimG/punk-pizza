@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Search from '../Search/Search';
 
 function Header({ handleClickInfoIcon, handleClickCartIcon }) {
+    const {items, totalPrice} = useSelector(state => state.cart);
     return (
         <header className="header">
             <div className="container">
@@ -30,14 +32,14 @@ function Header({ handleClickInfoIcon, handleClickCartIcon }) {
                         </button>
                         <button onClick={handleClickCartIcon} className="cart">
                             <div className="cart__total-price">
-                                1000 &#8381;
+                                {totalPrice} &#8381;
                             </div>
                             <img
                                 src="./../img/icons/cart.svg"
                                 alt="cart"
                                 className="cart__image"
                             />
-                            <div className="cart__count">0</div>
+                            <div className="cart__count">{items.length}</div>
                         </button>
                     </div>
                 </nav>

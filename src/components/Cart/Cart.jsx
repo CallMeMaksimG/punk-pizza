@@ -1,4 +1,6 @@
-function Cart(setIsCartOpen) {
+import { useDispatch, useSelector } from 'react-redux';
+
+function Cart({setIsCartOpen}) {
     return (
         <div className="cart-pop-up">
             <div className="cart-pop-up__header">
@@ -6,7 +8,7 @@ function Cart(setIsCartOpen) {
                 <button className="cart-pop-up__header-clear-btn">
                     Очистить
                 </button>
-                <button className="cart-pop-up__close-btn">
+                <button onClick={() => setIsCartOpen(false)} className="cart-pop-up__close-btn">
                     <img src="./../../img/icons/close.svg" alt="close" />
                 </button>
             </div>
