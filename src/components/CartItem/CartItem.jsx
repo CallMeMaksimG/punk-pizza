@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, plusItem, minusItem, removeItem } from '../../redux/slices/cartSlice';
+import { addItem, minusItem, removeItem } from '../../redux/slices/cartSlice';
 
 function CartItem({ id, img, title, price, count, size, weight }) {
     const dispatch = useDispatch();
 
     const onClickPlus = () => {
-        dispatch(plusItem({
+        dispatch(addItem({
             id,
             size,
         }));

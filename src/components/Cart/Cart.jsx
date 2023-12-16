@@ -3,7 +3,7 @@ import CartItem from '../CartItem/CartItem';
 
 function Cart({ setIsCartOpen }) {
     const dispatch = useDispatch();
-    const items = useSelector((state) => state.cart.items);
+    const {items, totalPrice} = useSelector((state) => state.cart);
     return (
         <div className="cart-pop-up">
             <div className="cart-pop-up__header">
@@ -257,7 +257,7 @@ function Cart({ setIsCartOpen }) {
                 </button>
                 <div className="cart-pop-up__total-price">
                     <span>Сумма заказа</span>
-                    <span>1500 P</span>
+                    <span>{totalPrice} &#8381;</span>
                 </div>
                 <div className="cart-pop-up__waiting-time">
                     <span>Время ожидания </span>
