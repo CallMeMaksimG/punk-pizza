@@ -9,10 +9,6 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState: initialState,
     reducers: {
-        // addItem: (state, action) => {
-        //     state.items.push(action.payload);
-        //     state.totalPrice = state.items.reduce((sum, obj) => sum + obj.price, 0);
-        // },
         addItem: (state, action) => {
             const findItem = state.items.find(
                 (obj) =>

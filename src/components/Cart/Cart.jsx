@@ -3,7 +3,7 @@ import CartItem from '../CartItem/CartItem';
 
 function Cart({ setIsCartOpen }) {
     const dispatch = useDispatch();
-    const {items, totalPrice} = useSelector((state) => state.cart);
+    const { items, totalPrice } = useSelector((state) => state.cart);
     return (
         <div className="cart-pop-up">
             <div className="cart-pop-up__header">
@@ -20,12 +20,15 @@ function Cart({ setIsCartOpen }) {
             </div>
             <div className="cart-pop-up__main">
                 <div className="cart-pop-up__items">
-                    {items.length > 0 ? (<ul className="cart-pop-up__list">
-                        {items.map(item => {
-                            return <CartItem key={item.id} {...item}/>
-                        })}
-                    </ul>) : (<p className='cart-pop-up__empty'>В корзине пусто</p>)}
-                    
+                    {items.length > 0 ? (
+                        <ul className="cart-pop-up__list">
+                            {items.map((item) => {
+                                return <CartItem key={item.id} {...item} />;
+                            })}
+                        </ul>
+                    ) : (
+                        <p className="cart-pop-up__empty">В корзине пусто</p>
+                    )}
                 </div>
                 <div className="cart-pop-up__devices">
                     <div className="cart-pop-up__devices-info">
@@ -67,11 +70,11 @@ function Cart({ setIsCartOpen }) {
                 </button>
                 <div className="cart-pop-up__total-price">
                     <span>Сумма заказа</span>
-                    <span>{totalPrice} &#8381;</span>
+                    <span className="cart-pop-up__total-price-value">{totalPrice} &#8381;</span>
                 </div>
                 <div className="cart-pop-up__waiting-time">
                     <span>Время ожидания </span>
-                    <span>~35 мин</span>
+                    <span className="cart-pop-up__time-value">~35 мин</span>
                 </div>
                 <button className="cart-pop-up__checkout-btn">
                     Оформить заказ

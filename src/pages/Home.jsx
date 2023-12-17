@@ -34,7 +34,7 @@ function Home() {
         dispatch(setCurrentPage(page));
     };
 
-    const fetchItems = () => {
+    const fetchItems = async () => {
         setIsLoading(true);
 
         const order = sortMethod.sortProperty.includes('-') ? 'asc' : 'desc';
@@ -42,14 +42,17 @@ function Home() {
         const category = categoryId > 0 ? `category=${categoryId}` : '';
         const search = searchValue ? `&search=${searchValue}` : '';
 
-        axios
-            .get(
+        try {
+            const res = await axios.get(
                 `https://657421eff941bda3f2af644e.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-            )
-            .then((response) => {
-                setItems(response.data);
-                setIsLoading(false);
-            });
+            );
+            setItems(res.data);
+        } catch (error) {
+            alert('Ошибка при получении данных');
+            console.log('ERROR', error);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     useEffect(() => {
@@ -90,7 +93,6 @@ function Home() {
         isSearch.current = false;
     }, [categoryId, sortMethod, searchValue, currentPage]);
 
-    
     return (
         <div className="products">
             <div className="container">
@@ -110,7 +112,10 @@ function Home() {
                               ))}
                     </div>
                 </section>
-                <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+                <Pagination
+                    currentPage={currentPage}
+                    onChangePage={onChangePage}
+                />
                 <div className="cart-mobile-btn">
                     <div className="cart-mobile-btn__counter">1</div>
                     <p className="cart-mobile-btn__title">Ваш заказ</p>
