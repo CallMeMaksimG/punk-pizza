@@ -1,16 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { clearItems } from '../../redux/slices/cartSlice';
 import CartItem from '../CartItem/CartItem';
+import ClearCartModal from '../Modals/ClearCartModal';
 
-function Cart({ setIsCartOpen }) {
+function Cart({ setIsCartOpen, setIsModalClearCartOpen }) {
     const dispatch = useDispatch();
     const { items, totalPrice } = useSelector((state) => state.cart);
 
     const onClickClear = () => {
+        setIsModalClearCartOpen(true);
         dispatch(clearItems());
     };
 
     return (
+        <>
         <div className="cart-pop-up">
             <div className="cart-pop-up__header">
                 <h2 className="cart-pop-up__header-title">Корзина</h2>
@@ -92,6 +95,7 @@ function Cart({ setIsCartOpen }) {
                 </button>
             </div>
         </div>
+        </>
     );
 }
 

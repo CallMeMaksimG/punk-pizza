@@ -11,7 +11,9 @@ export const SearchContext = createContext();
 
 function App() {
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
+    const [isModalClearCartOpen, setIsModalClearCartOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
+
 
     const handleClickCartIcon = () => {
         setIsCartOpen(!isCartOpen);
@@ -27,8 +29,8 @@ function App() {
         <div className="App">
             
             <div className={isCartOpen ? 'App__left App__left--open' : 'App__left'}>
+                <ClearCartModal isModalClearCartOpen={isModalClearCartOpen} setIsModalClearCartOpen={setIsModalClearCartOpen}/>
                 <SearchContext.Provider value={{ searchValue, setSearchValue }}>
-                    <ClearCartModal />
                     <ModalInfo
                         isModalInfoOpen={isModalInfoOpen}
                         setIsModalInfoOpen={setIsModalInfoOpen}
@@ -46,7 +48,7 @@ function App() {
                 </SearchContext.Provider>
             </div>
             <div className={isCartOpen ? 'App__right App__right--open' : 'App__right'}>
-                <Cart setIsCartOpen={setIsCartOpen} />
+                <Cart setIsModalClearCartOpen={setIsModalClearCartOpen} setIsCartOpen={setIsCartOpen} />
             </div>
         </div>
     );
