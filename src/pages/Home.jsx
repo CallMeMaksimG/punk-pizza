@@ -23,7 +23,6 @@ function Home() {
     const dispatch = useDispatch();
     const isSearch = useRef(false);
     const isMounted = useRef(false);
-
     const { searchValue } = useContext(SearchContext);
     const categoryId = useSelector(selectCategoryFilter);
     const sortMethod = useSelector(selectSortFilter);
@@ -107,8 +106,7 @@ function Home() {
                         : items.map((item) => (
                               <Card key={item.id} {...item} />
                           ))}
-                </div>)}
-                    
+                </div>)}       
                 </section>
                 <Pagination
                     currentPage={currentPage}

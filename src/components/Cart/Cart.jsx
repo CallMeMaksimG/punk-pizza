@@ -1,14 +1,23 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { clearItems } from '../../redux/slices/cartSlice';
 import CartItem from '../CartItem/CartItem';
 
 function Cart({ setIsCartOpen }) {
     const dispatch = useDispatch();
     const { items, totalPrice } = useSelector((state) => state.cart);
+
+    const onClickClear = () => {
+        dispatch(clearItems());
+    };
+
     return (
         <div className="cart-pop-up">
             <div className="cart-pop-up__header">
                 <h2 className="cart-pop-up__header-title">Корзина</h2>
-                <button className="cart-pop-up__header-clear-btn">
+                <button
+                    onClick={onClickClear}
+                    className="cart-pop-up__header-clear-btn"
+                >
                     Очистить
                 </button>
                 <button
@@ -70,7 +79,9 @@ function Cart({ setIsCartOpen }) {
                 </button>
                 <div className="cart-pop-up__total-price">
                     <span>Сумма заказа</span>
-                    <span className="cart-pop-up__total-price-value">{totalPrice} &#8381;</span>
+                    <span className="cart-pop-up__total-price-value">
+                        {totalPrice} &#8381;
+                    </span>
                 </div>
                 <div className="cart-pop-up__waiting-time">
                     <span>Время ожидания </span>
