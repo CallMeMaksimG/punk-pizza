@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import ModalInfo from './components/ModalInfo/ModalInfo';
 import Cart from './components/Cart/Cart';
+import ClearCartModal from './components/Modals/ClearCartModal';
 
 export const SearchContext = createContext();
 
@@ -27,6 +28,7 @@ function App() {
             
             <div className={isCartOpen ? 'App__left App__left--open' : 'App__left'}>
                 <SearchContext.Provider value={{ searchValue, setSearchValue }}>
+                    <ClearCartModal />
                     <ModalInfo
                         isModalInfoOpen={isModalInfoOpen}
                         setIsModalInfoOpen={setIsModalInfoOpen}

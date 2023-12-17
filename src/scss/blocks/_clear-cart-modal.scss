@@ -1,0 +1,111 @@
+.clear-cart__overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 5;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.clear-cart__overlay--open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.clear-cart {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, 200%);
+    z-index: 10;
+    background-color: #fff;
+    border-radius: 25px;
+
+    width: 450px;
+    height: 200px;
+    padding: 40px;
+
+    transition: all 0.5s ease-in-out;
+
+    @media(max-width: 590px) {
+        width: 100%;
+        height: 100%;
+        border-radius: 25px 25px 0 0;
+    }
+}
+
+.clear-cart--open {
+    transform: translate(50%, -50%);
+    animation: modalOpen;
+
+    @media(max-width: 590px) {
+        transform: translate(50%, 0%);
+        top: 52%;
+    }
+}
+
+@keyframes modalOpen {
+    from {
+        transform: translateY(-50%);
+    }
+    to {
+        transform: translateY(50%);
+    }
+}
+
+.clear-cart__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+
+.clear-cart__close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: opacity 0.2s ease-in;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.clear-cart__buttons {
+    display: flex;
+    margin-top: 50px;
+    width: 250px;
+    justify-content: space-between;
+    margin: 40px auto;
+}
+
+.clear-cart__confirm-btn {
+    width: 100px;
+    height: 40px;
+    background-color: var(--ui-dark);
+    color: #FFF;
+    border-radius: 10px;
+    transition: background .2s ease-in;
+
+    &:hover {
+        background-color: lighten(#272829, 10%);
+    }
+}
+
+.clear-cart__cancell-btn {
+    width: 100px;
+    height: 40px;
+    border: 1.5px solid var(--ui-dark);
+    border-radius: 10px;
+    transition: background .2s ease-in;
+
+    &:hover {
+        background-color: darken(#fff, 5%);
+    }
+}
