@@ -16,6 +16,7 @@ import {
     selectCurrentPageFilter,
     setFilters,
 } from '../redux/slices/filterSlice';
+import { fetchItems } from '../redux/slices/itemsSlice';
 
 function Home() {
     const navigate = useNavigate();
@@ -24,35 +25,30 @@ function Home() {
     const isMounted = useRef(false);
 
     const { searchValue } = useContext(SearchContext);
-    const [items, setItems] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const categoryId = useSelector(selectCategoryFilter);
     const sortMethod = useSelector(selectSortFilter);
     const currentPage = useSelector(selectCurrentPageFilter);
+    const { items, status } = useSelector((state) => state.items);
 
     const onChangePage = (page) => {
         dispatch(setCurrentPage(page));
     };
 
-    const fetchItems = async () => {
-        setIsLoading(true);
-
+    const getItems = async (params) => {
         const order = sortMethod.sortProperty.includes('-') ? 'asc' : 'desc';
         const sortBy = sortMethod.sortProperty.replace('-', '');
         const category = categoryId > 0 ? `category=${categoryId}` : '';
         const search = searchValue ? `&search=${searchValue}` : '';
 
-        try {
-            const res = await axios.get(
-                `https://657421eff941bda3f2af644e.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-            );
-            setItems(res.data);
-        } catch (error) {
-            alert('Ошибка при получении данных');
-            console.log('ERROR', error);
-        } finally {
-            setIsLoading(false);
-        }
+        dispatch(
+            fetchItems({
+                order,
+                sortBy,
+                category,
+                search,
+                currentPage,
+            })
+        );
     };
 
     useEffect(() => {
@@ -87,7 +83,7 @@ function Home() {
         window.scrollTo(0, 0);
 
         if (!isSearch.current) {
-            fetchItems();
+            getItems();
         }
 
         isSearch.current = false;
@@ -102,15 +98,17 @@ function Home() {
                 </section>
                 <section className="cards-wrapper">
                     <h1 className="cards__title">все</h1>
-                    <div className="cards">
-                        {isLoading
-                            ? [...new Array(4)].map((_, index) => (
-                                  <Skeleton key={index} />
-                              ))
-                            : items.map((item) => (
-                                  <Card key={item.id} {...item} />
-                              ))}
-                    </div>
+                    {status === 'error' ? (<div><h2>ERROR</h2><p>Description error</p></div>) : 
+                    (<div className="cards">
+                    {status === 'loading'
+                        ? [...new Array(4)].map((_, index) => (
+                              <Skeleton key={index} />
+                          ))
+                        : items.map((item) => (
+                              <Card key={item.id} {...item} />
+                          ))}
+                </div>)}
+                    
                 </section>
                 <Pagination
                     currentPage={currentPage}
