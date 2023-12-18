@@ -34,7 +34,7 @@ function Cart({ setIsCartOpen, setIsModalClearCartOpen }) {
                         {items.length > 0 ? (
                             <ul className="cart-pop-up__list">
                                 {items.map((item) => {
-                                    return <CartItem key={item.id} {...item} />;
+                                    return <CartItem key={item.id+item.size} {...item} />;
                                 })}
                             </ul>
                         ) : (

@@ -5,19 +5,27 @@ function CartItem({ id, img, title, price, count, size, weight }) {
     const dispatch = useDispatch();
 
     const onClickPlus = () => {
-        dispatch(addItem({
-            id,
-            size,
-        }));
+        dispatch(
+            addItem({
+                id,
+                size,
+            })
+        );
     };
 
     const onClickMinus = () => {
-        dispatch(minusItem({
-            id,
-            size,
-            price
-        }))
-    }
+        if (count > 1) {
+            dispatch(
+                minusItem({
+                    id,
+                    size,
+                    price,
+                })
+            );
+        } else {
+            dispatch(removeItem({id, size}));
+        }
+    };
 
     return (
         <li className="cart-pop-up__list-items">
@@ -36,13 +44,19 @@ function CartItem({ id, img, title, price, count, size, weight }) {
                 </div>
             </div>
             <div className="cart-pop-up__items-counter">
-                <button onClick={onClickMinus} className="cart-pop-up__items-counter-plus">
+                <button
+                    onClick={onClickMinus}
+                    className="cart-pop-up__items-counter-plus"
+                >
                     <img src="./../img/icons/minus-dark.svg" alt="minus" />
                 </button>{' '}
                 <span className="cart-pop-up__items-counter-count">
                     {count}
                 </span>{' '}
-                <button onClick={onClickPlus}  className="cart-pop-up__items-counter-minus">
+                <button
+                    onClick={onClickPlus}
+                    className="cart-pop-up__items-counter-minus"
+                >
                     <img src="./../img/icons/plus-dark.svg" alt="plus" />
                 </button>
             </div>

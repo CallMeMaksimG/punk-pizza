@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     totalPrice: 0,
-    items: []
+    items: [],
 };
 
 export const cartSlice = createSlice({
@@ -31,14 +31,16 @@ export const cartSlice = createSlice({
                     obj.id === action.payload.id &&
                     obj.size === action.payload.size
             );
-            if(findItem) {
+            if (findItem) {
                 findItem.count--;
-                state.totalPrice -=  action.payload.price;
+                state.totalPrice -= action.payload.price;
             }
         },
         removeItem: (state, action) => {
             state.items = state.items.filter(
-                (obj) => obj.id !== action.payload
+                (obj) =>
+                    obj.id !== action.payload.id ||
+                    obj.size !== action.payload.size
             );
         },
         clearItems: (state) => {
@@ -49,6 +51,5 @@ export const cartSlice = createSlice({
 });
 
 export const { addItem, removeItem, minusItem, clearItems } = cartSlice.actions;
-
 
 export default cartSlice.reducer;
