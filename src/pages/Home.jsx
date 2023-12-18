@@ -119,7 +119,7 @@ function Home() {
                     currentPage={currentPage}
                     onChangePage={onChangePage}
                 />
-                <CartMobileBtn />
+                {/* <CartMobileBtn /> */}
             </div>
         </div>
     );

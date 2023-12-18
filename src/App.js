@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound';
 import ModalInfo from './components/ModalInfo/ModalInfo';
 import Cart from './components/Cart/Cart';
 import ClearCartModal from './components/Modals/ClearCartModal';
+import CartMobileBtn from './components/CartMobileBtn/CartMobileBtn';
 
 export const SearchContext = createContext();
 
@@ -62,6 +63,7 @@ function App() {
                     setIsCartOpen={setIsCartOpen}
                 />
             </div>
+            <CartMobileBtn handleClickCartIcon={handleClickCartIcon}/>
         </div>
     );
 }

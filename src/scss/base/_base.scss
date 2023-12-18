@@ -39,6 +39,9 @@ a {
 
     &--open {
         margin-right: 340px;
+        @media (max-width: 590px) {
+            margin-right: 0;
+        }
     }
 }
 
@@ -48,8 +51,10 @@ a {
     transition: transform .2s ease-in;
     visibility: hidden;
 
-    @media (max-width: $tablet) {
-        display: none;
+    @media (max-width: 590px) {
+        position: absolute;
+        width: 100vw;
+        z-index: 20;
     }
 
     &--open {
