@@ -1,7 +1,7 @@
 .card {
     display: flex;
     flex-direction: column;
-    padding: 0 15px 15px 15px; 
+    padding: 0 15px 15px 15px;
     background-color: #fff;
     border-radius: 10px;
     width: 100%;
@@ -30,7 +30,7 @@
     margin-top: 10px;
     display: inline-flex;
     padding: 3px;
-    background-color: #FFF;
+    background-color: #fff;
     border-radius: 20px;
     font-weight: 400;
     border: 1px solid var(--ui-dark);
@@ -40,7 +40,7 @@
 .pizza-size__list-item {
     padding: 5px 20px;
     border-radius: 20px;
-    transition: all .2s ease-in;
+    transition: all 0.2s ease-in;
     cursor: pointer;
 
     &:hover {
@@ -76,7 +76,7 @@
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    transition: opacity .2s ease-in;
+    transition: opacity 0.2s ease-in;
 
     &:hover {
         background-color: lighten(#272829, 10%);
@@ -84,7 +84,7 @@
 }
 
 .card__btn--active {
-    color: #FFF;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,4 +94,12 @@
     background-color: black;
     border-radius: 20px;
     font-size: 20px;
+
+    img {
+        transition: opacity 0.2s ease-in;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
 }
