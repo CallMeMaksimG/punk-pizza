@@ -17,6 +17,7 @@ import {
     setFilters,
 } from '../redux/slices/filterSlice';
 import { fetchItems } from '../redux/slices/itemsSlice';
+import CartMobileBtn from '../components/CartMobileBtn/CartMobileBtn';
 
 function Home() {
     const navigate = useNavigate();
@@ -118,11 +119,7 @@ function Home() {
                     currentPage={currentPage}
                     onChangePage={onChangePage}
                 />
-                <div className="cart-mobile-btn">
-                    <div className="cart-mobile-btn__counter">1</div>
-                    <p className="cart-mobile-btn__title">Ваш заказ</p>
-                    <p className="cart-mobile-btn__price">1000 &#8381;</p>
-                </div>
+                <CartMobileBtn />
             </div>
         </div>
     );
