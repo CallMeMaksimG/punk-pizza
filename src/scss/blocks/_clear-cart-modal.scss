@@ -33,6 +33,8 @@
 
     transition: all 0.5s ease-in-out;
 
+    visibility: hidden;
+
     @media(max-width: 590px) {
         width: 100%;
         height: 100%;
@@ -43,6 +45,7 @@
 .clear-cart--open {
     transform: translate(50%, -50%);
     animation: modalOpen;
+    visibility: visible;
 
     @media(max-width: 590px) {
         transform: translate(50%, 0%);
