@@ -23,7 +23,7 @@ function CartItem({ id, img, title, price, count, size, weight }) {
                 })
             );
         } else {
-            dispatch(removeItem({id, size}));
+            dispatch(removeItem({id, size, price}));
         }
     };
 
