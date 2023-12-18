@@ -1,4 +1,14 @@
+import { useDispatch } from 'react-redux';
+import { clearItems } from '../../redux/slices/cartSlice';
+
 function ClearCartModal({ isModalClearCartOpen, setIsModalClearCartOpen }) {
+    const dispatch = useDispatch();
+
+    function onClickConfirmClear() {
+        dispatch(clearItems());
+        setIsModalClearCartOpen(false);
+    }
+
     return (
         <>
             <div
@@ -23,7 +33,12 @@ function ClearCartModal({ isModalClearCartOpen, setIsModalClearCartOpen }) {
                 </button>
                 <h3 className="clear-cart__title">Очистить корзину?</h3>
                 <div className="clear-cart__buttons">
-                    <button className="clear-cart__confirm-btn">Да</button>
+                    <button
+                        onClick={onClickConfirmClear}
+                        className="clear-cart__confirm-btn"
+                    >
+                        Да
+                    </button>
                     <button
                         onClick={() => setIsModalClearCartOpen(false)}
                         className="clear-cart__cancell-btn"
