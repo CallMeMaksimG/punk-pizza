@@ -97,16 +97,22 @@ function Home() {
                 </section>
                 <section className="cards-wrapper">
                     <h1 className="cards__title">все</h1>
-                    {status === 'error' ? (<div><h2>ERROR</h2><p>Description error</p></div>) : 
-                    (<div className="cards">
-                    {status === 'loading'
-                        ? [...new Array(4)].map((_, index) => (
-                              <Skeleton key={index} />
-                          ))
-                        : items.map((item) => (
-                              <Card key={item.id} {...item} />
-                          ))}
-                </div>)}       
+                    {status === 'error' ? (
+                        <div className='cards__error'>
+                            <h2 className='cards__error-title'>Ошибка получения данных</h2>
+                            <p className='cards__error-description'>К сожалению, не удалось загрузить данные.<br /> Повторите попытку позже.</p>
+                        </div>
+                    ) : (
+                        <div className="cards">
+                            {status === 'loading'
+                                ? [...new Array(4)].map((_, index) => (
+                                      <Skeleton key={index} />
+                                  ))
+                                : items.map((item) => (
+                                      <Card key={item.id} {...item} />
+                                  ))}
+                        </div>
+                    )}
                 </section>
                 <Pagination
                     currentPage={currentPage}
