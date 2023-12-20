@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from '../../redux/slices/cartSlice';
+import { addItem, selectCartItemByIdAndSize } from '../../redux/slices/cartSlice';
 
 const sizeValues = [20, 30];
 
 function Card({ id, img, title, weight, price, sizes }) {
     const [activeSize, setActiveSize] = useState(0);
     const dispatch = useDispatch();
-    const cartItem = useSelector((state) =>
-        state.cart.items.find((obj) => obj.id === id && obj.size === sizeValues[activeSize])
-    );
+    const cartItem = useSelector(selectCartItemByIdAndSize(id, sizeValues[activeSize]))
 
     const addedCount = cartItem ? cartItem.count : 0;
 

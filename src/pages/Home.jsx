@@ -3,32 +3,35 @@ import qs from 'qs';
 import { useContext, useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectCategoryFilter } from '../redux/slices/filterSlice';
+import {
+    selectCategoryFilter,
+    setSearchValue,
+} from '../redux/slices/filterSlice';
 import Tabs from './../components/Tabs/Tabs';
 import Sort, { sortMethodList } from '../components/Sort/Sort';
 import Skeleton from './../components/Card/Skeleton';
 import Card from './../components/Card/Card';
 import Pagination from '../components/Pagination/Pagination';
-import { SearchContext } from '../App';
 import {
     setCurrentPage,
     selectSortFilter,
-    selectCurrentPageFilter,
+    selectCurrentPage,
     setFilters,
+    selectSearchValue,
 } from '../redux/slices/filterSlice';
-import { fetchItems } from '../redux/slices/itemsSlice';
-import CartMobileBtn from '../components/CartMobileBtn/CartMobileBtn';
+import { fetchItems, selectItemsData } from '../redux/slices/itemsSlice';
 
 function Home() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const isSearch = useRef(false);
     const isMounted = useRef(false);
-    const { searchValue } = useContext(SearchContext);
     const categoryId = useSelector(selectCategoryFilter);
     const sortMethod = useSelector(selectSortFilter);
-    const currentPage = useSelector(selectCurrentPageFilter);
-    const { items, status } = useSelector((state) => state.items);
+    const currentPage = useSelector(selectCurrentPage);
+    const searchValue = useSelector(selectSearchValue);
+
+    const { items, status } = useSelector(selectItemsData);
 
     const onChangePage = (page) => {
         dispatch(setCurrentPage(page));
@@ -99,9 +102,14 @@ function Home() {
                 <section className="cards-wrapper">
                     <h1 className="cards__title">все</h1>
                     {status === 'error' ? (
-                        <div className='cards__error'>
-                            <h2 className='cards__error-title'>Ошибка получения данных</h2>
-                            <p className='cards__error-description'>К сожалению, не удалось загрузить данные.<br /> Повторите попытку позже.</p>
+                        <div className="cards__error">
+                            <h2 className="cards__error-title">
+                                Ошибка получения данных
+                            </h2>
+                            <p className="cards__error-description">
+                                К сожалению, не удалось загрузить данные.
+                                <br /> Повторите попытку позже.
+                            </p>
                         </div>
                     ) : (
                         <div className="cards">

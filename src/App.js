@@ -8,8 +8,6 @@ import Cart from './components/Cart/Cart';
 import ClearCartModal from './components/Modals/ClearCartModal';
 import CartMobileBtn from './components/CartMobileBtn/CartMobileBtn';
 
-export const SearchContext = createContext();
-
 function App() {
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
     const [isModalClearCartOpen, setIsModalClearCartOpen] = useState(false);
@@ -23,8 +21,6 @@ function App() {
         setIsModalInfoOpen(true);
     };
 
-    const [searchValue, setSearchValue] = useState('');
-
     return (
         <div className="App">
             <div
@@ -36,22 +32,20 @@ function App() {
                     isModalClearCartOpen={isModalClearCartOpen}
                     setIsModalClearCartOpen={setIsModalClearCartOpen}
                 />
-                <SearchContext.Provider value={{ searchValue, setSearchValue }}>
-                    <ModalInfo
-                        isModalInfoOpen={isModalInfoOpen}
-                        setIsModalInfoOpen={setIsModalInfoOpen}
-                    />
-                    <Header
-                        handleClickInfoIcon={handleClickInfoIcon}
-                        handleClickCartIcon={handleClickCartIcon}
-                    />
-                    <main className="main">
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="*" element={<NotFound />} />
-                        </Routes>
-                    </main>
-                </SearchContext.Provider>
+                <ModalInfo
+                    isModalInfoOpen={isModalInfoOpen}
+                    setIsModalInfoOpen={setIsModalInfoOpen}
+                />
+                <Header
+                    handleClickInfoIcon={handleClickInfoIcon}
+                    handleClickCartIcon={handleClickCartIcon}
+                />
+                <main className="main">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </main>
             </div>
             <div
                 className={
@@ -63,7 +57,7 @@ function App() {
                     setIsCartOpen={setIsCartOpen}
                 />
             </div>
-            <CartMobileBtn handleClickCartIcon={handleClickCartIcon}/>
+            <CartMobileBtn handleClickCartIcon={handleClickCartIcon} />
         </div>
     );
 }

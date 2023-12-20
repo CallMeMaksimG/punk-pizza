@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
+import { selectCart } from '../../redux/slices/cartSlice';
 import CartItem from '../CartItem/CartItem';
 
 function Cart({ setIsCartOpen, setIsModalClearCartOpen }) {
-    const { items, totalPrice } = useSelector((state) => state.cart);
+    const { items, totalPrice } = useSelector(selectCart);
 
     const onClickClear = () => {
         setIsModalClearCartOpen(true);

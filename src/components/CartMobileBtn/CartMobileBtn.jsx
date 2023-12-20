@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
+import { selectCart } from '../../redux/slices/cartSlice';
 
-function CartMobileBtn( {handleClickCartIcon} ) {
-    const {items, totalPrice} = useSelector(state => state.cart);
+function CartMobileBtn({ handleClickCartIcon }) {
+    const { items, totalPrice } = useSelector(selectCart);
     const totalCount = items.reduce((sum, item) => sum + item.count, 0);
     return (
         <div onClick={handleClickCartIcon} className="cart-mobile-btn">

@@ -41,6 +41,7 @@ export const itemsSlice = createSlice({
     },
 });
 
+export const selectItemsData = (state) => state.items;
 export const { setItems } = itemsSlice.actions;
 
 export default itemsSlice.reducer;
