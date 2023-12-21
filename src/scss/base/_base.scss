@@ -48,13 +48,15 @@ a {
 
 .App__right {
     transform: translateX(340px);
-    transition: transform .2s ease-in;
+    transition: all .2s ease-in;
     visibility: hidden;
 
     @media (max-width: 590px) {
         position: absolute;
         width: 100vw;
         z-index: 20;
+        transform: translateY(100vh);
+        transition: all .5s ease-in;
     }
 
     &--open {
