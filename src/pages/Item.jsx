@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function Item() {
     const [item, setItem] = useState();
     const { id } = useParams();
-
-    console.log(item);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchItems() {
@@ -16,7 +15,9 @@ function Item() {
                 );
                 setItem(data);
             } catch (error) {
+                alert('Ошибка при получении данных');
                 console.log(error);
+                navigate('/');
             }
         }
         fetchItems();
