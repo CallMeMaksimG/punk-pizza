@@ -1,6 +1,6 @@
-import axios from 'axios';
 import qs from 'qs';
-import { useContext, useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -118,7 +118,12 @@ function Home() {
                                       <Skeleton key={index} />
                                   ))
                                 : items.map((item) => (
-                                      <Card key={item.id} {...item} />
+                                      <Link
+                                          key={item.id}
+                                          to={`/item/${item.id}`}
+                                      >
+                                          <Card {...item} />
+                                      </Link>
                                   ))}
                         </div>
                     )}

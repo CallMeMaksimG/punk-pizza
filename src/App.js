@@ -7,6 +7,7 @@ import ModalInfo from './components/ModalInfo/ModalInfo';
 import Cart from './components/Cart/Cart';
 import ClearCartModal from './components/Modals/ClearCartModal';
 import CartMobileBtn from './components/CartMobileBtn/CartMobileBtn';
+import Item from './pages/Item';
 
 function App() {
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
@@ -43,6 +44,7 @@ function App() {
                 <main className="main">
                     <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/item/:id" element={<Item />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>
