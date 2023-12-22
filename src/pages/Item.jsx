@@ -36,6 +36,7 @@ function Item() {
     return (
         <div className="item">
             <div className="container">
+                <button className='item__prev-btn'><img src="./../../img/icons/arrow-prev.svg" alt="arrow-prev" /></button>
                 <div className="item__wrapper">
                     <div className="item__img">
                         <img src={item.img} alt="" />
