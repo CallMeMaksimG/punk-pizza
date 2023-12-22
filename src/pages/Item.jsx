@@ -2,11 +2,18 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
+const sizeValues = [20, 30];
+
 function Item() {
     const [item, setItem] = useState();
     const { id } = useParams();
     const navigate = useNavigate();
     console.log(item);
+    const [activeSize, setActiveSize] = useState(0);
+
+    const onClickSize = (index) => {
+        setActiveSize(index);
+    };
     useEffect(() => {
         async function fetchItems() {
             try {
@@ -35,35 +42,36 @@ function Item() {
                     </div>
                     <div className="item__info">
                         <h1 className="item__title">{item.title}</h1>
-                        <p className="item__weight">{item.weight[0]}г</p>
+                        <p className="item__weight">
+                            {item.weight[activeSize]}г
+                        </p>
                         <p className="item__description">{item.description}</p>
                         <div className="item__size">
-                            {/* {sizes && ( */}
-                            <ul className="item__size-list">
-                                {item.sizes?.map((size, index) => {
-                                    return (
-                                        <li
-                                            key={index}
-                                            // onClick={() =>
-                                            //     onClickSize(index)
-                                            // }
-                                            className="item__size-list-item"
-                                            // className={
-                                            //     // activeSize === index
-                                            //         ? 'item__size-list-item item__size-list-item--active'
-                                            //         : 'item__size-list-item'
-                                            // }
-                                        >
-                                            {size} см
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                            {/* )} */}
+                            {item.sizes && (
+                                <ul className="item__size-list">
+                                    {item.sizes?.map((size, index) => {
+                                        return (
+                                            <li
+                                                key={index}
+                                                onClick={() =>
+                                                    onClickSize(index)
+                                                }
+                                                className={
+                                                    activeSize === index
+                                                        ? 'item__size-list-item item__size-list-item--active'
+                                                        : 'item__size-list-item'
+                                                }
+                                            >
+                                                {size} см
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            )}
                         </div>
                         <div className="item__footer">
                             <p className="item__price">
-                                {item.price[0]} &#8381;
+                                {item.price[activeSize]} &#8381;
                             </p>
                             <button className="item__add-btn">
                                 <img
