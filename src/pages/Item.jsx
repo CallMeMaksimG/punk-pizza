@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const sizeValues = [20, 30];
+// const sizeValues = [20, 30];
 
 function Item() {
     const [item, setItem] = useState();
@@ -36,7 +37,7 @@ function Item() {
     return (
         <div className="item">
             <div className="container">
-                <button className='item__prev-btn'><img src="./../../img/icons/arrow-prev.svg" alt="arrow-prev" /></button>
+                <Link to='/'><button className='item__prev-btn'><img src="./../../img/icons/arrow-prev.svg" alt="arrow-prev" /></button></Link>
                 <div className="item__wrapper">
                     <div className="item__img">
                         <img src={item.img} alt="" />
