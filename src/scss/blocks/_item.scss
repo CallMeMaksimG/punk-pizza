@@ -1,3 +1,7 @@
+.item {
+    padding-bottom: 130px;
+}
+
 .item__wrapper {
     display: flex;
     background-color: #fff;
@@ -7,6 +11,11 @@
     justify-content: space-between;
     max-width: 900px;
     margin: 0 auto;
+
+    @media (max-width: 590px){
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .item__img {
@@ -34,6 +43,9 @@
 
 .item__size {
     margin-top: 20px;
+    @media (max-width: 590px){
+        margin: 20px auto;
+    }
 }
 
 .item__size-list {
@@ -78,6 +90,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 590px){
+        margin-top: 30px;
+    }
 }
 
 .item__price {

@@ -57,11 +57,12 @@ a {
         z-index: 20;
         transform: translateY(100vh);
         transition: all .5s ease-in;
+        overflow-y: auto;
     }
 
     &--open {
     transform: translateX(0px);
     visibility: visible;
-
+    overflow: visible;
     }
 }
