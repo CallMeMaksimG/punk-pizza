@@ -40,6 +40,7 @@
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    width: 50%;
 }
 
 .item__title {
@@ -123,5 +124,26 @@
 
     &:hover {
         background-color: lighten(#272829, 10%);
+    }
+}
+
+.item__add-btn--active {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100px;
+    height: 40px;
+    background-color: black;
+    border-radius: 20px;
+    font-size: 20px;
+
+    img {
+        transition: opacity 0.2s ease-in;
+
+        &:hover {
+            opacity: 0.6;
+        }
     }
 }

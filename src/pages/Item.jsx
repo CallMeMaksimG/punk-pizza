@@ -2,15 +2,24 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    addItem,
+    selectCartItemByIdAndSize,
+} from './../redux/slices/cartSlice';
 
-// const sizeValues = [20, 30];
+const sizeValues = [20, 30];
 
 function Item() {
+    const dispatch = useDispatch();
     const [item, setItem] = useState();
     const { id } = useParams();
     const navigate = useNavigate();
-    console.log(item);
     const [activeSize, setActiveSize] = useState(0);
+    const cartItem = useSelector(
+        selectCartItemByIdAndSize(id, sizeValues[activeSize])
+    );
+    const addedCount = cartItem ? cartItem.count : 0;
 
     const onClickSize = (index) => {
         setActiveSize(index);
@@ -31,13 +40,32 @@ function Item() {
         fetchItems();
     }, []);
 
+    const onClickAdd = () => {
+        const itemData = {
+            id: item.id,
+            img: item.img,
+            title: item.title,
+            weight: item.weight[activeSize],
+            price: item.price[activeSize],
+            size: item.sizes[activeSize],
+        };
+        dispatch(addItem(itemData));
+    };
+
     if (!item) {
         return 'Загрузка...';
     }
     return (
         <div className="item">
             <div className="container">
-                <Link to='/'><button className='item__prev-btn'><img src="./../../img/icons/arrow-prev.svg" alt="arrow-prev" /></button></Link>
+                <Link to="/">
+                    <button className="item__prev-btn">
+                        <img
+                            src="./../../img/icons/arrow-prev.svg"
+                            alt="arrow-prev"
+                        />
+                    </button>
+                </Link>
                 <div className="item__wrapper">
                     <div className="item__img">
                         <img src={item.img} alt="" />
@@ -75,12 +103,28 @@ function Item() {
                             <p className="item__price">
                                 {item.price[activeSize]} &#8381;
                             </p>
-                            <button className="item__add-btn">
-                                <img
-                                    src="./../../img/icons/plus.svg"
-                                    alt="add to cart"
-                                />
-                            </button>
+                            {addedCount > 0 &&
+                            cartItem.size === sizeValues[activeSize] ? (
+                                <button className="item__add-btn--active">
+                                    <img
+                                        src="./../../img/icons/minus.svg"
+                                        alt="minus"
+                                    />
+                                    {addedCount}
+                                    <img
+                                        onClick={onClickAdd}
+                                        src="./../../img/icons/plus.svg"
+                                        alt="add to cart"
+                                    />
+                                </button>
+                            ) : (
+                                <button className="item__add-btn" onClick={onClickAdd}>
+                                    <img
+                                        src="./../../img/icons/plus.svg"
+                                        alt="add to cart"
+                                    />
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
