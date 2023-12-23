@@ -1,21 +1,28 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, selectCartItemByIdAndSize } from '../../redux/slices/cartSlice';
+import {
+    addItem,
+    selectCartItemByIdAndSize,
+} from '../../redux/slices/cartSlice';
 
 const sizeValues = [20, 30];
 
 function Card({ id, img, title, weight, price, sizes }) {
     const [activeSize, setActiveSize] = useState(0);
     const dispatch = useDispatch();
-    const cartItem = useSelector(selectCartItemByIdAndSize(id, sizeValues[activeSize]))
+    const cartItem = useSelector(
+        selectCartItemByIdAndSize(id, sizeValues[activeSize])
+    );
 
     const addedCount = cartItem ? cartItem.count : 0;
 
-    const onClickSize = (index) => {
+    const onClickSize = (e, index) => {
+        e.preventDefault();
         setActiveSize(index);
     };
 
-    const onClickAdd = () => {
+    const onClickAdd = (e) => {
+        e.preventDefault();
         const item = {
             id,
             img,
@@ -38,9 +45,9 @@ function Card({ id, img, title, weight, price, sizes }) {
                     <ul className="pizza-size__list">
                         {sizes?.map((size, index) => {
                             return (
-                                <li
+                                <button
                                     key={index}
-                                    onClick={() => onClickSize(index)}
+                                    onClick={(e) => onClickSize(e, index)}
                                     className={
                                         activeSize === index
                                             ? 'pizza-size__list-item pizza-size__list-item--active'
@@ -48,7 +55,7 @@ function Card({ id, img, title, weight, price, sizes }) {
                                     }
                                 >
                                     {size} см
-                                </li>
+                                </button>
                             );
                         })}
                     </ul>
