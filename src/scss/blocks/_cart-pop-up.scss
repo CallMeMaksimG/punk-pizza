@@ -20,6 +20,7 @@
         overflow-y: scroll;
         border-radius: 25px;
         transform: translate(-50%, 40%);
+        border-left: none;
     }
 
     @media (max-width: 590px) {
@@ -32,6 +33,7 @@
         right: 0;
         overflow-y: scroll;
         border-radius: 25px 25px 0 0;
+        transform: translate(-50%, 0);
     }
 }
 
@@ -67,6 +69,7 @@
         z-index: 10;
         border-radius: 25px 25px 0 0;
         padding: 20px 10px;
+        top: 0;
     }
 }
 
@@ -97,6 +100,10 @@
 
     @media (max-width: $tablet) {
         margin-top: 40px;
+    }
+
+    @media (max-width: 590px) {
+        margin-top: 0px;
     }
 }
 
