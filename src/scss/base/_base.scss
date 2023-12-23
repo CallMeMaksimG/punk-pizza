@@ -38,6 +38,9 @@ a {
     overflow-y: scroll;
 
     &--open {
+        @media (max-width: $tablet) {
+            margin-right: 0;
+        }
         margin-right: 340px;
         @media (max-width: 590px) {
             margin-right: 0;
@@ -45,24 +48,32 @@ a {
     }
 }
 
-
 .App__right {
     transform: translateX(340px);
-    transition: all .2s ease-in;
+    transition: all 0.2s ease-in;
     visibility: hidden;
+
+    @media (max-width: $tablet) {
+        position: absolute;
+        width: 100vw;
+        z-index: 20;
+        transform: translateY(100vh);
+        transition: all 0.5s ease-in;
+        overflow-y: auto;
+    }
 
     @media (max-width: 590px) {
         position: absolute;
         width: 100vw;
         z-index: 20;
         transform: translateY(100vh);
-        transition: all .5s ease-in;
+        transition: all 0.5s ease-in;
         overflow-y: auto;
     }
 
     &--open {
-    transform: translateX(0px);
-    visibility: visible;
-    overflow: visible;
+        transform: translateX(0px);
+        visibility: visible;
+        overflow: visible;
     }
 }

@@ -17,6 +17,10 @@
 .cart__total-price {
     padding-right: 10px;
     font-size: 18px;
+
+    @media(max-width: 1155px) {
+        display: none;
+    }
 }
 
 .cart__count {
