@@ -1,9 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCart } from '../../redux/slices/cartSlice';
+import { openCart } from '../../redux/slices/cartSlice';
 import CartItem from '../CartItem/CartItem';
 
-function Cart({ setIsCartOpen, setIsModalClearCartOpen }) {
+function Cart({ setIsModalClearCartOpen }) {
     const { items, totalPrice } = useSelector(selectCart);
+    const dispatch = useDispatch();
 
     const onClickClear = () => {
         setIsModalClearCartOpen(true);
@@ -24,7 +26,7 @@ function Cart({ setIsCartOpen, setIsModalClearCartOpen }) {
                     )}
 
                     <button
-                        onClick={() => setIsCartOpen(false)}
+                        onClick={() => dispatch(openCart())}
                         className="cart-pop-up__close-btn"
                     >
                         <img src="./../../img/icons/close.svg" alt="close" />

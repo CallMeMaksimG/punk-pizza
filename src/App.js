@@ -1,5 +1,6 @@
 import Header from './components/Header/Header';
-import { createContext, useState } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
@@ -8,14 +9,16 @@ import Cart from './components/Cart/Cart';
 import ClearCartModal from './components/Modals/ClearCartModal';
 import CartMobileBtn from './components/CartMobileBtn/CartMobileBtn';
 import Item from './pages/Item';
+import { openCart, selectOpenCart } from './redux/slices/cartSlice';
 
 function App() {
+    const dispatch = useDispatch();
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
     const [isModalClearCartOpen, setIsModalClearCartOpen] = useState(false);
-    const [isCartOpen, setIsCartOpen] = useState(false);
+    const isCartOpen = useSelector(selectOpenCart);
 
     const handleClickCartIcon = () => {
-        setIsCartOpen(!isCartOpen);
+        dispatch(openCart());
     };
 
     const handleClickInfoIcon = () => {
@@ -61,10 +64,7 @@ function App() {
                     isCartOpen ? 'App__right App__right--open' : 'App__right'
                 }
             >
-                <Cart
-                    setIsModalClearCartOpen={setIsModalClearCartOpen}
-                    setIsCartOpen={setIsCartOpen}
-                />
+                <Cart setIsModalClearCartOpen={setIsModalClearCartOpen} />
             </div>
             <CartMobileBtn handleClickCartIcon={handleClickCartIcon} />
         </div>
