@@ -26,6 +26,13 @@ function App() {
         <div className="App">
             <div
                 className={
+                    isCartOpen
+                        ? 'cart-pop-up__overlay cart-pop-up__overlay--open'
+                        : 'cart-pop-up__overlay'
+                }
+            ></div>
+            <div
+                className={
                     isCartOpen ? 'App__left App__left--open' : 'App__left'
                 }
             >
