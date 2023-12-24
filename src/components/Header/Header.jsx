@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Search from '../Search/Search';
 import { selectCart } from '../../redux/slices/cartSlice';
 
 function Header({ handleClickInfoIcon, handleClickCartIcon }) {
-    const {items, totalPrice} = useSelector(selectCart);
+    const { items, totalPrice } = useSelector(selectCart);
     const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+    const location = useLocation();
+
     return (
         <header className="header">
             <div className="container">
@@ -24,7 +26,8 @@ function Header({ handleClickInfoIcon, handleClickCartIcon }) {
                             </h1>
                         </div>
                     </Link>
-                    <Search />
+                    {!location.pathname.includes('/item') && <Search />}
+
                     <div className="nav__right">
                         <button
                             onClick={handleClickInfoIcon}
