@@ -50,24 +50,15 @@ function Item() {
     }, []);
 
     const onClickAdd = () => {
-        // type data =  {
-        //     id: string;
-        //     img: string;
-        //     title: string;
-        //     weight: number;
-        //     price: number;
-        //     size: number;
-        // }
         const itemData = {
-            id: item.id,
-            img: item.img,
-            title: item.title,
-            weight: item.weight[activeSize],
-            price: item.price[activeSize],
-            size: item.sizes[activeSize],
+            id: item?.id,
+            img: item?.img,
+            title: item?.title,
+            weight: item?.weight[activeSize],
+            price: item?.price[activeSize],
+            size: item?.sizes[activeSize],
         };
         dispatch(addItem(itemData));
-        console.log(itemData)
     };
 
     if (!item) {
