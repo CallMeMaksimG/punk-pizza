@@ -93,47 +93,49 @@ function Home() {
     }, [categoryId, sortMethod, searchValue, currentPage]);
 
     return (
-        <div className="products">
-            <div className="container">
-                <section className="products__navigate">
-                    <Tabs />
-                    <Sort />
-                </section>
-                <section className="cards-wrapper">
-                    <h1 className="cards__title">все</h1>
-                    {status === 'error' ? (
-                        <div className="cards__error">
-                            <h2 className="cards__error-title">
-                                Ошибка получения данных
-                            </h2>
-                            <p className="cards__error-description">
-                                К сожалению, не удалось загрузить данные.
-                                <br /> Повторите попытку позже.
-                            </p>
-                        </div>
-                    ) : (
-                        <div className="cards">
-                            {status === 'loading'
-                                ? [...new Array(4)].map((_, index) => (
-                                      <Skeleton key={index} />
-                                  ))
-                                : items.map((item) => (
-                                      <Link
-                                          key={item.id}
-                                          to={`/item/${item.id}`}
-                                      >
-                                          <Card {...item} />
-                                      </Link>
-                                  ))}
-                        </div>
-                    )}
-                </section>
-                <Pagination
-                    currentPage={currentPage}
-                    onChangePage={onChangePage}
-                />
+        <main className="main">
+            <div className="products">
+                <div className="container">
+                    <section className="products__navigate">
+                        <Tabs />
+                        <Sort />
+                    </section>
+                    <section className="cards-wrapper">
+                        <h1 className="cards__title">все</h1>
+                        {status === 'error' ? (
+                            <div className="cards__error">
+                                <h2 className="cards__error-title">
+                                    Ошибка получения данных
+                                </h2>
+                                <p className="cards__error-description">
+                                    К сожалению, не удалось загрузить данные.
+                                    <br /> Повторите попытку позже.
+                                </p>
+                            </div>
+                        ) : (
+                            <div className="cards">
+                                {status === 'loading'
+                                    ? [...new Array(4)].map((_, index) => (
+                                          <Skeleton key={index} />
+                                      ))
+                                    : items.map((item) => (
+                                          <Link
+                                              key={item.id}
+                                              to={`/item/${item.id}`}
+                                          >
+                                              <Card {...item} />
+                                          </Link>
+                                      ))}
+                            </div>
+                        )}
+                    </section>
+                    <Pagination
+                        currentPage={currentPage}
+                        onChangePage={onChangePage}
+                    />
+                </div>
             </div>
-        </div>
+        </main>
     );
 }
 

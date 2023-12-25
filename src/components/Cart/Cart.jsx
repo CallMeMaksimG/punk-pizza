@@ -8,6 +8,7 @@ function Cart({ setIsModalClearCartOpen }) {
     const dispatch = useDispatch();
 
     const onClickClear = () => {
+        console.log('ckick')
         setIsModalClearCartOpen(true);
     };
 
