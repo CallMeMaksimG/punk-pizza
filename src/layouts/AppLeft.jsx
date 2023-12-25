@@ -9,7 +9,6 @@ import { openCart, selectOpenCart } from './../redux/slices/cartSlice';
 function AppLeft() {
     const dispatch = useDispatch();
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
-    const [isModalClearCartOpen, setIsModalClearCartOpen] = useState(false);
     const isCartOpen = useSelector(selectOpenCart);
 
     const handleClickCartIcon = () => {
@@ -21,10 +20,7 @@ function AppLeft() {
     };
     return (
         <div className={isCartOpen ? 'App__left App__left--open' : 'App__left'}>
-            <ClearCartModal
-                isModalClearCartOpen={isModalClearCartOpen}
-                setIsModalClearCartOpen={setIsModalClearCartOpen}
-            />
+            <ClearCartModal />
             <ModalInfo
                 isModalInfoOpen={isModalInfoOpen}
                 setIsModalInfoOpen={setIsModalInfoOpen}

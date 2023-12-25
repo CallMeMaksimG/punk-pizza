@@ -1,32 +1,34 @@
-import { useDispatch } from 'react-redux';
-import { clearItems } from '../../redux/slices/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearItems, openConfirmWindow } from '../../redux/slices/cartSlice';
+import { selectOpenConfirmWindow } from '../../redux/slices/cartSlice';
 
-function ClearCartModal({ isModalClearCartOpen, setIsModalClearCartOpen }) {
+function ClearCartModal() {
     const dispatch = useDispatch();
+    const isConfirmWindowOpen = useSelector(selectOpenConfirmWindow);
 
     function onClickConfirmClear() {
         dispatch(clearItems());
-        setIsModalClearCartOpen(false);
+        dispatch(openConfirmWindow());
     }
 
     return (
         <>
             <div
                 className={
-                    isModalClearCartOpen
+                    isConfirmWindowOpen
                         ? 'clear-cart__overlay clear-cart__overlay--open'
                         : 'clear-cart__overlay'
                 }
             ></div>
             <div
                 className={
-                    isModalClearCartOpen
+                    isConfirmWindowOpen
                         ? 'clear-cart clear-cart--open'
                         : 'clear-cart'
                 }
             >
                 <button
-                    onClick={() => setIsModalClearCartOpen(false)}
+                    onClick={() => dispatch(openConfirmWindow())}
                     className="clear-cart__close-btn"
                 >
                     <img src="./../../img/icons/close.svg" alt="close" />
@@ -40,7 +42,7 @@ function ClearCartModal({ isModalClearCartOpen, setIsModalClearCartOpen }) {
                         Да
                     </button>
                     <button
-                        onClick={() => setIsModalClearCartOpen(false)}
+                        onClick={() => dispatch(openConfirmWindow())}
                         className="clear-cart__cancell-btn"
                     >
                         Отмена

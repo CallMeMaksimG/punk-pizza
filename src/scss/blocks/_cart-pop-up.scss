@@ -4,7 +4,7 @@
     background-color: #fff;
     border-left: 1px solid #959595;
     position: fixed;
-    z-index: 222;
+    z-index: 10;
     top: 0;
     right: 0;
     overflow-y: scroll;
@@ -14,7 +14,7 @@
         width: 81vw;
         height: 60vh;
         background-color: #fff;
-        z-index: 222;
+        z-index: 10;
         top: 30%;
         left: 50%;
         overflow-y: scroll;
@@ -28,7 +28,7 @@
         width: 100vw;
         height: 90vh;
         background-color: #fff;
-        z-index: 222;
+        z-index: 10;
         top: 100px;
         right: 0;
         overflow-y: scroll;

@@ -4,6 +4,7 @@ const initialState = {
     totalPrice: 0,
     items: [],
     isOpen: false,
+    isOpenConfirmWindow: false,
 };
 
 export const cartSlice = createSlice({
@@ -52,6 +53,9 @@ export const cartSlice = createSlice({
         openCart: (state) => {
             state.isOpen = !state.isOpen;
         },
+        openConfirmWindow: (state) => {
+            state.isOpenConfirmWindow = !state.isOpenConfirmWindow;
+        },
     },
 });
 
@@ -59,8 +63,16 @@ export const selectCart = (state) => state.cart;
 export const selectCartItemByIdAndSize = (id, size) => (state) =>
     state.cart.items.find((obj) => obj.id === id && obj.size === size);
 export const selectOpenCart = (state) => state.cart.isOpen;
+export const selectOpenConfirmWindow = (state) =>
+    state.cart.isOpenConfirmWindow;
 
-export const { addItem, removeItem, minusItem, clearItems, openCart } =
-    cartSlice.actions;
+export const {
+    addItem,
+    removeItem,
+    minusItem,
+    clearItems,
+    openCart,
+    openConfirmWindow,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
