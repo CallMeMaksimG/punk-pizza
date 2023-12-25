@@ -11,15 +11,15 @@
 
     @media (max-width: $tablet) {
         position: fixed;
-        width: 81vw;
-        height: 60vh;
+        width: 60vw;
+        height: 80vh;
         background-color: #fff;
         z-index: 10;
-        top: 30%;
+        top: 10%;
         left: 50%;
         overflow-y: scroll;
         border-radius: 25px;
-        transform: translate(-50%, 40%);
+        transform: translate(-50%, 10%);
         border-left: none;
     }
 
@@ -53,7 +53,7 @@
         display: flex;
         top: 0;
         background-color: #fff;
-        width: 80vw;
+        width: 60vw;
         padding: 10px;
         z-index: 10;
         border-radius: 25px 25px 0 0;
