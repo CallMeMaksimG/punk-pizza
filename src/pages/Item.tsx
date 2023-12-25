@@ -6,13 +6,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     addItem,
     selectCartItemByIdAndSize,
-} from './../redux/slices/cartSlice';
+} from '../redux/slices/cartSlice';
 
 const sizeValues = [20, 30];
 
 function Item() {
     const dispatch = useDispatch();
-    const [item, setItem] = useState();
+    const [item, setItem] = useState<{
+        id: string;
+        img: string;
+        title: string;
+        description: string;
+        weight: [number];
+        price: [number];
+        sizes: [number];
+    }>();
+
     const { id } = useParams();
     const navigate = useNavigate();
     const [activeSize, setActiveSize] = useState(0);
@@ -21,7 +30,7 @@ function Item() {
     );
     const addedCount = cartItem ? cartItem.count : 0;
 
-    const onClickSize = (index) => {
+    const onClickSize = (index: number) => {
         setActiveSize(index);
     };
     useEffect(() => {
@@ -41,6 +50,14 @@ function Item() {
     }, []);
 
     const onClickAdd = () => {
+        // type data =  {
+        //     id: string;
+        //     img: string;
+        //     title: string;
+        //     weight: number;
+        //     price: number;
+        //     size: number;
+        // }
         const itemData = {
             id: item.id,
             img: item.img,
@@ -50,10 +67,11 @@ function Item() {
             size: item.sizes[activeSize],
         };
         dispatch(addItem(itemData));
+        console.log(itemData)
     };
 
     if (!item) {
-        return 'Загрузка...';
+        return <>Загрузка...</>;
     }
     return (
         <div className="item">

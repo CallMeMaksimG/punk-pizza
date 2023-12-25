@@ -54,26 +54,22 @@ a {
     visibility: hidden;
 
     @media (max-width: $tablet) {
-        position: absolute;
+        position: fixed;
         width: 100vw;
         z-index: 20;
         transform: translateY(100vh);
         transition: all 0.5s ease-in;
-        overflow-y: auto;
     }
 
     @media (max-width: 590px) {
-        position: absolute;
         width: 100vw;
         z-index: 20;
         transform: translateY(100vh);
         transition: all 0.5s ease-in;
-        overflow-y: auto;
     }
 
     &--open {
         transform: translateX(0px);
         visibility: visible;
-        overflow: visible;
     }
 }
