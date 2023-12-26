@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import Header from './../components/Header/Header';
-import ModalInfo from './../components/ModalInfo/ModalInfo';
-import ClearCartModal from './../components/Modals/ClearCartModal';
-import { openCart, selectOpenCart } from './../redux/slices/cartSlice';
+import Header from '../components/Header/Header';
+import ModalInfo from '../components/ModalInfo/ModalInfo';
+import ClearCartModal from '../components/Modals/ClearCartModal';
+import { openCart, selectOpenCart } from '../redux/slices/cartSlice';
 
-function AppLeft() {
+const AppLeft = () => {
     const dispatch = useDispatch();
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
     const isCartOpen = useSelector(selectOpenCart);
@@ -32,6 +32,6 @@ function AppLeft() {
             <Outlet />
         </div>
     );
-}
+};
 
 export default AppLeft;

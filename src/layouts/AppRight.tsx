@@ -1,13 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Cart from './../components/Cart/Cart';
-import CartMobileBtn from './../components/CartMobileBtn/CartMobileBtn';
-import {
-    openCart,
-    selectOpenCart,
-    selectOpenConfirmWindow,
-} from './../redux/slices/cartSlice';
+import Cart from '../components/Cart/Cart';
+import CartMobileBtn from '../components/CartMobileBtn/CartMobileBtn';
+import { openCart, selectOpenCart } from '../redux/slices/cartSlice';
 
-function AppRigth() {
+const AppRigth: React.FC = () => {
     const dispatch = useDispatch();
     const isCartOpen = useSelector(selectOpenCart);
 

@@ -1,6 +1,6 @@
 import qs from 'qs';
 import { Link } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectCategoryFilter } from '../redux/slices/filterSlice';

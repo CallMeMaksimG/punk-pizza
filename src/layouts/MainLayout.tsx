@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { selectOpenCart } from './../redux/slices/cartSlice';
+import { selectOpenCart } from '../redux/slices/cartSlice';
 import AppLeft from './AppLeft';
 import AppRigth from './AppRight';
 
-function MainLayout() {
+const MainLayout: React.FC = () => {
     const isCartOpen = useSelector(selectOpenCart);
 
     return (
