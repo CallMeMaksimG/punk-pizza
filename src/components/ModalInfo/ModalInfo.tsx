@@ -1,4 +1,9 @@
-function ModalInfo({ isModalInfoOpen, setIsModalInfoOpen }) {
+type TModalInfoProps = {
+    isModalInfoOpen: boolean;
+    setIsModalInfoOpen: any;
+}
+
+const ModalInfo: React.FC<TModalInfoProps> = ({ isModalInfoOpen, setIsModalInfoOpen }) => {
     const handleClickCloseModalWindow = () => {
         setIsModalInfoOpen(false);
     }

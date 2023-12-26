@@ -3,7 +3,7 @@ import { openConfirmWindow, selectCart } from '../../redux/slices/cartSlice';
 import { openCart } from '../../redux/slices/cartSlice';
 import CartItem from '../CartItem/CartItem';
 
-function Cart() {
+const Cart: React.FC = () => {
     const { items, totalPrice } = useSelector(selectCart);
     const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ function Cart() {
                     <div className="cart-pop-up__items">
                         {items.length > 0 ? (
                             <ul className="cart-pop-up__list">
-                                {items.map((item) => {
+                                {items.map((item: any) => {
                                     return (
                                         <CartItem
                                             key={item.id + item.size}
