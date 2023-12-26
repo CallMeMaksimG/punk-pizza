@@ -1,6 +1,11 @@
 import ReactPaginate from 'react-paginate';
 
-function Pagination({ currentPage, onChangePage }) {
+type TPaginationProps = {
+    currentPage: number;
+    onChangePage: any;
+}
+
+const Pagination: React.FC<TPaginationProps> = ({ currentPage, onChangePage }) => {
     return (
         <ReactPaginate
             className="pagination"
