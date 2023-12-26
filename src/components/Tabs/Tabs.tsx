@@ -10,7 +10,7 @@ function Tabs() {
         'Напитки',
     ];
 
-    const onClickCategory = (index) => {
+    const onClickCategory = (index: number) => {
         dispatch(setCategoryFilter(index));
     };
     const dispatch = useDispatch();

@@ -3,9 +3,14 @@ import { useSelector } from 'react-redux';
 import Search from '../Search/Search';
 import { selectCart } from '../../redux/slices/cartSlice';
 
-function Header({ handleClickInfoIcon, handleClickCartIcon }) {
+type THeaderProps = {
+    handleClickInfoIcon: any;
+    handleClickCartIcon: any;
+};
+
+const Header: React.FC<THeaderProps> = ({ handleClickInfoIcon, handleClickCartIcon }) => {
     const { items, totalPrice } = useSelector(selectCart);
-    const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+    const totalCount = items.reduce((sum:number, item:any) => sum + item.count, 0);
     const location = useLocation();
 
     return (

@@ -5,7 +5,12 @@ import {
     selectSortFilter,
 } from '../../redux/slices/filterSlice';
 
-export const sortMethodList = [
+type TSortList = {
+    name: string;
+    sortProperty: string;
+};
+
+export const sortMethodList: TSortList[] = [
     { name: 'По умолчанию', sortProperty: '' },
     { name: 'По популярности', sortProperty: 'rating' },
     { name: 'По возрастанию цены', sortProperty: '-price' },
@@ -15,15 +20,15 @@ function Sort() {
     const dispatch = useDispatch();
     const sortMethod = useSelector(selectSortFilter);
     const [openFilterList, setOpenFilterList] = useState(false);
-    const sortRef = useRef();
+    const sortRef = useRef<HTMLDivElement>(null);
 
     const handleOpenFilterList = () => {
         setOpenFilterList(!openFilterList);
     };
 
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (!event.target.className.includes('sort')) {
+        const handleClickOutside = (event: any) => {
+            if (!event.composedPath().includes(sortRef.current)) {
                 setOpenFilterList(false);
             }
         };

@@ -1,8 +1,9 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearItems, openConfirmWindow } from '../../redux/slices/cartSlice';
 import { selectOpenConfirmWindow } from '../../redux/slices/cartSlice';
 
-function ClearCartModal() {
+const ClearCartModal: React.FC = function () {
     const dispatch = useDispatch();
     const isConfirmWindowOpen = useSelector(selectOpenConfirmWindow);
 

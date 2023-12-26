@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -10,7 +11,7 @@ import {
 
 const sizeValues = [20, 30];
 
-function Item() {
+const Item: React.FC = function() {
     const dispatch = useDispatch();
     const [item, setItem] = useState<{
         id: string;
