@@ -3,14 +3,11 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {
-    selectCategoryFilter,
-    setSearchValue,
-} from '../redux/slices/filterSlice';
-import Tabs from './../components/Tabs/Tabs';
+import { selectCategoryFilter } from '../redux/slices/filterSlice';
+import Tabs from '../components/Tabs/Tabs';
 import Sort, { sortMethodList } from '../components/Sort/Sort';
-import Skeleton from './../components/Card/Skeleton';
-import Card from './../components/Card/Card';
+import Skeleton from '../components/Card/Skeleton';
+import Card from '../components/Card/Card';
 import Pagination from '../components/Pagination/Pagination';
 import {
     setCurrentPage,

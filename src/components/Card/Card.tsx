@@ -7,8 +7,17 @@ import {
 
 const sizeValues = [20, 30];
 
-function Card({ id, img, title, weight, price, sizes }) {
-    const [activeSize, setActiveSize] = useState(0);
+type TCardProps = {
+    id: string;
+    img: string;
+    title: string;
+    weight: number[];
+    price: number[];
+    sizes: number[];
+}
+
+const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes }) => {
+    const [activeSize, setActiveSize] = useState<number>(0);
     const dispatch = useDispatch();
     const cartItem = useSelector(
         selectCartItemByIdAndSize(id, sizeValues[activeSize])
@@ -16,12 +25,12 @@ function Card({ id, img, title, weight, price, sizes }) {
 
     const addedCount = cartItem ? cartItem.count : 0;
 
-    const onClickSize = (e, index) => {
+    const onClickSize = (e: any, index: number) => {
         e.preventDefault();
         setActiveSize(index);
     };
 
-    const onClickAdd = (e) => {
+    const onClickAdd = (e: any) => {
         e.preventDefault();
         const item = {
             id,
