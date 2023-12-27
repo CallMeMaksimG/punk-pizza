@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { selectCart } from '../../redux/slices/cartSlice';
  
 type TCartMobileBtnProps = {
-    handleClickCartIcon: any;
+    handleClickCartIcon: () => void;
 }
 
 const CartMobileBtn: React.FC<TCartMobileBtnProps> = ({ handleClickCartIcon }) => {

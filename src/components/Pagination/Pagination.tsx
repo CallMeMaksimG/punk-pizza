@@ -2,7 +2,7 @@ import ReactPaginate from 'react-paginate';
 
 type TPaginationProps = {
     currentPage: number;
-    onChangePage: any;
+    onChangePage: (page: number) => void;
 }
 
 const Pagination: React.FC<TPaginationProps> = ({ currentPage, onChangePage }) => {

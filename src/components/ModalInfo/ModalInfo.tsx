@@ -1,6 +1,6 @@
 type TModalInfoProps = {
     isModalInfoOpen: boolean;
-    setIsModalInfoOpen: any;
+    setIsModalInfoOpen: (value: boolean) => void;
 }
 
 const ModalInfo: React.FC<TModalInfoProps> = ({ isModalInfoOpen, setIsModalInfoOpen }) => {

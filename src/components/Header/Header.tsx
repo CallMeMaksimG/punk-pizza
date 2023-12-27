@@ -4,8 +4,8 @@ import Search from '../Search/Search';
 import { selectCart } from '../../redux/slices/cartSlice';
 
 type THeaderProps = {
-    handleClickInfoIcon: any;
-    handleClickCartIcon: any;
+    handleClickInfoIcon: () => void;
+    handleClickCartIcon: () => void;
 };
 
 const Header: React.FC<THeaderProps> = ({ handleClickInfoIcon, handleClickCartIcon }) => {

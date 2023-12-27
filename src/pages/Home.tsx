@@ -18,7 +18,7 @@ import {
 } from '../redux/slices/filterSlice';
 import { fetchItems, selectItemsData } from '../redux/slices/itemsSlice';
 
-function Home() {
+const Home: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const isSearch = useRef(false);
@@ -30,17 +30,18 @@ function Home() {
 
     const { items, status } = useSelector(selectItemsData);
 
-    const onChangePage = (page) => {
+    const onChangePage = (page: number) => {
         dispatch(setCurrentPage(page));
     };
 
-    const getItems = async (params) => {
+    const getItems = async () => {
         const order = sortMethod.sortProperty.includes('-') ? 'asc' : 'desc';
         const sortBy = sortMethod.sortProperty.replace('-', '');
         const category = categoryId > 0 ? `category=${categoryId}` : '';
         const search = searchValue ? `&search=${searchValue}` : '';
 
         dispatch(
+            // @ts-ignore
             fetchItems({
                 order,
                 sortBy,
@@ -115,7 +116,7 @@ function Home() {
                                     ? [...new Array(4)].map((_, index) => (
                                           <Skeleton key={index} />
                                       ))
-                                    : items.map((item) => (
+                                    : items.map((item:any) => (
                                           <Link
                                               key={item.id}
                                               to={`/item/${item.id}`}

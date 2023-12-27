@@ -16,7 +16,8 @@ export const sortMethodList: TSortList[] = [
     { name: 'По возрастанию цены', sortProperty: '-price' },
     { name: 'По убыванию цены', sortProperty: 'price' },
 ];
-function Sort() {
+
+const Sort: React.FC = () => {
     const dispatch = useDispatch();
     const sortMethod = useSelector(selectSortFilter);
     const [openFilterList, setOpenFilterList] = useState(false);
@@ -27,8 +28,10 @@ function Sort() {
     };
 
     useEffect(() => {
-        const handleClickOutside = (event: any) => {
-            if (!event.composedPath().includes(sortRef.current)) {
+        const handleClickOutside = (event: MouseEvent) => {
+            const current = sortRef.current;
+            const path = event.composedPath();
+            if(current && !path.includes(current)){
                 setOpenFilterList(false);
             }
         };

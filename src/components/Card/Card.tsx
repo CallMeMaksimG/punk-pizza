@@ -25,12 +25,12 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes }) =>
 
     const addedCount = cartItem ? cartItem.count : 0;
 
-    const onClickSize = (e: any, index: number) => {
+    const onClickSize = (e: React.MouseEvent<HTMLButtonElement>, index: number) => {
         e.preventDefault();
         setActiveSize(index);
     };
 
-    const onClickAdd = (e: any) => {
+    const onClickAdd = (e: React.MouseEvent<HTMLButtonElement | HTMLImageElement>) => {
         e.preventDefault();
         const item = {
             id,
