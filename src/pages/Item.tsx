@@ -18,9 +18,9 @@ const Item: React.FC = function() {
         img: string;
         title: string;
         description: string;
-        weight: [number];
-        price: [number];
-        sizes: [number];
+        weight: number[];
+        price: number[];
+        sizes: number[];
     }>();
 
     const { id } = useParams();
@@ -114,7 +114,7 @@ const Item: React.FC = function() {
                                 {item.price[activeSize]} &#8381;
                             </p>
                             {addedCount > 0 &&
-                            cartItem.size === sizeValues[activeSize] ? (
+                            cartItem?.size === sizeValues[activeSize] ? (
                                 <button className="item__add-btn--active">
                                     <img
                                         src="./../../img/icons/minus.svg"

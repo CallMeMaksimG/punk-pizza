@@ -39,6 +39,7 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes }) =>
             weight: weight[activeSize],
             price: price[activeSize],
             size: sizeValues[activeSize],
+            count: 0
         };
         dispatch(addItem(item));
     };
