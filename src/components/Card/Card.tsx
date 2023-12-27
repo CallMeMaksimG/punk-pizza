@@ -72,7 +72,7 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes }) =>
             </div>
             <div className="card__footer">
                 <div className="card__price">{price[activeSize]} &#8381;</div>
-                {addedCount > 0 && cartItem.size === sizeValues[activeSize] ? (
+                {addedCount > 0 && cartItem?.size === sizeValues[activeSize] ? (
                     <button className="card__btn--active">
                         <img src="./../../img/icons/minus.svg" alt="minus" />
                         {addedCount}
