@@ -5,9 +5,10 @@ import Header from '../components/Header/Header';
 import ModalInfo from '../components/ModalInfo/ModalInfo';
 import ClearCartModal from '../components/Modals/ClearCartModal';
 import { openCart, selectOpenCart } from '../redux/slices/cartSlice';
+import { useAppDispatch } from '../redux/store';
 
 const AppLeft = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
     const isCartOpen = useSelector(selectOpenCart);
 

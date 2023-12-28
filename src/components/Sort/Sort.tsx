@@ -1,24 +1,27 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch } from '../../redux/store';
 import {
     setSortMethod,
     selectSortFilter,
+    ISort,
+    SortPropertyEnum,
 } from '../../redux/slices/filterSlice';
 
 type TSortList = {
     name: string;
-    sortProperty: string;
+    sortProperty: ISort;
 };
 
-export const sortMethodList: TSortList[] = [
-    { name: 'По умолчанию', sortProperty: '' },
-    { name: 'По популярности', sortProperty: 'rating' },
-    { name: 'По возрастанию цены', sortProperty: '-price' },
-    { name: 'По убыванию цены', sortProperty: 'price' },
+export const sortMethodList: ISort[] = [
+    { name: 'По умолчанию', sortProperty: SortPropertyEnum.DEFAULT },
+    { name: 'По популярности', sortProperty: SortPropertyEnum.RATING },
+    { name: 'По возрастанию цены', sortProperty: SortPropertyEnum.PRICE_ASC },
+    { name: 'По убыванию цены', sortProperty: SortPropertyEnum.PRICE_DESC },
 ];
 
 const Sort: React.FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const sortMethod = useSelector(selectSortFilter);
     const [openFilterList, setOpenFilterList] = useState(false);
     const sortRef = useRef<HTMLDivElement>(null);

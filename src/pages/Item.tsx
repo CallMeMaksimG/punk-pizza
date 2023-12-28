@@ -4,15 +4,17 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch } from '../redux/store';
 import {
     addItem,
+    ICartItem,
     selectCartItemByIdAndSize,
 } from '../redux/slices/cartSlice';
 
 const sizeValues = [20, 30];
 
 const Item: React.FC = function() {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const [item, setItem] = useState<{
         id: string;
         img: string;
@@ -27,7 +29,7 @@ const Item: React.FC = function() {
     const navigate = useNavigate();
     const [activeSize, setActiveSize] = useState(0);
     const cartItem = useSelector(
-        selectCartItemByIdAndSize(id, sizeValues[activeSize])
+        selectCartItemByIdAndSize(id ?? '', sizeValues[activeSize])
     );
     const addedCount = cartItem ? cartItem.count : 0;
 
@@ -51,15 +53,21 @@ const Item: React.FC = function() {
     }, []);
 
     const onClickAdd = () => {
-        const itemData = {
-            id: item?.id,
-            img: item?.img,
-            title: item?.title,
-            weight: item?.weight[activeSize],
-            price: item?.price[activeSize],
-            size: item?.sizes[activeSize],
-        };
-        dispatch(addItem(itemData));
+        if(item) {
+            const itemData: ICartItem = {
+                id: item.id,
+                img: item.img,
+                title: item.title,
+                weight: item.weight[activeSize],
+                price: item.price[activeSize],
+                size: item.sizes[activeSize],
+                count: 0,
+                description: item.description
+            };
+            dispatch(addItem(itemData));
+        }
+        
+        
     };
 
     if (!item) {

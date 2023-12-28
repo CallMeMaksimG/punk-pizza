@@ -16,11 +16,12 @@ import {
     setFilters,
     selectSearchValue,
 } from '../redux/slices/filterSlice';
-import { fetchItems, selectItemsData } from '../redux/slices/itemsSlice';
+import { fetchItems, selectItemsData, TSearchItemParams } from '../redux/slices/itemsSlice';
+import { useAppDispatch } from '../redux/store';
 
 const Home: React.FC = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const isSearch = useRef(false);
     const isMounted = useRef(false);
     const categoryId = useSelector(selectCategoryFilter);
@@ -41,7 +42,6 @@ const Home: React.FC = () => {
         const search = searchValue ? `&search=${searchValue}` : '';
 
         dispatch(
-            // @ts-ignore
             fetchItems({
                 order,
                 sortBy,
@@ -66,14 +66,16 @@ const Home: React.FC = () => {
 
     useEffect(() => {
         if (window.location.search) {
-            const params = qs.parse(window.location.search.substring(1));
+            const params = (qs.parse(window.location.search.substring(1)) as unknown) as TSearchItemParams;
             const sort = sortMethodList.find(
-                (obj) => obj.sortProperty === params.sortMethod
+                (obj) => obj.sortProperty === params.sortBy
             );
             dispatch(
                 setFilters({
-                    ...params,
-                    sort,
+                    searchValue: params.search,
+                    categoryId: Number(params.category),
+                    currentPage: Number(params.currentPage),
+                    sort: sort || sortMethodList[0],
                 })
             );
             isSearch.current = true;

@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { openConfirmWindow, selectCart } from '../../redux/slices/cartSlice';
 import { openCart } from '../../redux/slices/cartSlice';
+import { useAppDispatch } from '../../redux/store';
 import CartItem from '../CartItem/CartItem';
 
 const Cart: React.FC = () => {
     const { items, totalPrice } = useSelector(selectCart);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const onClickClear = () => {
         dispatch(openConfirmWindow());

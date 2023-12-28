@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch } from '../../redux/store';
 import {
     addItem,
     selectCartItemByIdAndSize,
@@ -18,7 +19,7 @@ type TCardProps = {
 
 const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes }) => {
     const [activeSize, setActiveSize] = useState<number>(0);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const cartItem = useSelector(
         selectCartItemByIdAndSize(id, sizeValues[activeSize])
     );
@@ -38,8 +39,8 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes }) =>
             title,
             weight: weight[activeSize],
             price: price[activeSize],
-            size: sizeValues[activeSize],
-            count: 0
+            size: sizeValues[activeSize]
+
         };
         dispatch(addItem(item));
     };

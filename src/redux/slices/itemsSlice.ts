@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from '../store';
+import { ISort } from './filterSlice';
 
 interface IFetchItemsArgs {
     order: string;
@@ -8,9 +9,9 @@ interface IFetchItemsArgs {
     category: string;
     search: string;
     currentPage: number;
-}
+};
 
-interface IItem {
+export interface IItem {
     id: string;
     img: string;
     title: string;
@@ -18,12 +19,26 @@ interface IItem {
     weight: number[];
     price: number[];
     sizes: number[];
-}
+};
 
 interface IItemSliceState {
     items: IItem[];
-    status: 'loading' | 'success' | 'error';
-}
+    status: Status;
+};
+
+enum Status {
+    LOADING = 'loading',
+    SUCCESS = 'success',
+    ERROR = 'error',
+};
+
+export type TSearchItemParams = {
+    order: string;
+    sortBy: string;
+    category: string;
+    search: string; 
+    currentPage: string;
+};
 
 export const fetchItems = createAsyncThunk(
     'items/fetchItems',
@@ -38,7 +53,7 @@ export const fetchItems = createAsyncThunk(
 
 const initialState: IItemSliceState = {
     items: [],
-    status: 'loading',
+    status: Status.LOADING,
 };
 
 export const itemsSlice = createSlice({
@@ -51,15 +66,15 @@ export const itemsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchItems.pending, (state) => {
-            state.status = 'loading';
+            state.status = Status.LOADING;
             state.items = [];
         });
         builder.addCase(fetchItems.fulfilled, (state, action: PayloadAction<IItem[]>) => {
             state.items = action.payload;
-            state.status = 'success';
+            state.status = Status.SUCCESS;
         });
         builder.addCase(fetchItems.rejected, (state) => {
-            state.status = 'error';
+            state.status = Status.ERROR;
             state.items = [];
         });
     },
