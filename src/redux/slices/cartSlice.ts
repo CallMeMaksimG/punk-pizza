@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
-interface ICartItem {
+export interface ICartItem {
     id: string,
     img: string;
     title: string;
@@ -9,6 +9,7 @@ interface ICartItem {
     count: number;
     size: number;
     weight: number;
+    description: string;
 }
 
 interface ICartSliceState {

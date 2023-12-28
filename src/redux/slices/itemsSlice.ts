@@ -1,17 +1,14 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from '../store';
 
-export const fetchItems = createAsyncThunk(
-    'items/fetchItems',
-    async (params) => {
-        const { order, sortBy, category, search, currentPage } = params;
-        const res = await axios.get(
-            `https://657421eff941bda3f2af644e.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-        );
-        return res.data;
-    }
-);
+interface IFetchItemsArgs {
+    order: string;
+    sortBy: string;
+    category: string;
+    search: string;
+    currentPage: number;
+}
 
 interface IItem {
     id: string;
@@ -25,8 +22,19 @@ interface IItem {
 
 interface IItemSliceState {
     items: IItem[];
-    status: 'loading' | 'succes' | 'error';
+    status: 'loading' | 'success' | 'error';
 }
+
+export const fetchItems = createAsyncThunk(
+    'items/fetchItems',
+    async (params: IFetchItemsArgs) => {
+        const { order, sortBy, category, search, currentPage } = params;
+        const res = await axios.get(
+            `https://657421eff941bda3f2af644e.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
+        );
+        return res.data as IItem[];
+    }
+);
 
 const initialState: IItemSliceState = {
     items: [],
@@ -37,7 +45,7 @@ export const itemsSlice = createSlice({
     name: 'items',
     initialState: initialState,
     reducers: {
-        setItems: (state, action) => {
+        setItems: (state, action: PayloadAction<IItem[]>) => {
             state.items = action.payload;
         },
     },
@@ -46,9 +54,9 @@ export const itemsSlice = createSlice({
             state.status = 'loading';
             state.items = [];
         });
-        builder.addCase(fetchItems.fulfilled, (state, action) => {
+        builder.addCase(fetchItems.fulfilled, (state, action: PayloadAction<IItem[]>) => {
             state.items = action.payload;
-            state.status = 'succes';
+            state.status = 'success';
         });
         builder.addCase(fetchItems.rejected, (state) => {
             state.status = 'error';
