@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAppDispatch } from '../../redux/store';
 import {
     addItem,
+    ICartItem,
     selectCartItemByIdAndSize,
 } from '../../redux/slices/cartSlice';
 
@@ -42,7 +43,7 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes }) =>
             size: sizeValues[activeSize]
 
         };
-        dispatch(addItem(item));
+        dispatch(addItem(item as ICartItem));
     };
     return (
         <article className="card">

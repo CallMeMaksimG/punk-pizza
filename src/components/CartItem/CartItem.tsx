@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { addItem, minusItem, removeItem } from '../../redux/slices/cartSlice';
+import { addItem, ICartItem, minusItem, removeItem } from '../../redux/slices/cartSlice';
 import { useAppDispatch } from '../../redux/store';
 
 export type TCartItem = {
@@ -20,7 +20,7 @@ const CartItem: React.FC<TCartItem> = ({ id, img, title, price, count, size, wei
             addItem({
                 id,
                 size,
-            })
+            } as ICartItem)
         );
     };
 

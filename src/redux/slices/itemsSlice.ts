@@ -34,8 +34,8 @@ enum Status {
 
 export type TSearchItemParams = {
     order: string;
-    sortBy: string;
-    category: string;
+    sortMethod: string;
+    categoryId: string;
     search: string; 
     currentPage: string;
 };

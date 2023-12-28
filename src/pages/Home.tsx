@@ -67,13 +67,15 @@ const Home: React.FC = () => {
     useEffect(() => {
         if (window.location.search) {
             const params = (qs.parse(window.location.search.substring(1)) as unknown) as TSearchItemParams;
+            console.log(params)
             const sort = sortMethodList.find(
-                (obj) => obj.sortProperty === params.sortBy
+                (obj) => obj.sortProperty === params.sortMethod
             );
+            console.log(sort)
             dispatch(
                 setFilters({
                     searchValue: params.search,
-                    categoryId: Number(params.category),
+                    categoryId: Number(params.categoryId),
                     currentPage: Number(params.currentPage),
                     sort: sort || sortMethodList[0],
                 })
