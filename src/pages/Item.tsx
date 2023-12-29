@@ -140,18 +140,21 @@ const Item: React.FC = function() {
                             </p>
                             {addedCount > 0 &&
                             cartItem?.size === sizeValues[activeSize] ? (
-                                <button className="item__add-btn--active">
-                                    <img onClick={onClickMinus}
-                                        src="./../../img/icons/minus.svg"
-                                        alt="minus"
-                                    />
+                                <div className="item__add-btn--active">
+                                    <button onClick={onClickMinus}>
+                                        <img 
+                                            src="./../../img/icons/minus.svg"
+                                            alt="minus"
+                                        />
+                                    </button>
                                     {addedCount}
-                                    <img
-                                        onClick={onClickAdd}
-                                        src="./../../img/icons/plus.svg"
-                                        alt="add to cart"
-                                    />
-                                </button>
+                                    <button onClick={onClickAdd}>
+                                        <img
+                                            src="./../../img/icons/plus.svg"
+                                            alt="add to cart"
+                                        />
+                                    </button>
+                                </div>
                             ) : (
                                 <button className="item__add-btn" onClick={onClickAdd}>
                                     <img

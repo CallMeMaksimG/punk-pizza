@@ -99,15 +99,18 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes}) => 
             <div className="card__footer">
                 <div className="card__price">{price[activeSize]} &#8381;</div>
                 {addedCount > 0 && cartItem?.size === sizeValues[activeSize] ? (
-                    <button className="card__btn--active">
-                        <img onClick={onClickMinus} src="./../../img/icons/minus.svg" alt="minus" />
+                    <div className="card__btn--active">
+                        <button onClick={onClickMinus}>
+                            <img src="./../../img/icons/minus.svg" alt="minus" />
+                        </button>
                         {addedCount}
-                        <img
-                            onClick={onClickAdd}
-                            src="./../../img/icons/plus.svg"
-                            alt="add to cart"
-                        />
-                    </button>
+                        <button onClick={onClickAdd}>
+                            <img
+                                src="./../../img/icons/plus.svg"
+                                alt="add to cart"
+                            />
+                        </button>
+                    </div>
                 ) : (
                     <button onClick={onClickAdd} className="card__btn">
                         <img
