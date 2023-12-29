@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../redux/store';
 import {
     addItem,
     ICartItem,
+    minusItem,
+    removeItem,
     selectCartItemByIdAndSize,
 } from '../../redux/slices/cartSlice';
 
@@ -13,12 +15,13 @@ type TCardProps = {
     id: string;
     img: string;
     title: string;
+    count: number;
     weight: number[];
     price: number[];
     sizes: number[];
 }
 
-const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes }) => {
+const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes}) => {
     const [activeSize, setActiveSize] = useState<number>(0);
     const dispatch = useAppDispatch();
     const cartItem = useSelector(
@@ -45,6 +48,26 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes }) =>
         };
         dispatch(addItem(item as ICartItem));
     };
+
+   const onClickMinus = (e: React.MouseEvent<HTMLButtonElement | HTMLImageElement>) => {
+    e.preventDefault();
+    const count = cartItem?.count;
+    const id = cartItem?.id
+    const size = cartItem?.size
+    const price = cartItem?.price
+
+    if(count && count > 1) {
+        dispatch(minusItem({
+            id,
+            size,
+            price,
+        } as ICartItem))
+    } else {
+        dispatch(removeItem({id, size, price} as ICartItem));
+    }
+   }
+
+
     return (
         <article className="card">
             <div className="card__photo">
@@ -77,7 +100,7 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes }) =>
                 <div className="card__price">{price[activeSize]} &#8381;</div>
                 {addedCount > 0 && cartItem?.size === sizeValues[activeSize] ? (
                     <button className="card__btn--active">
-                        <img src="./../../img/icons/minus.svg" alt="minus" />
+                        <img onClick={onClickMinus} src="./../../img/icons/minus.svg" alt="minus" />
                         {addedCount}
                         <img
                             onClick={onClickAdd}

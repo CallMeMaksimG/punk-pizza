@@ -31,7 +31,7 @@ const CartItem: React.FC<TCartItem> = ({ id, img, title, price, count, size, wei
                     id,
                     size,
                     price,
-                })
+                } as ICartItem)
             );
         } else {
             dispatch(removeItem({id, size, price}));

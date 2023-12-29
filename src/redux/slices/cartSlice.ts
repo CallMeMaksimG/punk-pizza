@@ -46,7 +46,7 @@ export const cartSlice = createSlice({
                 0
             );
         },
-        minusItem: (state, action: PayloadAction<{id: string; size: number; price: number}>) => {
+        minusItem: (state, action: PayloadAction<ICartItem>) => {
             const findItem = state.items.find(
                 (obj) =>
                     obj.id === action.payload.id &&
