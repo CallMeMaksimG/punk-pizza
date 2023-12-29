@@ -8,6 +8,8 @@ import { useAppDispatch } from '../redux/store';
 import {
     addItem,
     ICartItem,
+    minusItem,
+    removeItem,
     selectCartItemByIdAndSize,
 } from '../redux/slices/cartSlice';
 
@@ -66,8 +68,23 @@ const Item: React.FC = function() {
             };
             dispatch(addItem(itemData));
         }
-        
-        
+    };
+
+    const onClickMinus = () => {
+        const count = cartItem?.count;
+        const id = cartItem?.id
+        const size = cartItem?.size
+        const price = cartItem?.price
+
+        if(count && count > 1) {
+            dispatch(minusItem({
+                id,
+                size,
+                price,
+            } as ICartItem))
+        } else {
+            dispatch(removeItem({id, size, price} as ICartItem));
+        }
     };
 
     if (!item) {
@@ -124,7 +141,7 @@ const Item: React.FC = function() {
                             {addedCount > 0 &&
                             cartItem?.size === sizeValues[activeSize] ? (
                                 <button className="item__add-btn--active">
-                                    <img
+                                    <img onClick={onClickMinus}
                                         src="./../../img/icons/minus.svg"
                                         alt="minus"
                                     />
