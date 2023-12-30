@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { calcTotalPrice } from '../../utils/calcTotalPrice';
+import { getCartFromLocalStorage } from '../../utils/getCartFromLocalStorage';
 import { RootState } from '../store';
 
 export interface ICartItem {
-    id: string,
+    id: string;
     img: string;
     title: string;
     price: number;
@@ -19,9 +21,11 @@ interface ICartSliceState {
     isOpenConfirmWindow: boolean;
 }
 
+const { items, totalPrice } = getCartFromLocalStorage();
+
 const initialState: ICartSliceState = {
-    totalPrice: 0,
-    items: [],
+    totalPrice,
+    items,
     isOpen: false,
     isOpenConfirmWindow: false,
 };
@@ -41,10 +45,7 @@ export const cartSlice = createSlice({
             } else {
                 state.items.push({ ...action.payload, count: 1 });
             }
-            state.totalPrice = state.items.reduce(
-                (sum, obj) => sum + obj.price * obj.count,
-                0
-            );
+            state.totalPrice = calcTotalPrice(state.items);
         },
         minusItem: (state, action: PayloadAction<ICartItem>) => {
             const findItem = state.items.find(
@@ -57,7 +58,10 @@ export const cartSlice = createSlice({
                 state.totalPrice -= action.payload.price;
             }
         },
-        removeItem: (state, action: PayloadAction<{id: string; size: number; price: number}>) => {
+        removeItem: (
+            state,
+            action: PayloadAction<{ id: string; size: number; price: number }>
+        ) => {
             state.items = state.items.filter(
                 (obj) =>
                     obj.id !== action.payload.id ||
@@ -79,8 +83,9 @@ export const cartSlice = createSlice({
 });
 
 export const selectCart = (state: RootState) => state.cart;
-export const selectCartItemByIdAndSize = (id: string, size: number) => (state: RootState) =>
-    state.cart.items.find((obj) => obj.id === id && obj.size === size);
+export const selectCartItemByIdAndSize =
+    (id: string, size: number) => (state: RootState) =>
+        state.cart.items.find((obj) => obj.id === id && obj.size === size);
 export const selectOpenCart = (state: RootState) => state.cart.isOpen;
 export const selectOpenConfirmWindow = (state: RootState) =>
     state.cart.isOpenConfirmWindow;

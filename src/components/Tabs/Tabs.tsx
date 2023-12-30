@@ -1,5 +1,8 @@
 import { useSelector } from 'react-redux';
-import { setCategoryFilter, selectCategoryFilter } from '../../redux/slices/filterSlice';
+import {
+    setCategoryFilter,
+    selectCategoryFilter,
+} from '../../redux/slices/filterSlice';
 import { useAppDispatch } from '../../redux/store';
 import { useCallback } from 'react';
 
@@ -16,7 +19,7 @@ const Tabs: React.FC = () => {
     const onClickCategory = useCallback((index: number) => {
         dispatch(setCategoryFilter(index));
     }, []);
-    
+
     const categoryId = useSelector(selectCategoryFilter);
 
     return (
@@ -40,6 +43,6 @@ const Tabs: React.FC = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Tabs;

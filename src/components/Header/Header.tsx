@@ -2,22 +2,32 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Search from '../Search/Search';
 import { selectCart } from '../../redux/slices/cartSlice';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 type THeaderProps = {
     handleClickInfoIcon: () => void;
     handleClickCartIcon: () => void;
 };
 
-const Header: React.FC<THeaderProps> = ({ handleClickInfoIcon, handleClickCartIcon }) => {
+const Header: React.FC<THeaderProps> = ({
+    handleClickInfoIcon,
+    handleClickCartIcon,
+}) => {
     const { items, totalPrice } = useSelector(selectCart);
-    const totalCount = items.reduce((sum:number, item:any) => sum + item.count, 0);
+    const totalCount = items.reduce(
+        (sum: number, item: any) => sum + item.count,
+        0
+    );
     const location = useLocation();
+    const isMounted = useRef(false);
 
     useEffect(() => {
-        const json = JSON.stringify(items);
-        localStorage.setItem('cart', json);
-    }, [items])
+        if (isMounted.current) {
+            const json = JSON.stringify(items);
+            localStorage.setItem('cart', json);
+        }
+        isMounted.current = true;
+    }, [items]);
 
     return (
         <header className="header">
@@ -62,6 +72,6 @@ const Header: React.FC<THeaderProps> = ({ handleClickInfoIcon, handleClickCartIc
             </div>
         </header>
     );
-}
+};
 
 export default Header;
