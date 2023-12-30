@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Search from '../Search/Search';
 import { selectCart } from '../../redux/slices/cartSlice';
+import { useEffect } from 'react';
 
 type THeaderProps = {
     handleClickInfoIcon: () => void;
@@ -12,6 +13,11 @@ const Header: React.FC<THeaderProps> = ({ handleClickInfoIcon, handleClickCartIc
     const { items, totalPrice } = useSelector(selectCart);
     const totalCount = items.reduce((sum:number, item:any) => sum + item.count, 0);
     const location = useLocation();
+
+    useEffect(() => {
+        const json = JSON.stringify(items);
+        localStorage.setItem('cart', json);
+    }, [items])
 
     return (
         <header className="header">

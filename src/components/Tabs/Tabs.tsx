@@ -1,8 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { setCategoryFilter, selectCategoryFilter } from '../../redux/slices/filterSlice';
 import { useAppDispatch } from '../../redux/store';
+import { useCallback } from 'react';
 
-function Tabs() {
+const Tabs: React.FC = () => {
     const categories = [
         'Все',
         'Пицца "Старый свет"',
@@ -10,11 +11,12 @@ function Tabs() {
         'Вегетарианская',
         'Напитки',
     ];
-
-    const onClickCategory = (index: number) => {
-        dispatch(setCategoryFilter(index));
-    };
     const dispatch = useAppDispatch();
+
+    const onClickCategory = useCallback((index: number) => {
+        dispatch(setCategoryFilter(index));
+    }, []);
+    
     const categoryId = useSelector(selectCategoryFilter);
 
     return (
