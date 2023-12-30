@@ -8,10 +8,12 @@ import Sort, { sortMethodList } from '../components/Sort/Sort';
 import Skeleton from '../components/Card/Skeleton';
 import Card from '../components/Card/Card';
 import Pagination from '../components/Pagination/Pagination';
-import { fetchItems, selectItemsData, TSearchItemParams } from '../redux/slices/itemsSlice';
 import { useAppDispatch } from '../redux/store';
 import { selectCategoryFilter, selectSortFilter, selectCurrentPage, selectSearchValue } from '../redux/slices/filter/selectors';
 import { setCurrentPage, setFilters } from '../redux/slices/filter/slice';
+import { selectItemsData } from '../redux/slices/items/selectors';
+import { fetchItems } from '../redux/slices/items/slice';
+import { TSearchItemParams } from '../redux/slices/items/types';
 
 const Home: React.FC = () => {
     const navigate = useNavigate();
