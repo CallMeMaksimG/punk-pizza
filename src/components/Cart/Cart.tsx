@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { selectCart } from '../../redux/slices/cart/selectors';
-import { openConfirmWindow } from '../../redux/slices/cart/slice';
+import { selectCart, selectOpenCart } from '../../redux/slices/cart/selectors';
+import { openCart, openConfirmWindow } from '../../redux/slices/cart/slice';
 import { useAppDispatch } from '../../redux/store';
 import CartItem from '../CartItem/CartItem';
 
@@ -12,8 +12,8 @@ const Cart: React.FC = () => {
         dispatch(openConfirmWindow());
     };
 
-    function openCart(): any {
-        throw new Error('Function not implemented.');
+    function closeCart() {
+        dispatch(openCart())
     }
 
     return (
@@ -31,7 +31,7 @@ const Cart: React.FC = () => {
                     )}
 
                     <button
-                        onClick={() => dispatch(openCart())}
+                        onClick={closeCart}
                         className="cart-pop-up__close-btn"
                     >
                         <img src="./../../img/icons/close.svg" alt="close" />
