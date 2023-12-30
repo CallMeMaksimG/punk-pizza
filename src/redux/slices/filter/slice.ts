@@ -1,25 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../store';
-
-export enum SortPropertyEnum {
-    RATING =  'rating',
-    PRICE_DESC = 'price',
-    PRICE_ASC = '-price',
-    DEFAULT = '',
-}
-
-export interface ISort {
-    name: string;
-    sortProperty: SortPropertyEnum;
-};
-
-
-interface IFilterSliceState {
-    searchValue: string;
-    categoryId: number;
-    currentPage: number;
-    sort: ISort;
-}
+import { IFilterSliceState, ISort, SortPropertyEnum } from './types';
 
 const initialState: IFilterSliceState = {
     searchValue: '',
@@ -63,9 +43,5 @@ export const {
     setSearchValue,
 } = filterSlice.actions;
 
-export const selectCategoryFilter = (state: RootState) => state.filter.categoryId;
-export const selectSortFilter = (state: RootState) => state.filter.sort;
-export const selectCurrentPage = (state: RootState) => state.filter.currentPage;
-export const selectSearchValue = (state: RootState) => state.filter.searchValue;
 
 export default filterSlice.reducer;

@@ -3,21 +3,15 @@ import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectCategoryFilter } from '../redux/slices/filterSlice';
 import Tabs from '../components/Tabs/Tabs';
 import Sort, { sortMethodList } from '../components/Sort/Sort';
 import Skeleton from '../components/Card/Skeleton';
 import Card from '../components/Card/Card';
 import Pagination from '../components/Pagination/Pagination';
-import {
-    setCurrentPage,
-    selectSortFilter,
-    selectCurrentPage,
-    setFilters,
-    selectSearchValue,
-} from '../redux/slices/filterSlice';
 import { fetchItems, selectItemsData, TSearchItemParams } from '../redux/slices/itemsSlice';
 import { useAppDispatch } from '../redux/store';
+import { selectCategoryFilter, selectSortFilter, selectCurrentPage, selectSearchValue } from '../redux/slices/filter/selectors';
+import { setCurrentPage, setFilters } from '../redux/slices/filter/slice';
 
 const Home: React.FC = () => {
     const navigate = useNavigate();

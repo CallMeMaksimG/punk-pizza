@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { selectSortFilter } from '../../redux/slices/filter/selectors';
+import { setSortMethod } from '../../redux/slices/filter/slice';
+import { ISort, SortPropertyEnum } from '../../redux/slices/filter/types';
 import { useAppDispatch } from '../../redux/store';
-import {
-    setSortMethod,
-    selectSortFilter,
-    ISort,
-    SortPropertyEnum,
-} from '../../redux/slices/filterSlice';
 
 export const sortMethodList: ISort[] = [
     { name: 'По умолчанию', sortProperty: SortPropertyEnum.DEFAULT },

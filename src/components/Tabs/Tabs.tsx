@@ -1,10 +1,8 @@
 import { useSelector } from 'react-redux';
-import {
-    setCategoryFilter,
-    selectCategoryFilter,
-} from '../../redux/slices/filterSlice';
 import { useAppDispatch } from '../../redux/store';
 import { useCallback } from 'react';
+import { selectCategoryFilter } from '../../redux/slices/filter/selectors';
+import { setCategoryFilter } from '../../redux/slices/filter/slice';
 
 const Tabs: React.FC = () => {
     const categories = [
