@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { selectCartItemByIdAndSize } from '../../redux/slices/cart/selectors';
+import { addItem, minusItem, removeItem } from '../../redux/slices/cart/slice';
+import { ICartItem } from '../../redux/slices/cart/types';
 import { useAppDispatch } from '../../redux/store';
-import {
-    addItem,
-    ICartItem,
-    minusItem,
-    removeItem,
-    selectCartItemByIdAndSize,
-} from '../../redux/slices/cartSlice';
 
 const sizeValues = [20, 30];
 

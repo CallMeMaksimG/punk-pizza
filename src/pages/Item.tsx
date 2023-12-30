@@ -3,15 +3,11 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../redux/store';
-import {
-    addItem,
-    ICartItem,
-    minusItem,
-    removeItem,
-    selectCartItemByIdAndSize,
-} from '../redux/slices/cartSlice';
+import { selectCartItemByIdAndSize } from '../redux/slices/cart/selectors';
+import { ICartItem } from '../redux/slices/cart/types';
+import { addItem, minusItem, removeItem } from '../redux/slices/cart/slice';
 
 const sizeValues = [20, 30];
 

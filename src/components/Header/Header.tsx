@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Search from '../Search/Search';
-import { selectCart } from '../../redux/slices/cartSlice';
 import { useEffect, useRef } from 'react';
+import { selectCart } from '../../redux/slices/cart/selectors';
 
 type THeaderProps = {
     handleClickInfoIcon: () => void;

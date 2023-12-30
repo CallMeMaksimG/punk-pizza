@@ -1,7 +1,7 @@
 import qs from 'qs';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectCategoryFilter } from '../redux/slices/filterSlice';
 import Tabs from '../components/Tabs/Tabs';

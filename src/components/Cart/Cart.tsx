@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { openConfirmWindow, selectCart } from '../../redux/slices/cartSlice';
-import { openCart } from '../../redux/slices/cartSlice';
+import { useSelector } from 'react-redux';
+import { selectCart } from '../../redux/slices/cart/selectors';
+import { openConfirmWindow } from '../../redux/slices/cart/slice';
 import { useAppDispatch } from '../../redux/store';
 import CartItem from '../CartItem/CartItem';
 
@@ -11,6 +11,10 @@ const Cart: React.FC = () => {
     const onClickClear = () => {
         dispatch(openConfirmWindow());
     };
+
+    function openCart(): any {
+        throw new Error('Function not implemented.');
+    }
 
     return (
         <>

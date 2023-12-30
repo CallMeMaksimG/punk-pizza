@@ -1,25 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { calcTotalPrice } from '../../utils/calcTotalPrice';
-import { getCartFromLocalStorage } from '../../utils/getCartFromLocalStorage';
-import { RootState } from '../store';
-
-export interface ICartItem {
-    id: string;
-    img: string;
-    title: string;
-    price: number;
-    count: number;
-    size: number;
-    weight: number;
-    description: string;
-}
-
-interface ICartSliceState {
-    totalPrice: number;
-    items: ICartItem[];
-    isOpen: boolean;
-    isOpenConfirmWindow: boolean;
-}
+import { calcTotalPrice } from '../../../utils/calcTotalPrice';
+import { getCartFromLocalStorage } from '../../../utils/getCartFromLocalStorage';
+import { ICartItem, ICartSliceState } from './types';
 
 const { items, totalPrice } = getCartFromLocalStorage();
 
@@ -81,14 +63,6 @@ export const cartSlice = createSlice({
         },
     },
 });
-
-export const selectCart = (state: RootState) => state.cart;
-export const selectCartItemByIdAndSize =
-    (id: string, size: number) => (state: RootState) =>
-        state.cart.items.find((obj) => obj.id === id && obj.size === size);
-export const selectOpenCart = (state: RootState) => state.cart.isOpen;
-export const selectOpenConfirmWindow = (state: RootState) =>
-    state.cart.isOpenConfirmWindow;
 
 export const {
     addItem,

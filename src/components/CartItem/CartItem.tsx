@@ -1,5 +1,5 @@
-import { useDispatch } from 'react-redux';
-import { addItem, ICartItem, minusItem, removeItem } from '../../redux/slices/cartSlice';
+import { addItem, minusItem, removeItem } from '../../redux/slices/cart/slice';
+import { ICartItem } from '../../redux/slices/cart/types';
 import { useAppDispatch } from '../../redux/store';
 
 export type TCartItem = {
