@@ -1,16 +1,34 @@
 import { Route, Routes } from 'react-router-dom';
+import { Suspense } from 'react';
 import Home from './pages/Home';
-import NotFound from './pages/NotFound';
-import Item from './pages/Item';
 import MainLayout from './layouts/MainLayout';
+import Loader from './components/Loader/Loader';
+import React from 'react';
+
+const Item = React.lazy(() => import('./pages/Item'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 function App() {
     return (
         <Routes>
-            <Route path='/' element={<MainLayout />}>
-                 <Route path='' element={<Home />}/>
-                 <Route path="/item/:id" element={<Item />} />
-                 <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<MainLayout />}>
+                <Route path="" element={<Home />} />
+                <Route
+                    path="/item/:id"
+                    element={
+                        <Suspense fallback={<Loader />}>
+                            <Item />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="*"
+                    element={
+                        <Suspense fallback={<Loader />}>
+                            <NotFound />
+                        </Suspense>
+                    }
+                />
             </Route>
         </Routes>
     );
