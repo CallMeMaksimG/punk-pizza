@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/Header/Header';
+import ModalDelivery from '../components/ModalDelivery/ModalDelivery';
 import ModalInfo from '../components/ModalInfo/ModalInfo';
 import ClearCartModal from '../components/Modals/ClearCartModal';
 import { selectOpenCart } from '../redux/cart/selectors';
@@ -27,6 +28,7 @@ const AppLeft = () => {
                 isModalInfoOpen={isModalInfoOpen}
                 setIsModalInfoOpen={setIsModalInfoOpen}
             />
+            <ModalDelivery />
             <Header
                 handleClickInfoIcon={handleClickInfoIcon}
                 handleClickCartIcon={handleClickCartIcon}
