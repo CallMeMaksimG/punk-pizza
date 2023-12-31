@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectOpenCart } from '../redux/slices/cart/selectors';
+import { selectOpenCart } from '../redux/cart/selectors';
 import AppLeft from './AppLeft';
 import AppRigth from './AppRight';
 

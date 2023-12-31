@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectCart } from '../../redux/slices/cart/selectors';
+import { selectCart } from '../../redux/cart/selectors';
 
 type TCartMobileBtnProps = {
     handleClickCartIcon: () => void;

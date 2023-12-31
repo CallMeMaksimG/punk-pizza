@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectOpenConfirmWindow } from '../../redux/slices/cart/selectors';
-import { clearItems, openConfirmWindow } from '../../redux/slices/cart/slice';
+import { selectOpenConfirmWindow } from '../../redux/cart/selectors';
+import { clearItems, openConfirmWindow } from '../../redux/cart/slice';
 import { useAppDispatch } from '../../redux/store';
 
 const ClearCartModal: React.FC = function () {

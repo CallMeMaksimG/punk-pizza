@@ -1,5 +1,5 @@
-import { addItem, minusItem, removeItem } from '../../redux/slices/cart/slice';
-import { ICartItem } from '../../redux/slices/cart/types';
+import { addItem, minusItem, removeItem } from '../../redux/cart/slice';
+import { ICartItem } from '../../redux/cart/types';
 import { useAppDispatch } from '../../redux/store';
 
 export type TCartItem = {

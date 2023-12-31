@@ -4,8 +4,8 @@ import { Outlet } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import ModalInfo from '../components/ModalInfo/ModalInfo';
 import ClearCartModal from '../components/Modals/ClearCartModal';
-import { selectOpenCart } from '../redux/slices/cart/selectors';
-import { openCart } from '../redux/slices/cart/slice';
+import { selectOpenCart } from '../redux/cart/selectors';
+import { openCart } from '../redux/cart/slice';
 import { useAppDispatch } from '../redux/store';
 
 const AppLeft = () => {

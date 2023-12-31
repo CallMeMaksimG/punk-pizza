@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { selectCart, selectOpenCart } from '../../redux/slices/cart/selectors';
-import { openCart, openConfirmWindow } from '../../redux/slices/cart/slice';
+import { selectCart } from '../../redux/cart/selectors';
+import { openCart, openConfirmWindow } from '../../redux/cart/slice';
 import { useAppDispatch } from '../../redux/store';
 import CartItem from '../CartItem/CartItem';
 

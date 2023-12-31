@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import Cart from '../components/Cart/Cart';
 import CartMobileBtn from '../components/CartMobileBtn/CartMobileBtn';
-import { selectOpenCart } from '../redux/slices/cart/selectors';
-import { openCart } from '../redux/slices/cart/slice';
+import { selectOpenCart } from '../redux/cart/selectors';
+import { openCart } from '../redux/cart/slice';
 import { useAppDispatch } from '../redux/store';
 
 const AppRigth: React.FC = () => {

@@ -1,4 +1,4 @@
-import { RootState } from "../../store";
+import { RootState } from "../store";
 
 export const selectCategoryFilter = (state: RootState) => state.filter.categoryId;
 export const selectSortFilter = (state: RootState) => state.filter.sort;

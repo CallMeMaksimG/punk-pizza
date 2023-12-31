@@ -1,4 +1,4 @@
-import { ICartItem } from '../redux/slices/cart/types';
+import { ICartItem } from '../redux/cart/types';
 import { calcTotalPrice } from './calcTotalPrice';
 
 export const getCartFromLocalStorage = () => {

@@ -5,9 +5,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../redux/store';
-import { selectCartItemByIdAndSize } from '../redux/slices/cart/selectors';
-import { ICartItem } from '../redux/slices/cart/types';
-import { addItem, minusItem, removeItem } from '../redux/slices/cart/slice';
+import { selectCartItemByIdAndSize } from '../redux/cart/selectors';
+import { ICartItem } from '../redux/cart/types';
+import { addItem, minusItem, removeItem } from '../redux/cart/slice';
+import Loader from '../components/Loader/Loader';
 
 const sizeValues = [20, 30];
 
@@ -84,7 +85,7 @@ const Item: React.FC = function() {
     };
 
     if (!item) {
-        return <>Загрузка...</>;
+        return <Loader />;
     }
     return (
         <div className="item">

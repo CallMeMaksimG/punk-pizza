@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Search from '../Search/Search';
 import { useEffect, useRef } from 'react';
-import { selectCart } from '../../redux/slices/cart/selectors';
+import { selectCart } from '../../redux/cart/selectors';
 
 type THeaderProps = {
     handleClickInfoIcon: () => void;

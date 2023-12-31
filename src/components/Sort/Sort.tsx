@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectSortFilter } from '../../redux/slices/filter/selectors';
-import { setSortMethod } from '../../redux/slices/filter/slice';
-import { ISort, SortPropertyEnum } from '../../redux/slices/filter/types';
+import { selectSortFilter } from '../../redux/filter/selectors';
+import { setSortMethod } from '../../redux/filter/slice';
+import { ISort, SortPropertyEnum } from '../../redux/filter/types';
 import { useAppDispatch } from '../../redux/store';
 
 export const sortMethodList: ISort[] = [

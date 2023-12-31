@@ -9,11 +9,11 @@ import Skeleton from '../components/Card/Skeleton';
 import Card from '../components/Card/Card';
 import Pagination from '../components/Pagination/Pagination';
 import { useAppDispatch } from '../redux/store';
-import { selectCategoryFilter, selectSortFilter, selectCurrentPage, selectSearchValue } from '../redux/slices/filter/selectors';
-import { setCurrentPage, setFilters } from '../redux/slices/filter/slice';
-import { selectItemsData } from '../redux/slices/items/selectors';
-import { fetchItems } from '../redux/slices/items/slice';
-import { TSearchItemParams } from '../redux/slices/items/types';
+import { selectCategoryFilter, selectSortFilter, selectCurrentPage, selectSearchValue } from '../redux/filter/selectors';
+import { setCurrentPage, setFilters } from '../redux/filter/slice';
+import { selectItemsData } from '../redux/items/selectors';
+import { fetchItems } from '../redux/items/slice';
+import { TSearchItemParams } from '../redux/items/types';
 
 const Home: React.FC = () => {
     const navigate = useNavigate();
