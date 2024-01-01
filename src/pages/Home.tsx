@@ -3,13 +3,18 @@ import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Tabs from '../components/Tabs/Tabs';
+import Tabs, { categories } from '../components/Tabs/Tabs';
 import Sort, { sortMethodList } from '../components/Sort/Sort';
 import Skeleton from '../components/Card/Skeleton';
 import Card from '../components/Card/Card';
 import Pagination from '../components/Pagination/Pagination';
 import { useAppDispatch } from '../redux/store';
-import { selectCategoryFilter, selectSortFilter, selectCurrentPage, selectSearchValue } from '../redux/filter/selectors';
+import {
+    selectCategoryFilter,
+    selectSortFilter,
+    selectCurrentPage,
+    selectSearchValue,
+} from '../redux/filter/selectors';
 import { setCurrentPage, setFilters } from '../redux/filter/slice';
 import { selectItemsData } from '../redux/items/selectors';
 import { fetchItems } from '../redux/items/slice';
@@ -62,7 +67,9 @@ const Home: React.FC = () => {
 
     useEffect(() => {
         if (window.location.search) {
-            const params = (qs.parse(window.location.search.substring(1)) as unknown) as TSearchItemParams;
+            const params = qs.parse(
+                window.location.search.substring(1)
+            ) as unknown as TSearchItemParams;
             const sort = sortMethodList.find(
                 (obj) => obj.sortProperty === params.sortMethod
             );
@@ -97,7 +104,9 @@ const Home: React.FC = () => {
                         <Sort />
                     </section>
                     <section className="cards-wrapper">
-                        <h1 className="cards__title">все</h1>
+                        <h1 className="cards__title">
+                            {categories[categoryId]}
+                        </h1>
                         {status === 'error' ? (
                             <div className="cards__error">
                                 <h2 className="cards__error-title">
@@ -114,7 +123,7 @@ const Home: React.FC = () => {
                                     ? [...new Array(4)].map((_, index) => (
                                           <Skeleton key={index} />
                                       ))
-                                    : items.map((item:any) => (
+                                    : items.map((item: any) => (
                                           <Link
                                               key={item.id}
                                               to={`/item/${item.id}`}
@@ -133,6 +142,6 @@ const Home: React.FC = () => {
             </div>
         </main>
     );
-}
+};
 
 export default Home;

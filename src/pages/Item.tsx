@@ -12,7 +12,7 @@ import Loader from '../components/Loader/Loader';
 
 const sizeValues = [20, 30];
 
-const Item: React.FC = function() {
+const Item: React.FC = function () {
     const dispatch = useAppDispatch();
     const [item, setItem] = useState<{
         id: string;
@@ -52,7 +52,7 @@ const Item: React.FC = function() {
     }, []);
 
     const onClickAdd = () => {
-        if(item) {
+        if (item) {
             const itemData: ICartItem = {
                 id: item.id,
                 img: item.img,
@@ -61,7 +61,7 @@ const Item: React.FC = function() {
                 price: item.price[activeSize],
                 size: item.sizes[activeSize],
                 count: 0,
-                description: item.description
+                description: item.description,
             };
             dispatch(addItem(itemData));
         }
@@ -69,18 +69,20 @@ const Item: React.FC = function() {
 
     const onClickMinus = () => {
         const count = cartItem?.count;
-        const id = cartItem?.id
-        const size = cartItem?.size
-        const price = cartItem?.price
+        const id = cartItem?.id;
+        const size = cartItem?.size;
+        const price = cartItem?.price;
 
-        if(count && count > 1) {
-            dispatch(minusItem({
-                id,
-                size,
-                price,
-            } as ICartItem))
+        if (count && count > 1) {
+            dispatch(
+                minusItem({
+                    id,
+                    size,
+                    price,
+                } as ICartItem)
+            );
         } else {
-            dispatch(removeItem({id, size, price} as ICartItem));
+            dispatch(removeItem({ id, size, price } as ICartItem));
         }
     };
 
@@ -139,7 +141,7 @@ const Item: React.FC = function() {
                             cartItem?.size === sizeValues[activeSize] ? (
                                 <div className="item__add-btn--active">
                                     <button onClick={onClickMinus}>
-                                        <img 
+                                        <img
                                             src="./../../img/icons/minus.svg"
                                             alt="minus"
                                         />
@@ -153,7 +155,10 @@ const Item: React.FC = function() {
                                     </button>
                                 </div>
                             ) : (
-                                <button className="item__add-btn" onClick={onClickAdd}>
+                                <button
+                                    className="item__add-btn"
+                                    onClick={onClickAdd}
+                                >
                                     <img
                                         src="./../../img/icons/plus.svg"
                                         alt="add to cart"
@@ -166,6 +171,6 @@ const Item: React.FC = function() {
             </div>
         </div>
     );
-}
+};
 
 export default Item;

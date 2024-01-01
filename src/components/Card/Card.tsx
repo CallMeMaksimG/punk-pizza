@@ -15,9 +15,16 @@ type TCardProps = {
     weight: number[];
     price: number[];
     sizes: number[];
-}
+};
 
-const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes}) => {
+const Card: React.FC<TCardProps> = ({
+    id,
+    img,
+    title,
+    weight,
+    price,
+    sizes,
+}) => {
     const [activeSize, setActiveSize] = useState<number>(0);
     const dispatch = useAppDispatch();
     const cartItem = useSelector(
@@ -26,12 +33,17 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes}) => 
 
     const addedCount = cartItem ? cartItem.count : 0;
 
-    const onClickSize = (e: React.MouseEvent<HTMLButtonElement>, index: number) => {
+    const onClickSize = (
+        e: React.MouseEvent<HTMLButtonElement>,
+        index: number
+    ) => {
         e.preventDefault();
         setActiveSize(index);
     };
 
-    const onClickAdd = (e: React.MouseEvent<HTMLButtonElement | HTMLImageElement>) => {
+    const onClickAdd = (
+        e: React.MouseEvent<HTMLButtonElement | HTMLImageElement>
+    ) => {
         e.preventDefault();
         const item = {
             id,
@@ -39,30 +51,32 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes}) => 
             title,
             weight: weight[activeSize],
             price: price[activeSize],
-            size: sizeValues[activeSize]
-
+            size: sizeValues[activeSize],
         };
         dispatch(addItem(item as ICartItem));
     };
 
-   const onClickMinus = (e: React.MouseEvent<HTMLButtonElement | HTMLImageElement>) => {
-    e.preventDefault();
-    const count = cartItem?.count;
-    const id = cartItem?.id
-    const size = cartItem?.size
-    const price = cartItem?.price
+    const onClickMinus = (
+        e: React.MouseEvent<HTMLButtonElement | HTMLImageElement>
+    ) => {
+        e.preventDefault();
+        const count = cartItem?.count;
+        const id = cartItem?.id;
+        const size = cartItem?.size;
+        const price = cartItem?.price;
 
-    if(count && count > 1) {
-        dispatch(minusItem({
-            id,
-            size,
-            price,
-        } as ICartItem))
-    } else {
-        dispatch(removeItem({id, size, price} as ICartItem));
-    }
-   }
-
+        if (count && count > 1) {
+            dispatch(
+                minusItem({
+                    id,
+                    size,
+                    price,
+                } as ICartItem)
+            );
+        } else {
+            dispatch(removeItem({ id, size, price } as ICartItem));
+        }
+    };
 
     return (
         <article className="card">
@@ -97,7 +111,10 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes}) => 
                 {addedCount > 0 && cartItem?.size === sizeValues[activeSize] ? (
                     <div className="card__btn--active">
                         <button onClick={onClickMinus}>
-                            <img src="./../../img/icons/minus.svg" alt="minus" />
+                            <img
+                                src="./../../img/icons/minus.svg"
+                                alt="minus"
+                            />
                         </button>
                         {addedCount}
                         <button onClick={onClickAdd}>
@@ -118,6 +135,6 @@ const Card: React.FC<TCardProps> = ({ id, img, title, weight, price, sizes}) => 
             </div>
         </article>
     );
-}
+};
 
 export default Card;

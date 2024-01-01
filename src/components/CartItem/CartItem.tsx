@@ -3,16 +3,24 @@ import { ICartItem } from '../../redux/cart/types';
 import { useAppDispatch } from '../../redux/store';
 
 export type TCartItem = {
-    id: string,
+    id: string;
     img: string;
     title: string;
     price: number;
     count: number;
     size: number;
     weight: number;
-}
+};
 
-const CartItem: React.FC<TCartItem> = ({ id, img, title, price, count, size, weight }) => {
+const CartItem: React.FC<TCartItem> = ({
+    id,
+    img,
+    title,
+    price,
+    count,
+    size,
+    weight,
+}) => {
     const dispatch = useAppDispatch();
 
     const onClickPlus = () => {
@@ -34,7 +42,7 @@ const CartItem: React.FC<TCartItem> = ({ id, img, title, price, count, size, wei
                 } as ICartItem)
             );
         } else {
-            dispatch(removeItem({id, size, price}));
+            dispatch(removeItem({ id, size, price }));
         }
     };
 
@@ -73,6 +81,6 @@ const CartItem: React.FC<TCartItem> = ({ id, img, title, price, count, size, wei
             </div>
         </li>
     );
-}
+};
 
 export default CartItem;

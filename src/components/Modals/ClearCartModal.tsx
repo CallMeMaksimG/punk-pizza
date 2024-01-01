@@ -53,6 +53,6 @@ const ClearCartModal: React.FC = function () {
             </div>
         </>
     );
-}
+};
 
 export default ClearCartModal;

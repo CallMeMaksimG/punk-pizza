@@ -46,6 +46,6 @@ const Search: React.FC = () => {
             )}
         </form>
     );
-}
+};
 
 export default Search;

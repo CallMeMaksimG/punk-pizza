@@ -26,7 +26,7 @@ const Sort: React.FC = () => {
         const handleClickOutside = (event: MouseEvent) => {
             const current = sortRef.current;
             const path = event.composedPath();
-            if(current && !path.includes(current)){
+            if (current && !path.includes(current)) {
                 setOpenFilterList(false);
             }
         };
@@ -70,6 +70,6 @@ const Sort: React.FC = () => {
             </button>
         </div>
     );
-}
+};
 
 export default Sort;

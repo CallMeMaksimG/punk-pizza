@@ -3,9 +3,12 @@ import ReactPaginate from 'react-paginate';
 type TPaginationProps = {
     currentPage: number;
     onChangePage: (page: number) => void;
-}
+};
 
-const Pagination: React.FC<TPaginationProps> = ({ currentPage, onChangePage }) => {
+const Pagination: React.FC<TPaginationProps> = ({
+    currentPage,
+    onChangePage,
+}) => {
     return (
         <ReactPaginate
             className="pagination"
@@ -19,6 +22,6 @@ const Pagination: React.FC<TPaginationProps> = ({ currentPage, onChangePage }) =
             forcePage={currentPage - 1}
         />
     );
-}
+};
 
 export default Pagination;
