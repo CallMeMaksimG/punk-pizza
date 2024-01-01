@@ -1,17 +1,35 @@
 type TModalInfoProps = {
     isModalInfoOpen: boolean;
     setIsModalInfoOpen: (value: boolean) => void;
-}
+    setIsModalDeliveryOpen: (value: boolean) => void;
+};
 
-const ModalInfo: React.FC<TModalInfoProps> = ({ isModalInfoOpen, setIsModalInfoOpen }) => {
+const ModalInfo: React.FC<TModalInfoProps> = ({
+    isModalInfoOpen,
+    setIsModalInfoOpen,
+    setIsModalDeliveryOpen,
+}) => {
     const handleClickCloseModalWindow = () => {
         setIsModalInfoOpen(false);
-    }
+    };
     return (
         <>
-            <div className={isModalInfoOpen ? "overlay overlay--open" : "overlay"}></div>
-            <div className={isModalInfoOpen ? "modal-info modal-info--open" : "modal-info"}>
-                <button onClick={handleClickCloseModalWindow} className="modal-info__close-btn">
+            <div
+                className={
+                    isModalInfoOpen ? 'overlay overlay--open' : 'overlay'
+                }
+            ></div>
+            <div
+                className={
+                    isModalInfoOpen
+                        ? 'modal-info modal-info--open'
+                        : 'modal-info'
+                }
+            >
+                <button
+                    onClick={handleClickCloseModalWindow}
+                    className="modal-info__close-btn"
+                >
                     <img src="./../../img/icons/close.svg" alt="close" />
                 </button>
                 <h2 className="modal-info__title">Условия доставки</h2>
@@ -29,12 +47,15 @@ const ModalInfo: React.FC<TModalInfoProps> = ({ isModalInfoOpen, setIsModalInfoO
                         <p>от 30 минут</p>
                     </li>
                 </ul>
-                <button className="modal-info__btn">
+                <button
+                    className="modal-info__btn"
+                    onClick={() => setIsModalDeliveryOpen(true)}
+                >
                     Указать адрес доставки
                 </button>
             </div>
         </>
     );
-}
+};
 
 export default ModalInfo;

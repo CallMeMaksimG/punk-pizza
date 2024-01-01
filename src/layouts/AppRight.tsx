@@ -5,7 +5,11 @@ import { selectOpenCart } from '../redux/cart/selectors';
 import { openCart } from '../redux/cart/slice';
 import { useAppDispatch } from '../redux/store';
 
-const AppRigth: React.FC = () => {
+interface IAppRightProps {
+    setIsModalDeliveryOpen: (value: boolean) => void;
+}
+
+const AppRigth: React.FC<IAppRightProps> = ({ setIsModalDeliveryOpen }) => {
     const dispatch = useAppDispatch();
     const isCartOpen = useSelector(selectOpenCart);
 
@@ -20,11 +24,11 @@ const AppRigth: React.FC = () => {
                     isCartOpen ? 'App__right App__right--open' : 'App__right'
                 }
             >
-                <Cart />
+                <Cart setIsModalDeliveryOpen={setIsModalDeliveryOpen} />
             </div>
             <CartMobileBtn handleClickCartIcon={handleClickCartIcon} />
         </>
     );
-}
+};
 
 export default AppRigth;

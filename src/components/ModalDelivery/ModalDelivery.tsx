@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import Maps from '../Map/Map';
 
-const ModalDelivery: React.FC = () => {
-    const [isModalDeliveryOpen, setIsModalDeliveryOpen] = useState(true);
+interface IMobileDeliveryProps {
+    isModalDeliveryOpen: boolean;
+    setIsModalDeliveryOpen: (value: boolean) => void;
+}
+
+const ModalDelivery: React.FC<IMobileDeliveryProps> = ({
+    isModalDeliveryOpen,
+    setIsModalDeliveryOpen,
+}) => {
     const [address, setAddress] = useState('');
     const [addressActive, setAddressActive] = useState(false);
     const [flat, setFlat] = useState('');
@@ -16,31 +23,31 @@ const ModalDelivery: React.FC = () => {
     const [comment, setComment] = useState('');
     const [commentActive, setCommentActive] = useState(false);
 
-    const addressHandler = (e: any) => {
+    const addressHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAddress(e.target.value);
     };
 
-    const flatHandler = (e: any) => {
+    const flatHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFlat(e.target.value);
     };
 
-    const entranceHandler = (e: any) => {
+    const entranceHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEntrance(e.target.value);
     };
 
-    const doorPhoneHandler = (e: any) => {
+    const doorPhoneHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setDoorPhone(e.target.value);
     };
 
-    const floorHandler = (e: any) => {
+    const floorHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFloor(e.target.value);
     };
 
-    const commentHandler = (e: any) => {
+    const commentHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setComment(e.target.value);
     };
 
-    const blurHandler = (e: any) => {
+    const blurHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value === '') {
             switch (e.target.name) {
                 case 'address':
@@ -96,7 +103,7 @@ const ModalDelivery: React.FC = () => {
                                 name="address"
                                 onBlur={(e) => blurHandler(e)}
                                 type="text"
-                                autoComplete='off'
+                                autoComplete="off"
                             />
                             <div
                                 className={
@@ -117,7 +124,7 @@ const ModalDelivery: React.FC = () => {
                                     name="flat"
                                     onBlur={(e) => blurHandler(e)}
                                     type="text"
-                                    autoComplete='off'
+                                    autoComplete="off"
                                 />
                                 <div
                                     className={
@@ -137,7 +144,7 @@ const ModalDelivery: React.FC = () => {
                                     name="entrance"
                                     onBlur={(e) => blurHandler(e)}
                                     type="text"
-                                    autoComplete='off'
+                                    autoComplete="off"
                                 />
                                 <div
                                     className={
@@ -159,7 +166,7 @@ const ModalDelivery: React.FC = () => {
                                     name="doorPhone"
                                     onBlur={(e) => blurHandler(e)}
                                     type="text"
-                                    autoComplete='off'
+                                    autoComplete="off"
                                 />
                                 <div
                                     className={
@@ -179,7 +186,7 @@ const ModalDelivery: React.FC = () => {
                                     name="floor"
                                     onBlur={(e) => blurHandler(e)}
                                     type="text"
-                                    autoComplete='off'
+                                    autoComplete="off"
                                 />
                                 <div
                                     className={
@@ -200,7 +207,7 @@ const ModalDelivery: React.FC = () => {
                                 name="comment"
                                 onBlur={(e) => blurHandler(e)}
                                 type="text"
-                                autoComplete='off'
+                                autoComplete="off"
                             />
                             <div
                                 className={

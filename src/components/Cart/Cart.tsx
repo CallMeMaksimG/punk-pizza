@@ -4,7 +4,11 @@ import { openCart, openConfirmWindow } from '../../redux/cart/slice';
 import { useAppDispatch } from '../../redux/store';
 import CartItem from '../CartItem/CartItem';
 
-const Cart: React.FC = () => {
+interface ICartProps {
+    setIsModalDeliveryOpen: (value: boolean) => void;
+}
+
+const Cart: React.FC<ICartProps> = ({ setIsModalDeliveryOpen }) => {
     const { items, totalPrice } = useSelector(selectCart);
     const dispatch = useAppDispatch();
 
@@ -13,7 +17,7 @@ const Cart: React.FC = () => {
     };
 
     function closeCart() {
-        dispatch(openCart())
+        dispatch(openCart());
     }
 
     return (
@@ -82,7 +86,10 @@ const Cart: React.FC = () => {
                             </button>
                         </div>
                     </div>
-                    <button className="cart-pop-up__delivery">
+                    <button
+                        onClick={() => setIsModalDeliveryOpen(true)}
+                        className="cart-pop-up__delivery"
+                    >
                         <img
                             src="./../../img/icons/delivery-black.svg"
                             alt="delivery"
@@ -114,6 +121,6 @@ const Cart: React.FC = () => {
             </div>
         </>
     );
-}
+};
 
 export default Cart;

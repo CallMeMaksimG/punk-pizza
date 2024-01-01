@@ -9,7 +9,15 @@ import { selectOpenCart } from '../redux/cart/selectors';
 import { openCart } from '../redux/cart/slice';
 import { useAppDispatch } from '../redux/store';
 
-const AppLeft = () => {
+interface IAppLeftProps {
+    isModalDeliveryOpen: boolean;
+    setIsModalDeliveryOpen: (value: boolean) => void;
+}
+
+const AppLeft: React.FC<IAppLeftProps> = ({
+    isModalDeliveryOpen,
+    setIsModalDeliveryOpen,
+}) => {
     const dispatch = useAppDispatch();
     const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
     const isCartOpen = useSelector(selectOpenCart);
@@ -27,8 +35,12 @@ const AppLeft = () => {
             <ModalInfo
                 isModalInfoOpen={isModalInfoOpen}
                 setIsModalInfoOpen={setIsModalInfoOpen}
+                setIsModalDeliveryOpen={setIsModalDeliveryOpen}
             />
-            <ModalDelivery />
+            <ModalDelivery
+                isModalDeliveryOpen={isModalDeliveryOpen}
+                setIsModalDeliveryOpen={setIsModalDeliveryOpen}
+            />
             <Header
                 handleClickInfoIcon={handleClickInfoIcon}
                 handleClickCartIcon={handleClickCartIcon}
