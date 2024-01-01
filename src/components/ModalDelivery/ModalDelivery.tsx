@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Maps from '../Map/Map';
 
 const ModalDelivery: React.FC = () => {
     const [isModalDeliveryOpen, setIsModalDeliveryOpen] = useState(true);
@@ -79,8 +80,8 @@ const ModalDelivery: React.FC = () => {
                 }
             >
                 <button
-                    onClick={() => console.log('click')}
-                    className="modal-info__close-btn"
+                    onClick={() => setIsModalDeliveryOpen(false)}
+                    className="modal-delivery__close-btn"
                 >
                     <img src="./../../img/icons/close.svg" alt="close" />
                 </button>
@@ -95,6 +96,7 @@ const ModalDelivery: React.FC = () => {
                                 name="address"
                                 onBlur={(e) => blurHandler(e)}
                                 type="text"
+                                autoComplete='off'
                             />
                             <div
                                 className={
@@ -115,6 +117,7 @@ const ModalDelivery: React.FC = () => {
                                     name="flat"
                                     onBlur={(e) => blurHandler(e)}
                                     type="text"
+                                    autoComplete='off'
                                 />
                                 <div
                                     className={
@@ -134,6 +137,7 @@ const ModalDelivery: React.FC = () => {
                                     name="entrance"
                                     onBlur={(e) => blurHandler(e)}
                                     type="text"
+                                    autoComplete='off'
                                 />
                                 <div
                                     className={
@@ -155,6 +159,7 @@ const ModalDelivery: React.FC = () => {
                                     name="doorPhone"
                                     onBlur={(e) => blurHandler(e)}
                                     type="text"
+                                    autoComplete='off'
                                 />
                                 <div
                                     className={
@@ -174,6 +179,7 @@ const ModalDelivery: React.FC = () => {
                                     name="floor"
                                     onBlur={(e) => blurHandler(e)}
                                     type="text"
+                                    autoComplete='off'
                                 />
                                 <div
                                     className={
@@ -194,6 +200,7 @@ const ModalDelivery: React.FC = () => {
                                 name="comment"
                                 onBlur={(e) => blurHandler(e)}
                                 type="text"
+                                autoComplete='off'
                             />
                             <div
                                 className={
@@ -210,7 +217,9 @@ const ModalDelivery: React.FC = () => {
                         </button>
                     </form>
                 </div>
-                <div className="delivery__map"></div>
+                <div className="delivery__map">
+                    <Maps />
+                </div>
             </div>
         </>
     );
