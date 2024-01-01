@@ -1,0 +1,122 @@
+.modal-delivery {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, 200%);
+    z-index: 10;
+    background-color: #fff;
+    border-radius: 25px;
+    width: 800px;
+    height: 600px;
+    padding: 40px;
+    transition: all 0.5s ease-in-out;
+    visibility: hidden;
+    display: flex;
+
+    @media (max-width: 590px) {
+        width: 100%;
+        height: 100%;
+        border-radius: 25px 25px 0 0;
+    }
+
+    &--open {
+        transform: translate(50%, -50%);
+        animation: modalOpen;
+        visibility: visible;
+
+        @media (max-width: 590px) {
+            transform: translate(50%, 0%);
+            top: 52%;
+        }
+    }
+
+    @keyframes modalOpen {
+        from {
+            transform: translateY(-50%);
+        }
+        to {
+            transform: translateY(50%);
+        }
+    }
+}
+
+.delivery__content {
+    width: 40%;
+
+    h2 {
+        text-transform: uppercase;
+        font-size: 18px;
+    }
+}
+
+.delivery__form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-wrapper {
+    height: 50px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    position: relative;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%;
+
+    &:hover {
+        background-color: lighten(#f0f0f0, 3%);
+    }
+
+    .input-label {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        font-size: 14px;
+        transform: translateY(-50%);
+        pointer-events: none;
+
+        &--active {
+            font-size: 10px;
+            transform: translateY(-150%);
+        }
+    }
+
+    input {
+        position: absolute;
+        height: 50px;
+        width: 100%;
+        left: 10px;
+        top: 15%;
+    }
+}
+
+.input__underwrap {
+    display: flex;
+    width: 100%;
+    position: relative;
+    gap: 10px;
+}
+
+.modal-delivery__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    background-color: var(--ui-dark);
+    color: #fff;
+    font-size: 18px;
+    height: 55px;
+    border-radius: 10px;
+    transition: background 0.2s ease-in;
+    margin-top: 15px;
+
+    &:hover {
+        background-color: lighten(#272829, 10%);
+    }
+}
+
+.delivery__map {
+    width: 60%;
+}
