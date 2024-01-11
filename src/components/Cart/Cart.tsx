@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectCart } from '../../redux/cart/selectors';
 import { openCart, openConfirmWindow } from '../../redux/cart/slice';
+import { ICartItem } from '../../redux/cart/types';
 import { useAppDispatch } from '../../redux/store';
 import CartItem from '../CartItem/CartItem';
 
@@ -45,7 +46,7 @@ const Cart: React.FC<ICartProps> = ({ setIsModalDeliveryOpen }) => {
                     <div className="cart-pop-up__items">
                         {items.length > 0 ? (
                             <ul className="cart-pop-up__list">
-                                {items.map((item: any) => {
+                                {items.map((item: ICartItem) => {
                                     return (
                                         <CartItem
                                             key={item.id + item.size}

@@ -45,15 +45,26 @@ const Card: React.FC<TCardProps> = ({
         e: React.MouseEvent<HTMLButtonElement | HTMLImageElement>
     ) => {
         e.preventDefault();
-        const item = {
-            id,
-            img,
-            title,
-            weight: weight[activeSize],
-            price: price[activeSize],
-            size: sizeValues[activeSize],
-        };
-        dispatch(addItem(item as ICartItem));
+        if (sizes) {
+            const item = {
+                id,
+                img,
+                title,
+                weight: weight[activeSize],
+                price: price[activeSize],
+                size: sizes[activeSize],
+            };
+            dispatch(addItem(item as ICartItem));
+        } else {
+            const item = {
+                id,
+                img,
+                title,
+                weight: weight[activeSize],
+                price: price[activeSize],
+            };
+            dispatch(addItem(item as ICartItem));
+        }
     };
 
     const onClickMinus = (
@@ -108,7 +119,7 @@ const Card: React.FC<TCardProps> = ({
             </div>
             <div className="card__footer">
                 <div className="card__price">{price[activeSize]} &#8381;</div>
-                {addedCount > 0 && cartItem?.size === sizeValues[activeSize] ? (
+                {(addedCount > 0 && cartItem?.size === sizeValues[activeSize]) || addedCount > 0 ? (
                     <div className="card__btn--active">
                         <button onClick={onClickMinus}>
                             <img

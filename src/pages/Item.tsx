@@ -53,17 +53,30 @@ const Item: React.FC = function () {
 
     const onClickAdd = () => {
         if (item) {
-            const itemData: ICartItem = {
-                id: item.id,
-                img: item.img,
-                title: item.title,
-                weight: item.weight[activeSize],
-                price: item.price[activeSize],
-                size: item.sizes[activeSize],
-                count: 0,
-                description: item.description,
-            };
-            dispatch(addItem(itemData));
+            if (item.sizes) {
+                const itemData: ICartItem = {
+                    id: item.id,
+                    img: item.img,
+                    title: item.title,
+                    weight: item.weight[activeSize],
+                    price: item.price[activeSize],
+                    size: item.sizes[activeSize],
+                    count: 0,
+                    description: item.description,
+                };
+                dispatch(addItem(itemData));
+            } else {
+                const itemData = {
+                    id: item.id,
+                    img: item.img,
+                    title: item.title,
+                    weight: item.weight[activeSize],
+                    price: item.price[activeSize],
+                    count: 0,
+                    description: item.description,
+                };
+                dispatch(addItem(itemData as ICartItem));
+            }
         }
     };
 
@@ -137,8 +150,9 @@ const Item: React.FC = function () {
                             <p className="item__price">
                                 {item.price[activeSize]} &#8381;
                             </p>
-                            {addedCount > 0 &&
-                            cartItem?.size === sizeValues[activeSize] ? (
+                            {(addedCount > 0 &&
+                                cartItem?.size === sizeValues[activeSize]) ||
+                            addedCount > 0  ? (
                                 <div className="item__add-btn--active">
                                     <button onClick={onClickMinus}>
                                         <img

@@ -53,7 +53,7 @@ const CartItem: React.FC<TCartItem> = ({
             </div>
             <div className="cart-pop-up__items-info">
                 <h3 className="cart-pop-up__info-title">
-                    {title} <span>{size}см</span>
+                    {title} <span>{size ? `${size} см` : ''}</span>
                 </h3>
                 <div className="cart-pop-up__items-info__footer">
                     <p className="cart-pop-up__items-price">
