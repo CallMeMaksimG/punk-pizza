@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 import ModalDelivery from '../components/ModalDelivery/ModalDelivery';
 import ModalInfo from '../components/ModalInfo/ModalInfo';
@@ -46,6 +47,7 @@ const AppLeft: React.FC<IAppLeftProps> = ({
                 handleClickCartIcon={handleClickCartIcon}
             />
             <Outlet />
+            <Footer />
         </div>
     );
 };
