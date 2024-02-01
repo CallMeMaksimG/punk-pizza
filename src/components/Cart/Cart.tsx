@@ -39,7 +39,12 @@ const Cart: React.FC<ICartProps> = ({ setIsModalDeliveryOpen }) => {
                         onClick={closeCart}
                         className="cart-pop-up__close-btn"
                     >
-                        <img src="./../../img/icons/close.svg" alt="close" />
+                        <img
+                            src={
+                                process.env.PUBLIC_URL + '/img/icons/close.svg'
+                            }
+                            alt="close"
+                        />
                     </button>
                 </div>
                 <div className="cart-pop-up__main">
@@ -64,7 +69,10 @@ const Cart: React.FC<ICartProps> = ({ setIsModalDeliveryOpen }) => {
                     <div className="cart-pop-up__devices">
                         <div className="cart-pop-up__devices-info">
                             <img
-                                src="./../../img/icons/devices.svg"
+                                src={
+                                    process.env.PUBLIC_URL +
+                                    '/img/icons/devices.svg'
+                                }
                                 alt="devices"
                             />
                             <p>Приборы</p>
@@ -72,7 +80,10 @@ const Cart: React.FC<ICartProps> = ({ setIsModalDeliveryOpen }) => {
                         <div className="cart-pop-up__devices-counter">
                             <button className="cart-pop-up__devices-counter-plus">
                                 <img
-                                    src="./../img/icons/minus-dark.svg"
+                                    src={
+                                        process.env.PUBLIC_URL +
+                                        '/img/icons/minus-dark.svg'
+                                    }
                                     alt="minus"
                                 />
                             </button>{' '}
@@ -81,7 +92,10 @@ const Cart: React.FC<ICartProps> = ({ setIsModalDeliveryOpen }) => {
                             </span>{' '}
                             <button className="cart-pop-up__devices-counter-minus">
                                 <img
-                                    src="./../img/icons/plus-dark.svg"
+                                    src={
+                                        process.env.PUBLIC_URL +
+                                        '/img/icons/plus-dark.svg'
+                                    }
                                     alt="plus"
                                 />
                             </button>
@@ -92,7 +106,10 @@ const Cart: React.FC<ICartProps> = ({ setIsModalDeliveryOpen }) => {
                         className="cart-pop-up__delivery"
                     >
                         <img
-                            src="./../../img/icons/delivery-black.svg"
+                            src={
+                                process.env.PUBLIC_URL +
+                                '/img/icons/delivery-black.svg'
+                            }
                             alt="delivery"
                         />
                         Адрес доставки
@@ -100,7 +117,10 @@ const Cart: React.FC<ICartProps> = ({ setIsModalDeliveryOpen }) => {
                     <button className="cart-pop-up__comment">
                         {' '}
                         <img
-                            src="./../../img/icons/comment.svg"
+                            src={
+                                process.env.PUBLIC_URL +
+                                "/img/icons/comment.svg"
+                            }
                             alt="comment"
                         />
                         Комментарий

@@ -30,7 +30,7 @@ const ModalInfo: React.FC<TModalInfoProps> = ({
                     onClick={handleClickCloseModalWindow}
                     className="modal-info__close-btn"
                 >
-                    <img src="./../../img/icons/close.svg" alt="close" />
+                    <img src={process.env.PUBLIC_URL + "/img/icons/close.svg"} alt="close" />
                 </button>
                 <h2 className="modal-info__title">Условия доставки</h2>
                 <ul className="modal-info__list">

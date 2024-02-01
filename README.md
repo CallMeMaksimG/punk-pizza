@@ -23,5 +23,5 @@
 - БЭМ;
 
 
-[Перейти]()
+[Перейти](https://callmemaksimg.github.io/punk-pizza/#/)
 

@@ -36,6 +36,9 @@ a {
     transition: margin-right 0.2s ease-in;
     height: 100vh;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &--open {
         @media (max-width: $tablet) {

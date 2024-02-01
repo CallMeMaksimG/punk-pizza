@@ -49,7 +49,7 @@ const CartItem: React.FC<TCartItem> = ({
     return (
         <li className="cart-pop-up__list-items">
             <div className="cart-pop-up__items-img">
-                <img src={img} alt="items" />
+                <img src={process.env.PUBLIC_URL + img} alt="items" />
             </div>
             <div className="cart-pop-up__items-info">
                 <h3 className="cart-pop-up__info-title">
@@ -67,7 +67,7 @@ const CartItem: React.FC<TCartItem> = ({
                     onClick={onClickMinus}
                     className="cart-pop-up__items-counter-plus"
                 >
-                    <img src="./../img/icons/minus-dark.svg" alt="minus" />
+                    <img src={process.env.PUBLIC_URL + "/img/icons/minus-dark.svg"} alt="minus" />
                 </button>{' '}
                 <span className="cart-pop-up__items-counter-count">
                     {count}
@@ -76,7 +76,7 @@ const CartItem: React.FC<TCartItem> = ({
                     onClick={onClickPlus}
                     className="cart-pop-up__items-counter-minus"
                 >
-                    <img src="./../img/icons/plus-dark.svg" alt="plus" />
+                    <img src={process.env.PUBLIC_URL + "/img/icons/plus-dark.svg"} alt="plus" />
                 </button>
             </div>
         </li>

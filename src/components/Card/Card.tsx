@@ -92,7 +92,11 @@ const Card: React.FC<TCardProps> = ({
     return (
         <article className="card">
             <div className="card__photo">
-                <img src={img} alt={title} className="card__img" />
+                <img
+                    src={process.env.PUBLIC_URL + img}
+                    alt={title}
+                    className="card__img"
+                />
             </div>
             <h2 className="card__title">{title}</h2>
             <p className="card__weight">{weight[activeSize]}г</p>
@@ -119,18 +123,26 @@ const Card: React.FC<TCardProps> = ({
             </div>
             <div className="card__footer">
                 <div className="card__price">{price[activeSize]} &#8381;</div>
-                {(addedCount > 0 && cartItem?.size === sizeValues[activeSize]) || addedCount > 0 ? (
+                {(addedCount > 0 &&
+                    cartItem?.size === sizeValues[activeSize]) ||
+                addedCount > 0 ? (
                     <div className="card__btn--active">
                         <button onClick={onClickMinus}>
                             <img
-                                src="./../../img/icons/minus.svg"
+                                src={
+                                    process.env.PUBLIC_URL +
+                                    '/img/icons/minus.svg'
+                                }
                                 alt="minus"
                             />
                         </button>
                         {addedCount}
                         <button onClick={onClickAdd}>
                             <img
-                                src="./../../img/icons/plus.svg"
+                                src={
+                                    process.env.PUBLIC_URL +
+                                    '/img/icons/plus.svg'
+                                }
                                 alt="add to cart"
                             />
                         </button>
@@ -138,7 +150,7 @@ const Card: React.FC<TCardProps> = ({
                 ) : (
                     <button onClick={onClickAdd} className="card__btn">
                         <img
-                            src="./../../img/icons/plus.svg"
+                            src={process.env.PUBLIC_URL + '/img/icons/plus.svg'}
                             alt="add to cart"
                         />
                     </button>

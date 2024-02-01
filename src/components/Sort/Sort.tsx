@@ -42,7 +42,7 @@ const Sort: React.FC = () => {
             <button onClick={handleOpenFilterList} className="sort__btn">
                 <span className="sort__btn-text">{sortMethod.name}</span>
                 <img
-                    src="./../img/icons/arrow-down.svg"
+                    src={process.env.PUBLIC_URL + "/img/icons/arrow-down.svg"}
                     alt="arrow-down"
                     className={
                         openFilterList

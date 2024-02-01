@@ -33,7 +33,13 @@ const ClearCartModal: React.FC = function () {
                     onClick={() => dispatch(openConfirmWindow())}
                     className="clear-cart__close-btn"
                 >
-                    <img src="./../../img/icons/close.svg" alt="close" />
+                    <img
+                        src={
+                            process.env.PUBLIC_URL +
+                            '/img/icons/close.svg'
+                        }
+                        alt="close"
+                    />
                 </button>
                 <h3 className="clear-cart__title">Очистить корзину?</h3>
                 <div className="clear-cart__buttons">

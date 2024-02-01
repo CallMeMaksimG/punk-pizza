@@ -29,7 +29,10 @@ const Search: React.FC = () => {
     return (
         <form action="" className="nav__search search-form">
             <div className="search-form__icon">
-                <img src="./../img/icons/search.svg" alt="search" />
+                <img
+                    src={process.env.PUBLIC_URL + '/img/icons/search.svg'}
+                    alt="search"
+                />
             </div>
             <input
                 ref={inputRef}
@@ -41,7 +44,12 @@ const Search: React.FC = () => {
             />
             {value && (
                 <div onClick={onClickClear} className="search-form__clear-btn">
-                    <img src="./../img/icons/clear.svg" alt="clear" />
+                    <img
+                        src={
+                            process.env.PUBLIC_URL + '/img/icons/clear.svg'
+                        }
+                        alt="clear"
+                    />
                 </div>
             )}
         </form>

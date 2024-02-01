@@ -1,6 +1,7 @@
 {
   "name": "punk-pizza",
   "version": "0.1.0",
+  "homepage": "https://callmemaksimg.github.io/punk-pizza/",
   "private": true,
   "dependencies": {
     "@pbe/react-yandex-maps": "^1.2.5",

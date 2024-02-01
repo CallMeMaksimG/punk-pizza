@@ -36,7 +36,10 @@ const Header: React.FC<THeaderProps> = ({
                     <Link className="nav__link" to="/">
                         <div className="nav__logo">
                             <img
-                                src="./../img/header/logo-pizza.png"
+                                src={
+                                    process.env.PUBLIC_URL +
+                                    '/img/header/logo-pizza.png'
+                                }
                                 alt="LOGO"
                                 className="nav__logo-img"
                             />
@@ -61,7 +64,10 @@ const Header: React.FC<THeaderProps> = ({
                                 {totalPrice} &#8381;
                             </div>
                             <img
-                                src="./../img/icons/cart.svg"
+                                src={
+                                    process.env.PUBLIC_URL +
+                                    '/img/icons/cart.svg'
+                                }
                                 alt="cart"
                                 className="cart__image"
                             />

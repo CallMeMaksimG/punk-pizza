@@ -90,7 +90,7 @@ const ModalDelivery: React.FC<IMobileDeliveryProps> = ({
                     onClick={() => setIsModalDeliveryOpen(false)}
                     className="modal-delivery__close-btn"
                 >
-                    <img src="./../../img/icons/close.svg" alt="close" />
+                    <img src={process.env.PUBLIC_URL + "/img/icons/close.svg"} alt="close" />
                 </button>
                 <div className="delivery__content">
                     <h2>Укажите адрес доставки</h2>
