@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/punk-pizza/static/css/main.d545a4db.css",
+    "main.css": "/punk-pizza/static/css/main.8f3b961a.css",
     "main.js": "/punk-pizza/static/js/main.47faa3d6.js",
     "Item.js": "/punk-pizza/static/js/Item.defab9cc.chunk.js",
     "NotFound.js": "/punk-pizza/static/js/NotFound.b0e78164.chunk.js",
     "static/media/cart-white.svg": "/punk-pizza/static/media/cart-white.6d29165ae7eb7810d416.svg",
     "static/media/delivery.svg": "/punk-pizza/static/media/delivery.93db8650cf6f2b685826.svg",
     "index.html": "/punk-pizza/index.html",
-    "main.d545a4db.css.map": "/punk-pizza/static/css/main.d545a4db.css.map",
+    "main.8f3b961a.css.map": "/punk-pizza/static/css/main.8f3b961a.css.map",
     "main.47faa3d6.js.map": "/punk-pizza/static/js/main.47faa3d6.js.map",
     "Item.defab9cc.chunk.js.map": "/punk-pizza/static/js/Item.defab9cc.chunk.js.map",
     "NotFound.b0e78164.chunk.js.map": "/punk-pizza/static/js/NotFound.b0e78164.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d545a4db.css",
+    "static/css/main.8f3b961a.css",
     "static/js/main.47faa3d6.js"
   ]
 }
