@@ -37,9 +37,10 @@
 
     @media(max-width: 590px) {
         width: 100%;
-        height: 50vh;
+        height: auto;
         border-radius: 25px 25px 0 0;
         overflow-y: scroll;
+        bottom: 0;
     }
 }
 
@@ -50,7 +51,7 @@
 
     @media(max-width: 590px) {
         transform: translate(50%, 0%);
-        top: 52%;
+        // top: 52%;
     }
 }
 

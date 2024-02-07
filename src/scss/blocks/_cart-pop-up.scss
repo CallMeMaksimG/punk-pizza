@@ -309,6 +309,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease-in-out;
+    overflow-y: hidden;
 
     @media (max-width: $tablet) {
         &--open {

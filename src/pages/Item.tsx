@@ -108,14 +108,17 @@ const Item: React.FC = function () {
                 <Link to="/">
                     <button className="item__prev-btn">
                         <img
-                            src="./../../img/icons/arrow-prev.svg"
+                            src={
+                                process.env.PUBLIC_URL +
+                                '/img/icons/arrow-prev.svg'
+                            }
                             alt="arrow-prev"
                         />
                     </button>
                 </Link>
                 <div className="item__wrapper">
                     <div className="item__img">
-                        <img src={item.img} alt="" />
+                        <img src={process.env.PUBLIC_URL + item.img} alt="item" />
                     </div>
                     <div className="item__info">
                         <h1 className="item__title">{item.title}</h1>
@@ -152,18 +155,18 @@ const Item: React.FC = function () {
                             </p>
                             {(addedCount > 0 &&
                                 cartItem?.size === sizeValues[activeSize]) ||
-                            addedCount > 0  ? (
+                            addedCount > 0 ? (
                                 <div className="item__add-btn--active">
                                     <button onClick={onClickMinus}>
                                         <img
-                                            src="./../../img/icons/minus.svg"
+                                            src={process.env.PUBLIC_URL + "/img/icons/minus.svg"}
                                             alt="minus"
                                         />
                                     </button>
                                     {addedCount}
                                     <button onClick={onClickAdd}>
                                         <img
-                                            src="./../../img/icons/plus.svg"
+                                            src={process.env.PUBLIC_URL + "/img/icons/plus.svg"}
                                             alt="add to cart"
                                         />
                                     </button>
@@ -174,7 +177,7 @@ const Item: React.FC = function () {
                                     onClick={onClickAdd}
                                 >
                                     <img
-                                        src="./../../img/icons/plus.svg"
+                                        src={process.env.PUBLIC_URL + "/img/icons/plus.svg"}
                                         alt="add to cart"
                                     />
                                 </button>
